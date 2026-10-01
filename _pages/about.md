@@ -20,6 +20,15 @@ My research experience includes study design, data collection, manuscript prepar
 
 [Research overview →](/research/)
 
+## Academic profile highlights
+
+- Member, Psychological Research Laboratory (2019–Present)
+- Ad hoc reviewer for Springer Nature journals listed in my CV, including *BMC Psychology*, *Discover Psychology*, *Scientific Reports*, and *Discover Public Health*
+- Member, Vietnam Psychotherapy Association (2024–Present)
+- Idea Prize, Student Scientific Research Conference, Ho Chi Minh City University of Education (2020)
+- Research experience in eye-tracking and emotional Stroop task data collection
+- Training in social and behavioral research ethics, statistics, mental healthcare, and human resource management
+
 ## Selected publications
 
 Nguyen, P.-T., Nguyen-Le, L.-T., Duong-Vo, T.-L., <strong>Tran-Thien, G.-P.*</strong>, & Tran-Chi, V.-L. (2025). The Role of Work Motivation and Organizational Justice in Employee Stress: A Cross-Sectional Study. *Bangladesh Journal of Multidisciplinary Scientific Research, 11*(1), 116–128. [DOI](https://doi.org/10.46281/bjmsr.v11i1.2751)

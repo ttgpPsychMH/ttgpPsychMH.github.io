@@ -22,22 +22,22 @@ My research experience includes study design, data collection, manuscript prepar
 
 ## Selected publications
 
-**Nguyen, P.-T., Nguyen-Le, L.-T., Duong-Vo, T.-L., Tran-Thien, G.-P.*, & Tran-Chi, V.-L. (2025).** The Role of Work Motivation and Organizational Justice in Employee Stress: A Cross-Sectional Study. *Bangladesh Journal of Multidisciplinary Scientific Research, 11*(1), 116–128. [DOI](https://doi.org/10.46281/bjmsr.v11i1.2751)
+Nguyen, P.-T., Nguyen-Le, L.-T., Duong-Vo, T.-L., <strong><strong>Tran-Thien, G.-P.</strong>*</strong>, & Tran-Chi, V.-L. (2025). The Role of Work Motivation and Organizational Justice in Employee Stress: A Cross-Sectional Study. *Bangladesh Journal of Multidisciplinary Scientific Research, 11*(1), 116–128. [DOI](https://doi.org/10.46281/bjmsr.v11i1.2751)
 
-**Nguyen, V. H. A., Tran, T. N. A., Vu, T. T., Phan, Y. T. H., Nguyen, T. T. N., Tran-Thien, G.-P., & Tran-Chi, V.-L. (2025).** The Interplay of Psychological Distress, Stigma, and Social Support in Determining Quality of Life Among Vietnamese People Living With HIV. *Discover Mental Health, 5*(1), Article 48. [DOI](https://doi.org/10.1007/s44192-025-00171-z)
+Nguyen, V. H. A., Tran, T. N. A., Vu, T. T., Phan, Y. T. H., Nguyen, T. T. N., <strong>Tran-Thien, G.-P.</strong>, & Tran-Chi, V.-L. (2025). The Interplay of Psychological Distress, Stigma, and Social Support in Determining Quality of Life Among Vietnamese People Living With HIV. *Discover Mental Health, 5*(1), Article 48. [DOI](https://doi.org/10.1007/s44192-025-00171-z)
 
-**Huynh, S. V., Tran-Thien, G.-P., Vu, T. T.-T., & Tran-Chi, V.-L. (2025).** Eye-Tracking Technology in Vietnam: A Comprehensive Review of Its Application and Acceptance Across Various Fields. *Multidisciplinary Reviews, 8*(1), Article e2025030. [DOI](https://doi.org/10.31893/multirev.2025030)
+Huynh, S. V., <strong>Tran-Thien, G.-P.</strong>, Vu, T. T.-T., & Tran-Chi, V.-L. (2025). Eye-Tracking Technology in Vietnam: A Comprehensive Review of Its Application and Acceptance Across Various Fields. *Multidisciplinary Reviews, 8*(1), Article e2025030. [DOI](https://doi.org/10.31893/multirev.2025030)
 
-**Huynh, V.-S., Tran-Thien, G.-P.*, Nguyen, T.-B., Nguyen, X. T. K., Nguyen, V. H. A., & Tran-Chi, V.-L. (2024).** What Do We Know About the Influence of Believers’ Religiosity on Happiness and Gratitude? – A Perspective for Clinical Practice. *Psychology Research and Behavior Management, 17*, 2433–2447. [DOI](https://doi.org/10.2147/PRBM.S465729)
+Huynh, V.-S., <strong><strong>Tran-Thien, G.-P.</strong>*</strong>, Nguyen, T.-B., Nguyen, X. T. K., Nguyen, V. H. A., & Tran-Chi, V.-L. (2024). What Do We Know About the Influence of Believers’ Religiosity on Happiness and Gratitude? – A Perspective for Clinical Practice. *Psychology Research and Behavior Management, 17*, 2433–2447. [DOI](https://doi.org/10.2147/PRBM.S465729)
 
 [View all publications →](/publications/)
 
 ## Selected research projects
 
-**The Relationship between Religious Belief, Cognitive Stress, and Entrepreneurial Spirit among University Students**  
+The Relationship between Religious Belief, Cognitive Stress, and Entrepreneurial Spirit among University Students  
 Research Team Member, University of Economics and Finance, 2025–2026.
 
-**Evaluation of Behavioral-Related Eye Movement Indicators in Middle School Students**  
+Evaluation of Behavioral-Related Eye Movement Indicators in Middle School Students  
 Research Team Member, Ho Chi Minh City University of Education, 2022–2025.
 
 [View research projects →](/projects/)

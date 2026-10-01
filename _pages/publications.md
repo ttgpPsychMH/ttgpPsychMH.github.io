@@ -1,6 +1,7 @@
 ---
 permalink: /publications/
 title: "Publications"
+description: "Peer-reviewed publications, ongoing work, conference papers, DOI links, and indexing information from the academic CV of Tran Thien Gia Phuoc."
 author_profile: true
 ---
 

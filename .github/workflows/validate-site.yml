@@ -1,6 +1,9 @@
 name: Validate Jekyll site
 
 on:
+  push:
+    branches:
+      - stage-1-foundation
   pull_request:
     branches:
       - master

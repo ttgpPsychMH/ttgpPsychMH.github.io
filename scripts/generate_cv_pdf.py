@@ -22,7 +22,14 @@ def main() -> None:
     text = SOURCE.read_text(encoding="utf-8")
     text = strip_front_matter(text)
 
-    # The PDF should not contain a link to itself.
+    # The PDF should not contain the website's "download this PDF" action.
+    text = re.sub(
+        r"<a class=\"btn cv-download\"[^>]*>.*?</a>\s*",
+        "",
+        text,
+        count=1,
+        flags=re.DOTALL,
+    )
     text = re.sub(
         r"\[Download public academic CV \(PDF\)\]\([^\n]+\)\s*",
         "",
@@ -55,14 +62,14 @@ def main() -> None:
   h1 {{
     font-size: 22pt;
     margin: 0 0 12pt;
-    color: #17366f;
+    color: #347f76;
   }}
   h2 {{
     font-size: 14pt;
     margin: 18pt 0 7pt;
     padding-bottom: 3pt;
     border-bottom: 0.7pt solid #777;
-    color: #17366f;
+    color: #725c86;
   }}
   h3 {{
     font-size: 11.5pt;
@@ -80,7 +87,7 @@ def main() -> None:
     margin-bottom: 3pt;
   }}
   a {{
-    color: #285f76;
+    color: #347f76;
     text-decoration: none;
   }}
   strong {{

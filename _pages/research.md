@@ -1,6 +1,7 @@
 ---
 permalink: /research/
 title: "Research"
+description: "Research interests, methods, laboratory experience, and academic service of Tran Thien Gia Phuoc across occupational mental health, psychological assessment, and cognitive-behavioral research."
 author_profile: true
 ---
 

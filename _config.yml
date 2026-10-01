@@ -23,27 +23,27 @@ repository               : "ttgpPsychMH/ttgpPsychMH.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "https://avatars.githubusercontent.com/u/128220598?v=4"
   name             : "Tran Thien Gia Phuoc"
   pronouns         : # example: "she/her"  
-  bio              : "Researcher in psychology, mental health, and organizational research"
+  bio              : "Psychology researcher working across mental health, occupational psychology, and quantitative research"
   location         :
   employer         :
   uri              : # URL
-  email            :
+  email            : "tranthiengiaphuoc@gmail.com"
 
   # Academic websites
   academia         : # URL
   arxiv            : # URL - Update with the correct link to your profile
-  googlescholar    :
+  googlescholar    : "https://scholar.google.com/citations?user=w4dB_uUAAAAJ"
   inspire-hep      : # URL
   impactstory      : # URL
-  orcid            :
+  orcid            : "https://orcid.org/0000-0002-7104-8859"
   semantic         : # URL
   ssrn             : # URL
   pubmed           :
-  researchgate     : # URL
-  scopus           : # URL
+  researchgate     : "https://www.researchgate.net/profile/Gia-Phuoc-Tran-Thien"
+  scopus           : "https://www.scopus.com/authid/detail.uri?authorId=58247687800"\n  webofscience     : "https://www.webofscience.com/wos/author/record/2298566"
   zotero           : # URL
 
 
@@ -144,13 +144,17 @@ facebook:
   app_id                 :
   publisher              :
 og_image                 :  # Social media default site image
-og_description           :  # Social media default site image description
+og_description           : "Personal academic website and research portfolio of Tran Thien Gia Phuoc"
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
-  type                   : # Person or Organization (defaults to Person)
-  name                   : # If the user or organization name differs from the site's name
-  links: # An array of links to social media profiles
+  type                   : Person
+  name                   : "Tran Thien Gia Phuoc"
+  links:
+    - "https://orcid.org/0000-0002-7104-8859"
+    - "https://scholar.google.com/citations?user=w4dB_uUAAAAJ"
+    - "https://www.researchgate.net/profile/Gia-Phuoc-Tran-Thien"
+    - "https://github.com/ttgpPsychMH"
 
 
 # Analytics

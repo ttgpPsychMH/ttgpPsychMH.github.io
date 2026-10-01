@@ -7,7 +7,7 @@ redirect_from:
   - /resume
 ---
 
-[Download public academic CV (PDF)](/files/Tran_Thien_Gia_Phuoc_Academic_CV.pdf)
+<a class="btn cv-download" href="/files/Tran_Thien_Gia_Phuoc_Academic_CV.pdf"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Download Academic CV (PDF)</a>
 
 This web CV is based on the academic CV supplied for this website, dated **2 March 2026**. Residential address, telephone numbers, date of birth, and place of birth are intentionally omitted from the public website.
 

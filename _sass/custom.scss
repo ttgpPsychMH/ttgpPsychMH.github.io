@@ -802,3 +802,56 @@ pre {
     animation-iteration-count: 1 !important;
   }
 }
+
+
+/* ==========================================================================
+   ACCESSIBILITY + ERROR-PAGE UTILITIES
+   ========================================================================== */
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 9999;
+  padding: 0.65rem 0.9rem;
+  color: #20302d !important;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--pastel-green), var(--pastel-purple));
+  box-shadow: var(--shadow-soft);
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(-180%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.not-found-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.4rem;
+}
+
+.not-found-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #20302d !important;
+  border: 0;
+  background: linear-gradient(135deg, var(--pastel-green), var(--pastel-purple));
+  text-decoration: none;
+}

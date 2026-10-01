@@ -1,0 +1,300 @@
+/* ==========================================================================
+   CUSTOM ACADEMIC VISUAL FOUNDATION
+   Tran Thien Gia Phuoc
+   ========================================================================== */
+
+/*
+ * Design direction:
+ * - preserve Academic Pages structure and responsive behavior
+ * - reduce template-like visual weight
+ * - use restrained typography, whitespace, and muted academic colors
+ * - keep the site text-first and easy to maintain
+ */
+
+:root {
+  --global-bg-color: #ffffff;
+  --global-footer-bg-color: #fafafa;
+  --global-border-color: #e8e8e8;
+  --global-dark-border-color: #d2d2d2;
+  --global-text-color: #2d2d2d;
+  --global-text-color-light: #747474;
+  --global-link-color: #2f6072;
+  --global-link-color-hover: #183f4d;
+  --global-link-color-visited: #2f6072;
+  --global-masthead-link-color: #303030;
+  --global-masthead-link-color-hover: #000000;
+}
+
+/* Typography and overall rhythm */
+body {
+  padding-top: 0;
+  color: var(--global-text-color);
+  font-size: 17px;
+  line-height: 1.68;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #242424;
+  letter-spacing: -0.015em;
+}
+
+a {
+  color: var(--global-link-color);
+}
+
+a:visited {
+  color: var(--global-link-color-visited);
+}
+
+/* Header: static, quiet, and spacious */
+.masthead {
+  position: relative;
+  box-shadow: none;
+}
+
+.masthead::after {
+  background: var(--global-border-color);
+}
+
+.masthead__inner-wrap {
+  max-width: 1120px;
+  padding: 1rem 1.25rem;
+}
+
+.masthead__menu-item {
+  background: transparent;
+}
+
+.masthead__menu-item--lg {
+  padding-right: 2.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.greedy-nav a {
+  color: var(--global-masthead-link-color);
+  font-size: 0.9rem;
+  font-weight: 450;
+}
+
+.greedy-nav .visible-links a::before {
+  height: 1px;
+  background: var(--global-link-color);
+}
+
+.masthead__menu-item.selected a {
+  color: #111111;
+  font-weight: 600;
+  border-bottom: 1px solid #111111;
+}
+
+/* Main reading area */
+#main {
+  max-width: 1120px;
+  margin-top: 3.25rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.page__title {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 550;
+  line-height: 1.15;
+}
+
+.page__content {
+  max-width: 780px;
+}
+
+.page__content p,
+.page__content li,
+.page__content dl {
+  font-size: 1rem;
+}
+
+.page__content p {
+  margin-bottom: 1.25rem;
+}
+
+.page__content h2 {
+  margin-top: 2.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0;
+  border-bottom: 0;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.page__content h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.7rem;
+  font-size: 1.08rem;
+  font-weight: 600;
+}
+
+.page__content a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+  text-decoration-color: #a8bcc4;
+}
+
+.page__content a:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Homepage introduction */
+.home-intro {
+  max-width: 760px;
+  margin-top: 0;
+  margin-bottom: 1.7rem !important;
+  color: #252525;
+  font-size: 1.12rem !important;
+  line-height: 1.7;
+}
+
+/* Author/sidebar profile */
+.sidebar {
+  color: #3d3d3d;
+}
+
+.author__avatar img {
+  max-width: 150px;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 3px;
+  box-shadow: none;
+}
+
+.sidebar .author__name {
+  margin-top: 1rem;
+  margin-bottom: 0.45rem;
+  color: #222222;
+  font-size: 1.08rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.author__bio {
+  max-width: 210px;
+  margin-top: 0 !important;
+  margin-bottom: 1.2rem !important;
+  color: #5d5d5d;
+  font-size: 0.82rem !important;
+  line-height: 1.5 !important;
+}
+
+.author__urls a {
+  margin-bottom: 0.2rem;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  color: #525252;
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.author__urls a:hover {
+  color: var(--global-link-color-hover);
+  text-decoration: none;
+}
+
+.author__urls .icon-pad-right {
+  color: #858585;
+}
+
+.author__urls-wrapper .btn {
+  border-radius: 2px;
+  box-shadow: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Lists and archive pages */
+.archive__item-title {
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+}
+
+.archive__item-excerpt {
+  color: #575757;
+}
+
+hr {
+  margin: 1.8rem 0;
+  border-top-color: var(--global-border-color);
+}
+
+/* Footer */
+.page__footer {
+  margin-top: 5rem;
+  background: var(--global-footer-bg-color);
+  border-top: 1px solid var(--global-border-color);
+}
+
+.page__footer footer {
+  max-width: 1120px;
+}
+
+.page__footer,
+.page__footer a {
+  color: #707070 !important;
+}
+
+/* Desktop proportions: keep Academic Pages sidebar, give text more breathing room */
+@media screen and (min-width: 925px) {
+  .sidebar {
+    width: 19%;
+    padding-top: 0;
+    padding-right: 2.25rem;
+  }
+
+  .page {
+    float: right;
+    width: 76%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* Mobile/tablet: retain hierarchy without crowding */
+@media screen and (max-width: 924px) {
+  #main {
+    margin-top: 2rem;
+  }
+
+  .page__title {
+    margin-top: 0.5rem;
+    font-size: 1.75rem;
+  }
+
+  .author__avatar img {
+    max-width: 72px;
+  }
+
+  .author__bio {
+    max-width: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+
+  .masthead__inner-wrap,
+  #main {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .page__content h2 {
+    margin-top: 2.25rem;
+  }
+}

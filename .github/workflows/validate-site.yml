@@ -31,8 +31,19 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
       - name: Check custom UI JavaScript syntax
         run: node --check assets/js/custom-ui.js
 
       - name: Build Jekyll site
         run: bundle exec jekyll build --trace
+
+      - name: Install QA dependencies
+        run: pip install beautifulsoup4
+
+      - name: Run SEO accessibility and internal-link QA
+        run: python scripts/validate_site.py

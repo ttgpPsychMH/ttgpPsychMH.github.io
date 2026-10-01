@@ -18,8 +18,11 @@
               <a href="{{ domain }}{{ link.url }}">{{ link.title }}</a>
             </li>
           {% endfor %}
-          <li id="theme-toggle" class="masthead__menu-item persist tail">
-            <a role="button" aria-labelledby="theme-icon"><i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true" title="toggle theme"></i></a>
+          <li class="masthead__menu-item persist tail theme-switch-item">
+            <button id="theme-mode-toggle" class="theme-switch" type="button" aria-label="Theme: System" title="Theme: System">
+              <i id="theme-mode-icon" class="fa-solid fa-desktop" aria-hidden="true"></i>
+              <span id="theme-mode-label" class="theme-switch__label">System</span>
+            </button>
           </li>
         </ul>
         <ul class="hidden-links hidden"></ul>

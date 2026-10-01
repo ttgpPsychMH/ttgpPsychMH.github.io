@@ -1,5 +1,6 @@
 ---
 permalink: /
+description: "Academic profile of Tran Thien Gia Phuoc, a psychology researcher focused on occupational mental health, psychological assessment, and quantitative research."
 author_profile: true
 redirect_from:
   - /about/

@@ -1,0 +1,41 @@
+name: Generate public CV PDF
+
+on:
+  push:
+    paths:
+      - '_pages/cv.md'
+      - 'scripts/generate_cv_pdf.py'
+      - '.github/workflows/generate-cv-pdf.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.ref_name }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Install PDF dependencies
+        run: pip install markdown weasyprint
+
+      - name: Generate PDF from web CV
+        run: python scripts/generate_cv_pdf.py
+
+      - name: Commit generated PDF
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add files/Tran_Thien_Gia_Phuoc_Academic_CV.pdf
+          git diff --cached --quiet && exit 0
+          git commit -m "Generate public academic CV PDF"
+          git push

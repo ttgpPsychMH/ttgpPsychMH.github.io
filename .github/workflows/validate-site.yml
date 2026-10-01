@@ -1,0 +1,49 @@
+name: Validate Jekyll site
+
+on:
+  push:
+    branches:
+      - stage-1-foundation
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Check custom UI JavaScript syntax
+        run: node --check assets/js/custom-ui.js
+
+      - name: Build Jekyll site
+        run: bundle exec jekyll build --trace
+
+      - name: Install QA dependencies
+        run: pip install beautifulsoup4
+
+      - name: Run SEO accessibility and internal-link QA
+        run: python scripts/validate_site.py

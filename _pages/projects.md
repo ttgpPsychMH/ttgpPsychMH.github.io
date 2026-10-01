@@ -1,6 +1,7 @@
 ---
 permalink: /projects/
 title: "Projects"
+description: "Research projects involving occupational, behavioral, and psychological research, including project roles, funding, methods, and outcomes."
 author_profile: true
 ---
 

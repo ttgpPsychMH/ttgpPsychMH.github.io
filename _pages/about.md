@@ -7,6 +7,8 @@ redirect_from:
   - /about.html
 ---
 
+<h1 class="sr-only">Tran Thien Gia Phuoc</h1>
+
 <p class="home-intro">I am a researcher in psychology with interests in occupational mental health, psychological assessment, and quantitative research. My work has examined work engagement, burnout, psychological distress, employee well-being, and broader mental health questions across working and student populations.</p>
 
 My research experience includes study design, data collection, manuscript preparation, and quantitative analysis. I am particularly interested in using psychological and organizational research to better understand mental health and well-being in educational and workplace settings.

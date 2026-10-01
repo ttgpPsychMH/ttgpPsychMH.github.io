@@ -1,6 +1,7 @@
 ---
 layout: archive
 title: "Curriculum Vitae"
+description: "Academic curriculum vitae of Tran Thien Gia Phuoc, including education, research experience, publications, academic service, awards, training, and research projects."
 permalink: /cv/
 author_profile: true
 redirect_from:

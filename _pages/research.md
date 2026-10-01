@@ -4,7 +4,7 @@ title: "Research"
 author_profile: true
 ---
 
-My research focuses on occupational mental health and psychological assessment within industrial psychology. I am particularly interested in work engagement, burnout, psychological distress, and overall mental health among employees. I also have broader research interests in mental health among young adults and other populations, together with developing interests in cognitive psychology.
+My research focuses on occupational mental health and psychological assessment within the field of industrial psychology. I am particularly interested in work engagement, burnout, psychological distress, and overall mental health among employees. In addition, I have research interests in broader mental health issues among young adults and other populations. I am also exploring topics in cognitive psychology to strengthen my theoretical and methodological foundations.
 
 ## Research areas
 
@@ -24,26 +24,64 @@ My research experience also includes studies involving students, young adults, p
 
 I have participated in research involving eye-tracking and emotional Stroop tasks with middle school students. This work contributes to my developing interest in cognitive psychology and behavioral indicators.
 
-## Methods and analytical approaches
+## Research expertise and methods
 
-My experience includes research design, data collection, manuscript preparation, and quantitative analysis. Methods and tools represented in my academic CV include:
+I have experience in research design, data collection, and manuscript preparation for peer-reviewed publications.
 
-- Descriptive statistics and group comparison tests
-- Correlation and regression analysis
-- Exploratory factor analysis
-- Confirmatory factor analysis
-- Structural equation modeling
-- Partial least squares structural equation modeling
+**Statistical software and methods represented in my academic CV**
 
-Software listed in my CV includes SPSS, AMOS, JASP, SmartPLS, and R.
+- **SPSS, AMOS, JASP:** descriptive statistics, group comparison tests, regression analysis, exploratory factor analysis (EFA), and confirmatory factor analysis (CFA)
+- **SmartPLS (student license):** currently learning partial least squares structural equation modeling (PLS-SEM)
+- **R:** currently developing basic coding and statistical analysis skills
 
 ## Research laboratory
 
 **Member, Psychological Research Laboratory**  
 2019–Present
 
-Supervisor: Vinh-Long Tran-Chi, Ph.D.
+**Supervisor:** Vinh-Long Tran-Chi, Ph.D.
+
+- Lecturer at Department of Mental Health, Faculty of Medicine, University of Health Sciences, Vietnam National University, Ho Chi Minh City
+- Research Associate, Department of Psychological Medicine, National University of Singapore, Singapore
+- Ph.D. in Clinical Sciences, Faculty of Medicine, Chulalongkorn University, Thailand
+
+## Research experience
+
+### Research Intern
+
+**Interdisciplinary Research Office of Psychology and Chinese Language**  
+Ho Chi Minh City University of Education (HCMUE)  
+February 2023–March 2024
+
+- Participated in the Key University-Level Science and Technology Research Project “Evaluation of Behavioral-Related Eye Movement Indicators in Middle School Students”
+- Conducted eye-tracking and emotional Stroop task data collection sessions with middle school participants
+- Assisted in preprocessing and organizing data for analysis
+- Supported preparation of research documentation and internal reporting
 
 ## Academic service
 
-I have served as an ad hoc reviewer for Springer Nature journals listed in my CV, including *BMC Psychology*, *Discover Psychology*, *Scientific Reports*, and *Discover Public Health*.
+### Ad hoc reviewer
+
+Springer Nature journals, including:
+
+- *BMC Psychology*
+- *Discover Psychology*
+- *Scientific Reports*
+- *Discover Public Health*
+- Other Springer Nature journal review assignments as recorded in the supplied CV
+
+### Conference service
+
+**Volunteer Support Staff, 4th Mental Health Research Conference (MHRC) 2025**  
+Multidisciplinary and Interdisciplinary School, Chiang Mai University  
+27–28 March 2025
+
+- Supported on-site registration and participant check-in
+- Assisted with seating coordination and general logistical arrangements
+- Provided logistical support for a workshop session
+- Contributed to the preparation of a post-conference summary report
+
+## Professional membership
+
+**Member, Vietnam Psychotherapy Association, Vietnam**  
+2024–Present

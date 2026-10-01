@@ -144,17 +144,30 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 :  # Social media default site image
+og_image                 : "https://avatars.githubusercontent.com/u/128220598?v=4" # provisional social preview image until a dedicated portrait/card is supplied
 og_description           : "Personal academic website and research portfolio of Tran Thien Gia Phuoc"
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
   type                   : Person
   name                   : "Tran Thien Gia Phuoc"
+  affiliation            : "Chiang Mai University"
+  alumni_of              : "Ho Chi Minh City University of Education"
+  identifier             : "https://orcid.org/0000-0002-7104-8859"
+  knows_about:
+    - "Occupational mental health"
+    - "Psychological assessment"
+    - "Work engagement"
+    - "Burnout"
+    - "Psychological distress"
+    - "Quantitative psychology research"
+    - "Cognitive psychology"
   links:
     - "https://orcid.org/0000-0002-7104-8859"
     - "https://scholar.google.com/citations?user=w4dB_uUAAAAJ"
     - "https://www.researchgate.net/profile/Gia-Phuoc-Tran-Thien"
+    - "https://www.scopus.com/authid/detail.uri?authorId=58247687800"
+    - "https://www.webofscience.com/wos/author/record/2298566"
     - "https://github.com/ttgpPsychMH"
 
 

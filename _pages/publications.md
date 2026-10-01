@@ -8,11 +8,11 @@ This page follows the publication list in my academic CV dated **2 March 2026**.
 
 ## Ongoing work
 
-Tran-Chi, V.-L., & <strong><strong>Tran-Thien, G.-P.</strong>*</strong> (n.d.). Reaction Time Differences in an Emotional Stroop Task among Secondary School Students. *International Journal of Cognitive Research in Science, Engineering and Education, X*(X), XX–XX.
+Tran-Chi, V.-L., & <strong>Tran-Thien, G.-P.*</strong> (n.d.). Reaction Time Differences in an Emotional Stroop Task among Secondary School Students. *International Journal of Cognitive Research in Science, Engineering and Education, X*(X), XX–XX.
 
 ## 2025
 
-Nguyen, P.-T., Nguyen-Le, L.-T., Duong-Vo, T.-L., <strong><strong>Tran-Thien, G.-P.</strong>*</strong>, & Tran-Chi, V.-L. (2025). The Role of Work Motivation and Organizational Justice in Employee Stress: A Cross-Sectional Study. *Bangladesh Journal of Multidisciplinary Scientific Research, 11*(1), 116–128. [DOI](https://doi.org/10.46281/bjmsr.v11i1.2751)
+Nguyen, P.-T., Nguyen-Le, L.-T., Duong-Vo, T.-L., <strong>Tran-Thien, G.-P.*</strong>, & Tran-Chi, V.-L. (2025). The Role of Work Motivation and Organizational Justice in Employee Stress: A Cross-Sectional Study. *Bangladesh Journal of Multidisciplinary Scientific Research, 11*(1), 116–128. [DOI](https://doi.org/10.46281/bjmsr.v11i1.2751)
 
 Nguyen, P.-T., Luu, K., To, H.-T., <strong>Tran-Thien, G.-P.</strong>, Tran-Chi, P.-L., Nguyen-Thi, N.-H., Ho, Q.-N. N., & Tran-Chi, V.-L. (2025). The Role of Religiosity and Stress in Entrepreneurial Motivation and Intention among University Students. *Educational Process: International Journal, 17*, Article e2025315. [DOI](https://doi.org/10.22521/edupij.2025.17.315)
 
@@ -24,9 +24,9 @@ Huynh, S. V., <strong>Tran-Thien, G.-P.</strong>, Vu, T. T.-T., & Tran-Chi, V.-L
 
 ## 2024
 
-Huynh, V.-S., <strong><strong>Tran-Thien, G.-P.</strong>*</strong>, Nguyen, T.-B., Nguyen, X. T. K., Nguyen, V. H. A., & Tran-Chi, V.-L. (2024). What Do We Know About the Influence of Believers’ Religiosity on Happiness and Gratitude? – A Perspective for Clinical Practice. *Psychology Research and Behavior Management, 17*, 2433–2447. [DOI](https://doi.org/10.2147/PRBM.S465729)
+Huynh, V.-S., <strong>Tran-Thien, G.-P.*</strong>, Nguyen, T.-B., Nguyen, X. T. K., Nguyen, V. H. A., & Tran-Chi, V.-L. (2024). What Do We Know About the Influence of Believers’ Religiosity on Happiness and Gratitude? – A Perspective for Clinical Practice. *Psychology Research and Behavior Management, 17*, 2433–2447. [DOI](https://doi.org/10.2147/PRBM.S465729)
 
-Nguyen, P.-T., To, H.-T., <strong><strong>Tran-Thien, G.-P.</strong>*</strong>, Duong-vo, T.-L., Luu, K., Nguyen-Thi, N.-H., & Tran-Chi, V.-L. (2024). The Relationship of Well-Being, Academic Self-Efficacy, and Academic Major Satisfaction Among Part-Time Job Students: A Cross-Sectional Study. *Journal of Health and Social Sciences, 9*(2), 214–234. [DOI](https://doi.org/10.19204/2024/THRL4)
+Nguyen, P.-T., To, H.-T., <strong>Tran-Thien, G.-P.*</strong>, Duong-vo, T.-L., Luu, K., Nguyen-Thi, N.-H., & Tran-Chi, V.-L. (2024). The Relationship of Well-Being, Academic Self-Efficacy, and Academic Major Satisfaction Among Part-Time Job Students: A Cross-Sectional Study. *Journal of Health and Social Sciences, 9*(2), 214–234. [DOI](https://doi.org/10.19204/2024/THRL4)
 
 Hoang, H. T., Nguyen, P.-T., Luu, K., <strong>Tran-Thien, G.-P.</strong>, & Tran-Chi, V.-L. (2024). Inspecting the Impact of Big Five Traits on Internship Stress and Students’ Rethinking Stress. *International Journal of Innovative Research and Scientific Studies, 7*(4), 1374–1388. [DOI](https://doi.org/10.53894/ijirss.v7i4.3299)
 
@@ -36,13 +36,13 @@ Nguyen, H. T., Ha, C. T. M., Nguyen, V. H. A., Tran, D. T. T., <strong>Tran-Thie
 
 Nguyen, H. T., Phan, Y. T. H., Nguyen-Hoang, A.-V., <strong>Tran-Thien, G.-P.</strong>, Nguyen, T.-B., & Ho, Q.-N. N. (2024). Exploring Postpartum Depression in the Vietnamese Moms Scenario: Risk Factors Under a Culture Perspective. *Multidisciplinary Reviews, 7*(6), Article e2024129. [DOI](https://doi.org/10.31893/multirev.2024129)
 
-Nguyen, H. T., Phan, Y. T. H., Nguyen-Hoang, A.-V., Nguyen, T.-B., & <strong><strong>Tran-Thien, G.-P.</strong>*</strong> (2024). Influencing Factors and Prevalence of Anxiety in Medical Students: A Cross-Sectional Study. *Journal of Public Health and Pharmacy, 4*(1), 46–55. [DOI](https://doi.org/10.56338/jphp.v4i1.5046)
+Nguyen, H. T., Phan, Y. T. H., Nguyen-Hoang, A.-V., Nguyen, T.-B., & <strong>Tran-Thien, G.-P.*</strong> (2024). Influencing Factors and Prevalence of Anxiety in Medical Students: A Cross-Sectional Study. *Journal of Public Health and Pharmacy, 4*(1), 46–55. [DOI](https://doi.org/10.56338/jphp.v4i1.5046)
 
-Vu, T. V., Nguyen-Vu, N.-H., <strong><strong>Tran-Thien, G.-P.</strong>*</strong>, Duong-Vo, T.-L., & Tran-Chi, V.-L. (2024). Entrepreneurial Readiness of Vietnamese Pedagogical Student Females. *Multidisciplinary Science Journal, 6*(7), Article e2024106. [DOI](https://doi.org/10.31893/multiscience.2024106)
+Vu, T. V., Nguyen-Vu, N.-H., <strong>Tran-Thien, G.-P.*</strong>, Duong-Vo, T.-L., & Tran-Chi, V.-L. (2024). Entrepreneurial Readiness of Vietnamese Pedagogical Student Females. *Multidisciplinary Science Journal, 6*(7), Article e2024106. [DOI](https://doi.org/10.31893/multiscience.2024106)
 
 ## 2023
 
-Tran, T. V., Nguyen, A. N., Truong-Thi, T.-T., Du, L. K., & <strong><strong>Tran-Thien, G.-P.</strong>*</strong> (2023). Positive and Negative Attitudes Towards Research of Undergraduate Students: A Cross-Sectional Study. *International Journal of Education and Practice, 11*(2), 141–149. [DOI](https://doi.org/10.18488/61.v11i2.3283)
+Tran, T. V., Nguyen, A. N., Truong-Thi, T.-T., Du, L. K., & <strong>Tran-Thien, G.-P.*</strong> (2023). Positive and Negative Attitudes Towards Research of Undergraduate Students: A Cross-Sectional Study. *International Journal of Education and Practice, 11*(2), 141–149. [DOI](https://doi.org/10.18488/61.v11i2.3283)
 
 ## 2021
 
@@ -66,4 +66,4 @@ Tran-Chi, V.-L., Truong-Thi, T.-T., Dang-Thi, N.-T., Tran-Thai, Y.-T., Nguyen-Th
 
 Nguyen, T. H. P., Nguyen, D. B. T., Nguyen, D. K. N., Nguyen, T. H. V., Tran, T. M. X., & <strong>Tran, T. G. P.</strong> (2025). Perception of Occupational Happiness Among High School Teachers in Vietnam. In *National Scientific Conference on Developing Happy Schools: From International Experience to Practice in Vietnam* (pp. 272–281). Ho Chi Minh City University of Education, Vietnam. ISBN: 978-632-602-349-7.
 
-Nguyen, T. H. P., Ho, N. H. A., Nguyen, D. K. N., Tran, T. M. X., Nguyen, D. B. T., & <strong><strong>Tran, T. G. P.</strong>*</strong> (2025). The Role of Gratitude in Reducing Stress Among Hospital Social Workers: A Review Study. In *International Conference on Social Work for Positive Human Development: Theory and Practice* (pp. 859–871). University of Da Nang, Da Nang, Vietnam. ISBN: 978-604-84-8324-1.
+Nguyen, T. H. P., Ho, N. H. A., Nguyen, D. K. N., Tran, T. M. X., Nguyen, D. B. T., & <strong>Tran, T. G. P.*</strong> (2025). The Role of Gratitude in Reducing Stress Among Hospital Social Workers: A Review Study. In *International Conference on Social Work for Positive Human Development: Theory and Practice* (pp. 859–871). University of Da Nang, Da Nang, Vietnam. ISBN: 978-604-84-8324-1.

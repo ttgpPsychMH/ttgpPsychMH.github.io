@@ -203,6 +203,14 @@
 
     const button = document.getElementById("theme-mode-toggle");
     if (button) button.addEventListener("click", cycleTheme);
+
+    const profileButton = document.querySelector('[aria-controls="author-profile-links"]');
+    if (profileButton) {
+      profileButton.addEventListener("click", function () {
+        const expanded = profileButton.getAttribute("aria-expanded") === "true";
+        profileButton.setAttribute("aria-expanded", expanded ? "false" : "true");
+      });
+    }
   });
 
   if (media) {

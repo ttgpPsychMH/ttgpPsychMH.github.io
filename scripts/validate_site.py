@@ -131,6 +131,53 @@ def validate_page(rel_path: str, expected_path: str, errors: list[str]) -> tuple
         if not accessible_name:
             fail(errors, f"{rel_path}: button lacks an accessible name")
 
+    # The site uses its own responsive navigation and small vanilla-JS runtime.
+    primary_nav = soup.select_one("nav.site-nav")
+    if not primary_nav:
+        fail(errors, f"{rel_path}: missing dedicated primary navigation")
+    else:
+        nav_hrefs = set()
+        for anchor in primary_nav.find_all("a", href=True):
+            href = anchor.get("href", "")
+            parsed = urlparse(href)
+            if parsed.scheme in {"http", "https"} and parsed.netloc == "ttgppsychmh.github.io":
+                nav_hrefs.add(parsed.path or "/")
+            elif not parsed.scheme and not parsed.netloc:
+                nav_hrefs.add(parsed.path or "/")
+
+        expected_nav = {
+            "/",
+            "/research/",
+            "/publications/",
+            "/projects/",
+            "/cv/",
+            "/contact/",
+        }
+        missing_nav = expected_nav - nav_hrefs
+        if missing_nav:
+            fail(errors, f"{rel_path}: primary navigation missing {sorted(missing_nav)}")
+
+        current_links = primary_nav.select('[aria-current="page"]')
+        if expected_path in INDEXABLE_PATHS and len(current_links) != 1:
+            fail(
+                errors,
+                f"{rel_path}: expected exactly one current-page navigation link, "
+                f"found {len(current_links)}",
+            )
+
+        nav_toggle = primary_nav.select_one("#site-nav-toggle")
+        if not nav_toggle or nav_toggle.get("aria-controls") != "site-nav-links":
+            fail(errors, f"{rel_path}: responsive navigation toggle is missing or malformed")
+
+    script_sources = [
+        script.get("src", "")
+        for script in soup.find_all("script", src=True)
+    ]
+    if any("main.min.js" in source for source in script_sources):
+        fail(errors, f"{rel_path}: legacy Academic Pages runtime is loaded")
+    if not any("custom-ui.js" in source for source in script_sources):
+        fail(errors, f"{rel_path}: custom-ui.js runtime is missing")
+
     required_meta = [
         ("property", "og:title"),
         ("property", "og:description"),
@@ -246,6 +293,8 @@ def main() -> int:
             fail(errors, "CV page is missing the embedded PDF preview")
         elif not cv_frame.get("src", "").startswith(expected_pdf):
             fail(errors, "CV embedded PDF preview points to an unexpected file")
+        if cv_frame and cv_frame.get("loading") != "lazy":
+            fail(errors, "CV embedded PDF preview should be lazy-loaded")
         if not (SITE / "files" / "Tran_Thien_Gia_Phuoc_Academic_CV.pdf").exists():
             fail(errors, "Built site is missing the downloadable academic CV PDF")
 

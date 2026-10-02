@@ -2,17 +2,19 @@
   "use strict";
 
   const THEME_KEY = "theme";
-  const MODES = ["system", "light", "dark"];
-  const media = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+  const THEME_MODES = ["system", "light", "dark"];
+  const systemTheme = window.matchMedia
+    ? window.matchMedia("(prefers-color-scheme: dark)")
+    : null;
 
-  function getPreference() {
+  function getThemePreference() {
     const saved = localStorage.getItem(THEME_KEY);
-    return MODES.includes(saved) ? saved : "system";
+    return THEME_MODES.includes(saved) ? saved : "system";
   }
 
-  function resolvedTheme(preference) {
-    if (preference === "dark" || preference === "light") return preference;
-    return media && media.matches ? "dark" : "light";
+  function resolveTheme(preference) {
+    if (preference === "light" || preference === "dark") return preference;
+    return systemTheme && systemTheme.matches ? "dark" : "light";
   }
 
   function updateThemeControl(preference) {
@@ -23,19 +25,25 @@
 
     const config = {
       system: { icon: "fa-desktop", label: "System" },
-      light:  { icon: "fa-sun", label: "Light" },
-      dark:   { icon: "fa-moon", label: "Dark" }
+      light: { icon: "fa-sun", label: "Light" },
+      dark: { icon: "fa-moon", label: "Dark" }
     }[preference];
 
     icon.className = "fa-solid " + config.icon;
     label.textContent = config.label;
-    button.setAttribute("aria-label", "Theme: " + config.label + ". Click to change theme.");
-    button.setAttribute("title", "Theme: " + config.label + " · click to change");
+    button.setAttribute(
+      "aria-label",
+      "Theme: " + config.label + ". Click to change theme."
+    );
+    button.setAttribute(
+      "title",
+      "Theme: " + config.label + " · click to change"
+    );
   }
 
   function applyTheme(preference, persist) {
-    const mode = MODES.includes(preference) ? preference : "system";
-    const resolved = resolvedTheme(mode);
+    const mode = THEME_MODES.includes(preference) ? preference : "system";
+    const resolved = resolveTheme(mode);
 
     if (persist) localStorage.setItem(THEME_KEY, mode);
     document.documentElement.setAttribute("data-theme-preference", mode);
@@ -50,8 +58,9 @@
   }
 
   function cycleTheme() {
-    const current = getPreference();
-    const next = MODES[(MODES.indexOf(current) + 1) % MODES.length];
+    const current = getThemePreference();
+    const next = THEME_MODES[(THEME_MODES.indexOf(current) + 1) % THEME_MODES.length];
+
     document.documentElement.classList.add("theme-changing");
     applyTheme(next, true);
     window.setTimeout(function () {
@@ -85,31 +94,31 @@
   }
 
   function addHeadingIcons() {
-    const headings = document.querySelectorAll(".page__title, .page__content h2, .archive h2");
+    const headings = document.querySelectorAll(
+      ".page__title, .page__content h2, .archive h2"
+    );
+
     headings.forEach(function (heading) {
       if (heading.querySelector(".heading-icon")) return;
       const text = heading.textContent.trim();
       if (!text) return;
 
-      const span = document.createElement("span");
-      span.className = "heading-icon";
-      span.setAttribute("aria-hidden", "true");
+      const badge = document.createElement("span");
+      badge.className = "heading-icon";
+      badge.setAttribute("aria-hidden", "true");
 
       const icon = document.createElement("i");
       icon.className = "fa-solid " + iconForHeading(text);
-      span.appendChild(icon);
-      heading.prepend(span);
+      badge.appendChild(icon);
+      heading.prepend(badge);
     });
   }
 
-  function routeClass() {
-    let path = window.location.pathname.replace(/^\/+|\/+$/g, "");
-    if (!path) path = "home";
-    document.body.classList.add("route-" + path.replace(/[^a-zA-Z0-9]+/g, "-").toLowerCase());
-  }
-
   function wrapHomepageSections() {
-    if (window.location.pathname !== "/" && window.location.pathname !== "/index.html") return;
+    if (window.location.pathname !== "/" && window.location.pathname !== "/index.html") {
+      return;
+    }
+
     const content = document.querySelector(".page__content");
     if (!content) return;
 
@@ -121,7 +130,8 @@
       if (node.tagName === "H2") {
         index += 1;
         section = document.createElement("section");
-        section.className = "home-section home-section--" + (((index - 1) % 5) + 1);
+        section.className =
+          "home-section home-section--" + (((index - 1) % 5) + 1);
         content.insertBefore(section, node);
         section.appendChild(node);
       } else if (section) {
@@ -132,6 +142,7 @@
 
   function wrapProjectSections() {
     if (!window.location.pathname.startsWith("/projects")) return;
+
     const content = document.querySelector(".page__content");
     if (!content) return;
 
@@ -143,7 +154,8 @@
       if (node.tagName === "H2") {
         index += 1;
         card = document.createElement("section");
-        card.className = "project-card project-card--" + (((index - 1) % 5) + 1);
+        card.className =
+          "project-card project-card--" + (((index - 1) % 5) + 1);
         content.insertBefore(card, node);
         card.appendChild(node);
       } else if (card) {
@@ -152,123 +164,140 @@
     });
   }
 
-  function wrapPublicationEntries() {
-    if (!window.location.pathname.startsWith("/publications")) return;
-    const content = document.querySelector(".page__content");
-    if (!content) return;
-
-    const children = Array.from(content.children);
-    let inSection = false;
-    let card = null;
-
-    children.forEach(function (node) {
-      if (node.tagName === "H2") {
-        inSection = true;
-        card = null;
-        return;
-      }
-      if (!inSection || node.tagName !== "P") return;
-
-      const text = node.textContent.trim();
-      const indexing = /^(Indexed in|Journal indexed in)/i.test(text);
-
-      if (indexing && card) {
-        node.classList.add("publication-indexing");
-        card.appendChild(node);
-        return;
-      }
-
-      card = document.createElement("article");
-      card.className = "publication-card";
-      content.insertBefore(card, node);
-      node.classList.add("publication-citation");
-      card.appendChild(node);
-    });
-  }
-
   function enhanceExternalLinks() {
-    document.querySelectorAll('.page__content a[href^="http"]').forEach(function (link) {
+    document.querySelectorAll('a[href^="http"]').forEach(function (link) {
       link.setAttribute("rel", "noopener noreferrer");
     });
   }
 
-  function normalizeDesktopNavigation() {
+  function closeNavigation() {
     const nav = document.getElementById("site-nav");
-    if (!nav) return;
+    const toggle = document.getElementById("site-nav-toggle");
+    if (!nav || !toggle) return;
 
-    const visible = nav.querySelector(".visible-links");
-    const hidden = nav.querySelector(".hidden-links");
-    const menuButton = nav.querySelector(":scope > button");
-    const themeItem = visible ? visible.querySelector(".theme-switch-item") : null;
+    nav.classList.remove("is-open");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "Open navigation menu");
+  }
 
-    if (window.innerWidth >= 1024 && visible && hidden) {
-      Array.from(hidden.children).forEach(function (item) {
-        if (themeItem) visible.insertBefore(item, themeItem);
-        else visible.appendChild(item);
-      });
+  function toggleNavigation() {
+    const nav = document.getElementById("site-nav");
+    const toggle = document.getElementById("site-nav-toggle");
+    if (!nav || !toggle) return;
 
-      hidden.classList.add("hidden");
-      if (menuButton) {
-        menuButton.classList.add("hidden");
-        menuButton.classList.remove("close");
-        menuButton.setAttribute("count", "0");
+    const open = !nav.classList.contains("is-open");
+    nav.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.setAttribute(
+      "aria-label",
+      open ? "Close navigation menu" : "Open navigation menu"
+    );
+  }
+
+  function initNavigation() {
+    const nav = document.getElementById("site-nav");
+    const toggle = document.getElementById("site-nav-toggle");
+    if (!nav || !toggle) return;
+
+    toggle.addEventListener("click", toggleNavigation);
+
+    nav.querySelectorAll(".site-nav__link, .site-nav__brand").forEach(function (link) {
+      link.addEventListener("click", closeNavigation);
+    });
+
+    document.addEventListener("click", function (event) {
+      if (nav.classList.contains("is-open") && !nav.contains(event.target)) {
+        closeNavigation();
       }
-    }
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") closeNavigation();
+    });
+
+    window.addEventListener(
+      "resize",
+      function () {
+        if (window.innerWidth >= 1024) closeNavigation();
+      },
+      { passive: true }
+    );
+  }
+
+  function initProfileMenu() {
+    const button = document.querySelector(
+      '[aria-controls="author-profile-links"]'
+    );
+    const wrapper = button ? button.closest(".author__urls-wrapper") : null;
+    if (!button || !wrapper) return;
+
+    button.addEventListener("click", function () {
+      const open = !wrapper.classList.contains("is-open");
+      wrapper.classList.toggle("is-open", open);
+      button.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+
+    document.addEventListener("click", function (event) {
+      if (
+        wrapper.classList.contains("is-open") &&
+        !wrapper.contains(event.target)
+      ) {
+        wrapper.classList.remove("is-open");
+        button.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    window.addEventListener(
+      "resize",
+      function () {
+        if (window.innerWidth >= 925) {
+          wrapper.classList.remove("is-open");
+          button.setAttribute("aria-expanded", "false");
+        }
+      },
+      { passive: true }
+    );
   }
 
   function syncStickyLayout() {
     const masthead = document.querySelector(".masthead");
     if (!masthead) return;
 
-    // The original Academic Pages greedy-navigation script injects padding
-    // intended for a fixed masthead. This site uses sticky positioning instead.
-    document.body.style.paddingTop = "0px";
-    const sidebar = document.querySelector(".sidebar");
-    if (sidebar) sidebar.style.paddingTop = "";
-
     const mastheadHeight = Math.ceil(masthead.getBoundingClientRect().height);
     document.documentElement.style.setProperty(
       "--sticky-sidebar-top",
-      (mastheadHeight + 14) + "px"
+      mastheadHeight + 14 + "px"
     );
 
     masthead.classList.toggle("is-stuck", window.scrollY > 8);
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    applyTheme(getPreference(), false);
-    routeClass();
+    applyTheme(getThemePreference(), false);
     wrapHomepageSections();
     wrapProjectSections();
-    wrapPublicationEntries();
     addHeadingIcons();
     enhanceExternalLinks();
-    normalizeDesktopNavigation();
+    initNavigation();
+    initProfileMenu();
     syncStickyLayout();
 
-    window.addEventListener("resize", function () {
-      normalizeDesktopNavigation();
-      syncStickyLayout();
-    }, { passive: true });
+    window.addEventListener("resize", syncStickyLayout, { passive: true });
     window.addEventListener("scroll", syncStickyLayout, { passive: true });
 
-    const button = document.getElementById("theme-mode-toggle");
-    if (button) button.addEventListener("click", cycleTheme);
-
-    const profileButton = document.querySelector('[aria-controls="author-profile-links"]');
-    if (profileButton) {
-      profileButton.addEventListener("click", function () {
-        const expanded = profileButton.getAttribute("aria-expanded") === "true";
-        profileButton.setAttribute("aria-expanded", expanded ? "false" : "true");
-      });
-    }
+    const themeButton = document.getElementById("theme-mode-toggle");
+    if (themeButton) themeButton.addEventListener("click", cycleTheme);
   });
 
-  if (media) {
+  if (systemTheme) {
     const systemChange = function () {
-      if (getPreference() === "system") applyTheme("system", false);
+      if (getThemePreference() === "system") applyTheme("system", false);
     };
-    if (media.addEventListener) media.addEventListener("change", systemChange);
-    else if (media.addListener) media.addListener(systemChange);
+
+    if (systemTheme.addEventListener) {
+      systemTheme.addEventListener("change", systemChange);
+    } else if (systemTheme.addListener) {
+      systemTheme.addListener(systemChange);
+    }
   }
 })();

@@ -1417,3 +1417,263 @@ pre {
   margin: 0 0 1.35rem;
   padding: 0.15rem 0 0;
 }
+
+
+/* ==========================================================================
+   RESEARCH METRICS
+   ========================================================================== */
+
+.research-metrics {
+  margin-top: 0.2rem;
+}
+
+.research-metrics__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.9rem;
+  align-items: center;
+  justify-content: space-between;
+  margin: -0.15rem 0 1rem;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+.research-metrics__meta span:first-child {
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.research-metrics__meta i {
+  color: var(--accent-purple);
+}
+
+.research-metrics__sources {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.research-metric-source {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--border-soft);
+  border-radius: 18px;
+  background: var(--surface-raised);
+  box-shadow: 0 7px 20px rgba(40, 69, 66, 0.045);
+}
+
+.research-metric-source--google_scholar {
+  background: linear-gradient(145deg, var(--surface), var(--panel-1));
+}
+
+.research-metric-source--scopus {
+  background: linear-gradient(145deg, var(--surface), var(--panel-2));
+}
+
+.research-metric-source--web_of_science {
+  background: linear-gradient(145deg, var(--surface), var(--panel-5));
+}
+
+.research-metric-source__header {
+  display: flex;
+  gap: 0.65rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.9rem;
+}
+
+.research-metric-source__title {
+  display: flex;
+  min-width: 0;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.research-metric-source__title h3 {
+  margin: 0 !important;
+  font-size: 0.92rem !important;
+  line-height: 1.2;
+}
+
+.research-metric-source__icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: 1.9rem;
+  height: 1.9rem;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-green-strong);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--panel-1), var(--panel-5));
+  font-size: 0.86rem;
+}
+
+.research-metric-source__link {
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 0.28rem;
+  align-items: center;
+  color: var(--text-muted) !important;
+  font-size: 0.66rem;
+  font-weight: 650;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+.research-metric-source__link:hover {
+  color: var(--accent-green-strong) !important;
+}
+
+.research-metric-source__link i {
+  font-size: 0.58rem;
+}
+
+.research-metric-values {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.45rem;
+}
+
+.research-metric-value {
+  display: flex;
+  min-height: 76px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.3rem;
+  text-align: center;
+  border: 1px solid var(--border-soft);
+  border-radius: 13px;
+  background: color-mix(in srgb, var(--surface) 76%, transparent);
+}
+
+.research-metric-value__number {
+  color: var(--accent-green-strong);
+  font-size: 1.38rem;
+  font-weight: 760;
+  line-height: 1;
+}
+
+.research-metric-source--web_of_science .research-metric-value__number {
+  color: var(--accent-purple-strong);
+}
+
+.research-metric-value__label {
+  margin-top: 0.38rem;
+  color: var(--text-muted);
+  font-size: 0.64rem;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.research-author-positions__heading {
+  margin-bottom: 0.55rem;
+  color: var(--text-muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.research-author-position + .research-author-position {
+  margin-top: 0.55rem;
+}
+
+.research-author-position__label {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.22rem;
+  color: var(--text-muted);
+  font-size: 0.66rem;
+  line-height: 1.25;
+}
+
+.research-author-position__label strong {
+  color: var(--text-main);
+  font-size: 0.68rem;
+}
+
+.research-author-position__track {
+  width: 100%;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--text-muted) 18%, transparent);
+}
+
+.research-author-position__fill {
+  display: block;
+  height: 100%;
+  min-width: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--pastel-green), var(--accent-green));
+}
+
+.research-metrics__note {
+  display: flex;
+  gap: 0.4rem;
+  align-items: flex-start;
+  margin: 0.85rem 0 0 !important;
+  color: var(--text-muted);
+  font-size: 0.69rem !important;
+  line-height: 1.45;
+}
+
+.research-metrics__note i {
+  flex: 0 0 auto;
+  margin-top: 0.18rem;
+  color: var(--accent-purple);
+}
+
+@media screen and (max-width: 1080px) {
+  .research-metrics__sources {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .research-metric-source--web_of_science {
+    grid-column: 1 / -1;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .research-metrics__sources {
+    grid-template-columns: 1fr;
+  }
+
+  .research-metric-source--web_of_science {
+    grid-column: auto;
+  }
+
+  .research-metrics__meta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .research-metric-source {
+    padding: 0.85rem;
+  }
+
+  .research-metric-source__header {
+    align-items: flex-start;
+  }
+
+  .research-metric-source__link {
+    font-size: 0.62rem;
+  }
+
+  .research-metric-value {
+    min-height: 70px;
+  }
+
+  .research-metric-value__number {
+    font-size: 1.22rem;
+  }
+}

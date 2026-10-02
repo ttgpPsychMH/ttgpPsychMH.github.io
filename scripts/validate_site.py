@@ -6,6 +6,7 @@ from urllib.parse import urlparse, unquote
 import json
 import sys
 import xml.etree.ElementTree as ET
+import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -234,6 +235,60 @@ def main() -> int:
 
     if not (SITE / "images" / "favicon.svg").exists():
         fail(errors, "Missing SVG favicon")
+
+    # Embedded CV preview must remain available alongside the downloadable PDF.
+    cv_file = SITE / "cv" / "index.html"
+    if cv_file.exists():
+        cv_soup = BeautifulSoup(cv_file.read_text(encoding="utf-8"), "html.parser")
+        cv_frame = cv_soup.select_one("iframe.cv-pdf-frame")
+        expected_pdf = "/files/Tran_Thien_Gia_Phuoc_Academic_CV.pdf"
+        if not cv_frame:
+            fail(errors, "CV page is missing the embedded PDF preview")
+        elif not cv_frame.get("src", "").startswith(expected_pdf):
+            fail(errors, "CV embedded PDF preview points to an unexpected file")
+        if not (SITE / "files" / "Tran_Thien_Gia_Phuoc_Academic_CV.pdf").exists():
+            fail(errors, "Built site is missing the downloadable academic CV PDF")
+
+    # Publication metric cards must match the structured metadata source.
+    publication_data_file = ROOT / "_data" / "publications.yml"
+    if not publication_data_file.exists():
+        fail(errors, "Missing structured publication metadata")
+    else:
+        try:
+            publication_data = yaml.safe_load(publication_data_file.read_text(encoding="utf-8")) or []
+            published = [p for p in publication_data if p.get("status") == "published"]
+            expected_stats = {
+                "Original Research": sum(p.get("type") == "original_research" for p in published),
+                "Conference Papers": sum(p.get("type") == "conference_paper" for p in published),
+                "Q1": sum(p.get("quartile") == "Q1" for p in published),
+                "Q2": sum(p.get("quartile") == "Q2" for p in published),
+                "Q3": sum(p.get("quartile") == "Q3" for p in published),
+                "Q4": sum(p.get("quartile") == "Q4" for p in published),
+                "SSCI": sum(bool(p.get("ssci")) for p in published),
+                "ESCI": sum(bool(p.get("esci")) for p in published),
+            }
+
+            publications_file = SITE / "publications" / "index.html"
+            if publications_file.exists():
+                pub_soup = BeautifulSoup(publications_file.read_text(encoding="utf-8"), "html.parser")
+                cards = pub_soup.select(".publication-stat")
+                rendered_stats = {}
+                for card in cards:
+                    label_node = card.select_one(".publication-stat__label")
+                    value_node = card.select_one(".publication-stat__value")
+                    if label_node and value_node:
+                        rendered_stats[label_node.get_text(" ", strip=True)] = int(
+                            value_node.get_text(" ", strip=True)
+                        )
+                if rendered_stats != expected_stats:
+                    fail(
+                        errors,
+                        f"Publication statistics mismatch. Expected {expected_stats}, got {rendered_stats}",
+                    )
+            else:
+                fail(errors, "Missing built Publications page")
+        except Exception as exc:
+            fail(errors, f"Could not validate publication metadata/statistics: {exc}")
 
     if errors:
         print("\nTECHNICAL QA FAILED\n")

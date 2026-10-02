@@ -52,7 +52,7 @@ This page follows the publication list in my academic CV dated **2 March 2026**.
   </div>
 </div>
 
-<p class="publication-stats-note"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Counts include published outputs only. Ongoing work is displayed below but excluded from the statistics. “Original Research” excludes entries classified as reviews or conference papers.</p>
+<p class="publication-stats-note"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Counts include published outputs only. Ongoing work is displayed below but excluded from the statistics. “Original Research” excludes entries classified as reviews or conference papers. Q1–Q4 counts refer specifically to Scopus quartiles recorded in the publication metadata.</p>
 
 {% assign ongoing = site.data.publications | where: "status", "ongoing" %}
 {% if ongoing.size > 0 %}

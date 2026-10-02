@@ -12,6 +12,7 @@ sources:
     name: "Google Scholar"
     profile_url: "https://scholar.google.com/citations?user=w4dB_uUAAAAJ"
     icon_class: "ai ai-google-scholar"
+    scope: "All-time profile metrics"
     update_mode: "manual"
     metrics:
       - key: citations
@@ -29,6 +30,7 @@ sources:
     name: "Scopus"
     profile_url: "https://www.scopus.com/authid/detail.uri?authorId=58247687800"
     icon_class: "ai ai-scopus"
+    scope: "Author position · 2016–2025"
     update_mode: "manual"
     metrics: []
     author_positions:
@@ -50,6 +52,7 @@ sources:
     name: "Web of Science"
     profile_url: "https://www.webofscience.com/wos/author/record/2298566"
     icon_class: "fa-solid fa-globe"
+    scope: "Core Collection metrics"
     update_mode: "manual"
     metrics:
       - key: publications

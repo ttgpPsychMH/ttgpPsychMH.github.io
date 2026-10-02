@@ -207,7 +207,7 @@ def validate_research_metrics_data(metrics: dict, errors: list[str]) -> None:
 
     for source in sources:
         source_id = str(source.get("id", "")).strip() or "<unknown>"
-        for key in ("name", "profile_url", "icon_class", "update_mode"):
+        for key in ("name", "profile_url", "icon_class", "scope", "update_mode"):
             if not str(source.get(key, "")).strip():
                 fail(errors, f"Research metrics {source_id}: {key} is required")
 
@@ -718,6 +718,15 @@ def main() -> int:
                 fail(
                     errors,
                     f"Research metrics {source_id}: source-profile link mismatch",
+                )
+
+            scope_node = source_node.select_one(".research-metric-source__scope")
+            if not scope_node or scope_node.get_text(" ", strip=True) != str(
+                source.get("scope", "")
+            ):
+                fail(
+                    errors,
+                    f"Research metrics {source_id}: rendered source scope mismatch",
                 )
 
             expected_metrics = {

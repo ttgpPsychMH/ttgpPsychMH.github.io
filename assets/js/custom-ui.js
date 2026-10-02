@@ -196,6 +196,12 @@
     const masthead = document.querySelector(".masthead");
     if (!masthead) return;
 
+    // The original Academic Pages greedy-navigation script injects padding
+    // intended for a fixed masthead. This site uses sticky positioning instead.
+    document.body.style.paddingTop = "0px";
+    const sidebar = document.querySelector(".sidebar");
+    if (sidebar) sidebar.style.paddingTop = "";
+
     const mastheadHeight = Math.ceil(masthead.getBoundingClientRect().height);
     document.documentElement.style.setProperty(
       "--sticky-sidebar-top",

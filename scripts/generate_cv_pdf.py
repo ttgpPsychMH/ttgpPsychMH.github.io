@@ -22,9 +22,17 @@ def main() -> None:
     text = SOURCE.read_text(encoding="utf-8")
     text = strip_front_matter(text)
 
-    # The PDF should not contain the website's "download this PDF" action.
+    # Website-only controls and the embedded PDF viewer should not be rendered
+    # inside the generated PDF itself.
     text = re.sub(
-        r"<a class=\"btn cv-download\"[^>]*>.*?</a>\s*",
+        r'<div class="cv-actions">.*?</div>\s*',
+        "",
+        text,
+        count=1,
+        flags=re.DOTALL,
+    )
+    text = re.sub(
+        r'## PDF Preview\s*<div class="cv-pdf-viewer">.*?</div>\s*## Web CV\s*',
         "",
         text,
         count=1,

@@ -8,7 +8,23 @@ redirect_from:
   - /resume
 ---
 
-<a class="btn cv-download" href="/files/Tran_Thien_Gia_Phuoc_Academic_CV.pdf"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Download Academic CV (PDF)</a>
+<div class="cv-actions">
+  <a class="btn cv-download" href="/files/Tran_Thien_Gia_Phuoc_Academic_CV.pdf"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Download Academic CV (PDF)</a>
+  <a class="btn cv-open" href="/files/Tran_Thien_Gia_Phuoc_Academic_CV.pdf" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-up-right-from-square" aria-hidden="true"></i> Open PDF in New Tab</a>
+</div>
+
+## PDF Preview
+
+<div class="cv-pdf-viewer">
+  <iframe
+    class="cv-pdf-frame"
+    src="/files/Tran_Thien_Gia_Phuoc_Academic_CV.pdf#view=FitH&toolbar=1&navpanes=1"
+    title="Tran Thien Gia Phuoc Academic CV PDF preview">
+  </iframe>
+  <p class="cv-pdf-fallback">If the embedded PDF viewer is not supported by your browser, <a href="/files/Tran_Thien_Gia_Phuoc_Academic_CV.pdf">download the Academic CV PDF</a> or <a href="/files/Tran_Thien_Gia_Phuoc_Academic_CV.pdf" target="_blank" rel="noopener noreferrer">open it in a new tab</a>.</p>
+</div>
+
+## Web CV
 
 This web CV is based on the academic CV supplied for this website, dated **2 March 2026**. Residential address, telephone numbers, date of birth, and place of birth are intentionally omitted from the public website.
 

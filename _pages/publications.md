@@ -28,19 +28,19 @@ This page follows the publication list in my academic CV dated **2 March 2026**.
   </div>
   <div class="publication-stat">
     <span class="publication-stat__value">{{ q1 | size }}</span>
-    <span class="publication-stat__label">Q1</span>
+    <span class="publication-stat__label">SCOPUS Q1</span>
   </div>
   <div class="publication-stat">
     <span class="publication-stat__value">{{ q2 | size }}</span>
-    <span class="publication-stat__label">Q2</span>
+    <span class="publication-stat__label">SCOPUS Q2</span>
   </div>
   <div class="publication-stat">
     <span class="publication-stat__value">{{ q3 | size }}</span>
-    <span class="publication-stat__label">Q3</span>
+    <span class="publication-stat__label">SCOPUS Q3</span>
   </div>
   <div class="publication-stat">
     <span class="publication-stat__value">{{ q4 | size }}</span>
-    <span class="publication-stat__label">Q4</span>
+    <span class="publication-stat__label">SCOPUS Q4</span>
   </div>
   <div class="publication-stat publication-stat--index">
     <span class="publication-stat__value">{{ ssci | size }}</span>
@@ -63,7 +63,7 @@ This page follows the publication list in my academic CV dated **2 March 2026**.
   <div class="publication-citation">{{ pub.citation | markdownify }}</div>
   <div class="publication-meta">
     <span class="publication-badge publication-badge--ongoing">Ongoing</span>
-    {% if pub.quartile %}<span class="publication-badge">{{ pub.quartile }}{% if pub.quartile_year %} · {{ pub.quartile_year }}{% endif %}</span>{% endif %}
+    {% if pub.quartile %}<span class="publication-badge publication-badge--scopus">SCOPUS {{ pub.quartile }}{% if pub.quartile_year %} · {{ pub.quartile_year }}{% endif %}</span>{% endif %}
   </div>
 </article>
 {% endfor %}
@@ -79,14 +79,12 @@ This page follows the publication list in my academic CV dated **2 March 2026**.
 
 <article class="publication-card">
   <div class="publication-citation">{{ pub.citation | markdownify }}</div>
-  <div class="publication-links">
-    {% if pub.doi %}<a href="{{ pub.doi }}" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> DOI</a>{% endif %}
-  </div>
-  {% if pub.quartile or pub.ssci or pub.esci %}
-  <div class="publication-meta" aria-label="Indexing information">
+  {% if pub.ssci or pub.esci or pub.quartile or pub.doi %}
+  <div class="publication-meta" aria-label="Indexing and publication links">
     {% if pub.ssci %}<span class="publication-badge publication-badge--index">SSCI</span>{% endif %}
     {% if pub.esci %}<span class="publication-badge publication-badge--index">ESCI</span>{% endif %}
-    {% if pub.quartile %}<span class="publication-badge">{{ pub.quartile }}{% if pub.quartile_year %} · {{ pub.quartile_year }}{% endif %}</span>{% endif %}
+    {% if pub.quartile %}<span class="publication-badge publication-badge--scopus">SCOPUS {{ pub.quartile }}{% if pub.quartile_year %} · {{ pub.quartile_year }}{% endif %}</span>{% endif %}
+    {% if pub.doi %}<a class="publication-badge publication-badge--doi" href="{{ pub.doi }}" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> DOI</a>{% endif %}
   </div>
   {% endif %}
 </article>

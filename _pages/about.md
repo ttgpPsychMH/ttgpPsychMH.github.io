@@ -28,7 +28,10 @@ My research experience includes study design, data collection, manuscript prepar
       <div class="research-metric-source__header">
         <div class="research-metric-source__title">
           <span class="research-metric-source__icon" aria-hidden="true"><i class="{{ source.icon_class }}"></i></span>
-          <h3>{{ source.name }}</h3>
+          <div class="research-metric-source__identity">
+            <h3>{{ source.name }}</h3>
+            <span class="research-metric-source__scope">{{ source.scope }}</span>
+          </div>
         </div>
         <a class="research-metric-source__link" href="{{ source.profile_url }}" rel="noopener noreferrer">View profile <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
       </div>

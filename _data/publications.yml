@@ -2,7 +2,7 @@
 # Counts on /publications/ are generated from these metadata fields.
 # status: published | ongoing
 # type: original_research | review | conference_paper
-# quartile: Q1 | Q2 | Q3 | Q4 | null
+# quartile: Scopus quartile (Q1 | Q2 | Q3 | Q4 | null)
 # ssci / esci: true or false
 
 - id: reaction-time-emotional-stroop
@@ -14,7 +14,7 @@
   ssci: false
   esci: false
   citation: >-
-    Tran-Chi, V.-L., & <strong>Tran-Thien, G.-P.*</strong> (n.d.). Reaction Time Differences in an Emotional Stroop Task among Secondary School Students. *International Journal of Cognitive Research in Science, Engineering and Education, X*(X), XX–XX.
+    Tran-Chi, V.-L., & <strong>Tran-Thien, G.-P.&#42;</strong> (n.d.). Reaction Time Differences in an Emotional Stroop Task among Secondary School Students. *International Journal of Cognitive Research in Science, Engineering and Education, X*(X), XX–XX.
 
 - id: work-motivation-organizational-justice-stress
   year: 2025
@@ -26,7 +26,7 @@
   esci: false
   doi: https://doi.org/10.46281/bjmsr.v11i1.2751
   citation: >-
-    Nguyen, P.-T., Nguyen-Le, L.-T., Duong-Vo, T.-L., <strong>Tran-Thien, G.-P.*</strong>, & Tran-Chi, V.-L. (2025). The Role of Work Motivation and Organizational Justice in Employee Stress: A Cross-Sectional Study. *Bangladesh Journal of Multidisciplinary Scientific Research, 11*(1), 116–128.
+    Nguyen, P.-T., Nguyen-Le, L.-T., Duong-Vo, T.-L., <strong>Tran-Thien, G.-P.&#42;</strong>, & Tran-Chi, V.-L. (2025). The Role of Work Motivation and Organizational Justice in Employee Stress: A Cross-Sectional Study. *Bangladesh Journal of Multidisciplinary Scientific Research, 11*(1), 116–128.
 
 - id: religiosity-stress-entrepreneurial-motivation
   year: 2025
@@ -86,7 +86,7 @@
   esci: false
   doi: https://doi.org/10.2147/PRBM.S465729
   citation: >-
-    Huynh, V.-S., <strong>Tran-Thien, G.-P.*</strong>, Nguyen, T.-B., Nguyen, X. T. K., Nguyen, V. H. A., & Tran-Chi, V.-L. (2024). What Do We Know About the Influence of Believers’ Religiosity on Happiness and Gratitude? – A Perspective for Clinical Practice. *Psychology Research and Behavior Management, 17*, 2433–2447.
+    Huynh, V.-S., <strong>Tran-Thien, G.-P.&#42;</strong>, Nguyen, T.-B., Nguyen, X. T. K., Nguyen, V. H. A., & Tran-Chi, V.-L. (2024). What Do We Know About the Influence of Believers’ Religiosity on Happiness and Gratitude? – A Perspective for Clinical Practice. *Psychology Research and Behavior Management, 17*, 2433–2447.
 
 - id: wellbeing-self-efficacy-major-satisfaction
   year: 2024
@@ -98,7 +98,7 @@
   esci: false
   doi: https://doi.org/10.19204/2024/THRL4
   citation: >-
-    Nguyen, P.-T., To, H.-T., <strong>Tran-Thien, G.-P.*</strong>, Duong-vo, T.-L., Luu, K., Nguyen-Thi, N.-H., & Tran-Chi, V.-L. (2024). The Relationship of Well-Being, Academic Self-Efficacy, and Academic Major Satisfaction Among Part-Time Job Students: A Cross-Sectional Study. *Journal of Health and Social Sciences, 9*(2), 214–234.
+    Nguyen, P.-T., To, H.-T., <strong>Tran-Thien, G.-P.&#42;</strong>, Duong-vo, T.-L., Luu, K., Nguyen-Thi, N.-H., & Tran-Chi, V.-L. (2024). The Relationship of Well-Being, Academic Self-Efficacy, and Academic Major Satisfaction Among Part-Time Job Students: A Cross-Sectional Study. *Journal of Health and Social Sciences, 9*(2), 214–234.
 
 - id: big-five-internship-stress
   year: 2024
@@ -158,7 +158,7 @@
   esci: false
   doi: https://doi.org/10.56338/jphp.v4i1.5046
   citation: >-
-    Nguyen, H. T., Phan, Y. T. H., Nguyen-Hoang, A.-V., Nguyen, T.-B., & <strong>Tran-Thien, G.-P.*</strong> (2024). Influencing Factors and Prevalence of Anxiety in Medical Students: A Cross-Sectional Study. *Journal of Public Health and Pharmacy, 4*(1), 46–55.
+    Nguyen, H. T., Phan, Y. T. H., Nguyen-Hoang, A.-V., Nguyen, T.-B., & <strong>Tran-Thien, G.-P.&#42;</strong> (2024). Influencing Factors and Prevalence of Anxiety in Medical Students: A Cross-Sectional Study. *Journal of Public Health and Pharmacy, 4*(1), 46–55.
 
 - id: entrepreneurial-readiness
   year: 2024
@@ -170,7 +170,7 @@
   esci: false
   doi: https://doi.org/10.31893/multiscience.2024106
   citation: >-
-    Vu, T. V., Nguyen-Vu, N.-H., <strong>Tran-Thien, G.-P.*</strong>, Duong-Vo, T.-L., & Tran-Chi, V.-L. (2024). Entrepreneurial Readiness of Vietnamese Pedagogical Student Females. *Multidisciplinary Science Journal, 6*(7), Article e2024106.
+    Vu, T. V., Nguyen-Vu, N.-H., <strong>Tran-Thien, G.-P.&#42;</strong>, Duong-Vo, T.-L., & Tran-Chi, V.-L. (2024). Entrepreneurial Readiness of Vietnamese Pedagogical Student Females. *Multidisciplinary Science Journal, 6*(7), Article e2024106.
 
 - id: attitudes-toward-research
   year: 2023
@@ -182,7 +182,7 @@
   esci: false
   doi: https://doi.org/10.18488/61.v11i2.3283
   citation: >-
-    Tran, T. V., Nguyen, A. N., Truong-Thi, T.-T., Du, L. K., & <strong>Tran-Thien, G.-P.*</strong> (2023). Positive and Negative Attitudes Towards Research of Undergraduate Students: A Cross-Sectional Study. *International Journal of Education and Practice, 11*(2), 141–149.
+    Tran, T. V., Nguyen, A. N., Truong-Thi, T.-T., Du, L. K., & <strong>Tran-Thien, G.-P.&#42;</strong> (2023). Positive and Negative Attitudes Towards Research of Undergraduate Students: A Cross-Sectional Study. *International Journal of Education and Practice, 11*(2), 141–149.
 
 - id: financial-anxiety
   year: 2021
@@ -273,4 +273,4 @@
   ssci: false
   esci: false
   citation: >-
-    Nguyen, T. H. P., Ho, N. H. A., Nguyen, D. K. N., Tran, T. M. X., Nguyen, D. B. T., & <strong>Tran, T. G. P.*</strong> (2025). The Role of Gratitude in Reducing Stress Among Hospital Social Workers: A Review Study. In *International Conference on Social Work for Positive Human Development: Theory and Practice* (pp. 859–871). University of Da Nang, Da Nang, Vietnam. ISBN: 978-604-84-8324-1.
+    Nguyen, T. H. P., Ho, N. H. A., Nguyen, D. K. N., Tran, T. M. X., Nguyen, D. B. T., & <strong>Tran, T. G. P.&#42;</strong> (2025). The Role of Gratitude in Reducing Stress Among Hospital Social Workers: A Review Study. In *International Conference on Social Work for Positive Human Development: Theory and Practice* (pp. 859–871). University of Da Nang, Da Nang, Vietnam. ISBN: 978-604-84-8324-1.

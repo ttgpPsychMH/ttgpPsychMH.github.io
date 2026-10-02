@@ -157,6 +157,14 @@ def validate_page(rel_path: str, expected_path: str, errors: list[str]) -> tuple
         if missing_nav:
             fail(errors, f"{rel_path}: primary navigation missing {sorted(missing_nav)}")
 
+        current_links = primary_nav.select('[aria-current="page"]')
+        if expected_path in INDEXABLE_PATHS and len(current_links) != 1:
+            fail(
+                errors,
+                f"{rel_path}: expected exactly one current-page navigation link, "
+                f"found {len(current_links)}",
+            )
+
         nav_toggle = primary_nav.select_one("#site-nav-toggle")
         if not nav_toggle or nav_toggle.get("aria-controls") != "site-nav-links":
             fail(errors, f"{rel_path}: responsive navigation toggle is missing or malformed")

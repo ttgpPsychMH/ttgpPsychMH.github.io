@@ -36,13 +36,13 @@ My research experience includes study design, data collection, manuscript prepar
 
 <div class="selected-publications" role="list" aria-label="Selected publications in APA 7th edition format">
 
-<p role="listitem">Nguyen, P.-T., Nguyen-Le, L.-T., Duong-Vo, T.-L., Tran-Thien, G.-P., &amp; Tran-Chi, V.-L. (2025). The role of work motivation and organizational justice in employee stress: A cross-sectional study. <em>Bangladesh Journal of Multidisciplinary Scientific Research, 11</em>(1), 116–128. <a href="https://doi.org/10.46281/bjmsr.v11i1.2751">https://doi.org/10.46281/bjmsr.v11i1.2751</a></p>
+<p role="listitem">Nguyen, P.-T., Nguyen-Le, L.-T., Duong-Vo, T.-L., <strong>Tran-Thien, G.-P.</strong>, &amp; Tran-Chi, V.-L. (2025). The Role of Work Motivation and Organizational Justice in Employee Stress: A Cross-Sectional Study. <em>Bangladesh Journal of Multidisciplinary Scientific Research, 11</em>(1), 116–128. <a href="https://doi.org/10.46281/bjmsr.v11i1.2751">https://doi.org/10.46281/bjmsr.v11i1.2751</a></p>
 
-<p role="listitem">Nguyen, V. H. A., Tran, T. N. A., Vu, T. T., Phan, Y. T. H., Nguyen, T. T. N., Tran-Thien, G.-P., &amp; Tran-Chi, V.-L. (2025). The interplay of psychological distress, stigma, and social support in determining quality of life among Vietnamese people living with HIV. <em>Discover Mental Health, 5</em>(1), Article 48. <a href="https://doi.org/10.1007/s44192-025-00171-z">https://doi.org/10.1007/s44192-025-00171-z</a></p>
+<p role="listitem">Nguyen, V. H. A., Tran, T. N. A., Vu, T. T., Phan, Y. T. H., Nguyen, T. T. N., <strong>Tran-Thien, G.-P.</strong>, &amp; Tran-Chi, V.-L. (2025). The Interplay of Psychological Distress, Stigma, and Social Support in Determining Quality of Life Among Vietnamese People Living With HIV. <em>Discover Mental Health, 5</em>(1), Article 48. <a href="https://doi.org/10.1007/s44192-025-00171-z">https://doi.org/10.1007/s44192-025-00171-z</a></p>
 
-<p role="listitem">Huynh, S. V., Tran-Thien, G.-P., Vu, T. T.-T., &amp; Tran-Chi, V.-L. (2025). Eye-tracking technology in Vietnam: A comprehensive review of its application and acceptance across various fields. <em>Multidisciplinary Reviews, 8</em>(1), Article e2025030. <a href="https://doi.org/10.31893/multirev.2025030">https://doi.org/10.31893/multirev.2025030</a></p>
+<p role="listitem">Huynh, S. V., <strong>Tran-Thien, G.-P.</strong>, Vu, T. T.-T., &amp; Tran-Chi, V.-L. (2025). Eye-Tracking Technology in Vietnam: A Comprehensive Review of Its Application and Acceptance Across Various Fields. <em>Multidisciplinary Reviews, 8</em>(1), Article e2025030. <a href="https://doi.org/10.31893/multirev.2025030">https://doi.org/10.31893/multirev.2025030</a></p>
 
-<p role="listitem">Huynh, V.-S., Tran-Thien, G.-P., Nguyen, T.-B., Nguyen, X. T. K., Nguyen, V. H. A., &amp; Tran-Chi, V.-L. (2024). What do we know about the influence of believers’ religiosity on happiness and gratitude? A perspective for clinical practice. <em>Psychology Research and Behavior Management, 17</em>, 2433–2447. <a href="https://doi.org/10.2147/PRBM.S465729">https://doi.org/10.2147/PRBM.S465729</a></p>
+<p role="listitem">Huynh, V.-S., <strong>Tran-Thien, G.-P.</strong>, Nguyen, T.-B., Nguyen, X. T. K., Nguyen, V. H. A., &amp; Tran-Chi, V.-L. (2024). What Do We Know About the Influence of Believers’ Religiosity on Happiness and Gratitude? – A Perspective for Clinical Practice. <em>Psychology Research and Behavior Management, 17</em>, 2433–2447. <a href="https://doi.org/10.2147/PRBM.S465729">https://doi.org/10.2147/PRBM.S465729</a></p>
 
 </div>
 

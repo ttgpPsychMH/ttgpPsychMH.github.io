@@ -314,6 +314,16 @@ def main() -> int:
                     "Homepage selected-publication DOIs must display as full https://doi.org URLs",
                 )
 
+            highlighted_names = [
+                node.get_text(" ", strip=True)
+                for node in selected.select("strong")
+            ]
+            if highlighted_names != ["Tran-Thien, G.-P."] * 4:
+                fail(
+                    errors,
+                    "Each selected publication must bold the site author's name exactly once",
+                )
+
     # Embedded CV preview must remain available alongside the downloadable PDF.
     cv_file = SITE / "cv" / "index.html"
     if cv_file.exists():

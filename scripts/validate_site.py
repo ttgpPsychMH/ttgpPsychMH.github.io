@@ -283,6 +283,37 @@ def main() -> int:
     if not (SITE / "images" / "favicon.svg").exists():
         fail(errors, "Missing SVG favicon")
 
+    # Homepage selected publications should remain clean APA-style references.
+    home_file = SITE / "index.html"
+    if home_file.exists():
+        home_soup = BeautifulSoup(home_file.read_text(encoding="utf-8"), "html.parser")
+        selected = home_soup.select_one(".selected-publications")
+        if not selected:
+            fail(errors, "Homepage is missing the selected-publications block")
+        else:
+            selected_text = selected.get_text(" ", strip=True)
+            if "</strong>" in selected_text or "<strong>" in selected_text:
+                fail(errors, "Homepage selected publications expose raw strong-tag text")
+
+            selected_items = selected.select('p[role="listitem"]')
+            if len(selected_items) != 4:
+                fail(
+                    errors,
+                    f"Homepage should render 4 selected publications, found {len(selected_items)}",
+                )
+
+            doi_links = [
+                a.get_text(" ", strip=True)
+                for a in selected.select('a[href^="https://doi.org/"]')
+            ]
+            if len(doi_links) != 4 or any(
+                not value.startswith("https://doi.org/") for value in doi_links
+            ):
+                fail(
+                    errors,
+                    "Homepage selected-publication DOIs must display as full https://doi.org URLs",
+                )
+
     # Embedded CV preview must remain available alongside the downloadable PDF.
     cv_file = SITE / "cv" / "index.html"
     if cv_file.exists():

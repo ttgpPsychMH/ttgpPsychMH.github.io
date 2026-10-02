@@ -592,9 +592,11 @@ pre {
    ========================================================================== */
 
 .page__footer {
-  width: fit-content;
+  float: none !important;
+  clear: both;
+  width: fit-content !important;
   max-width: min(760px, calc(100% - 2rem));
-  margin: 2.4rem auto 0.85rem;
+  margin: 2.4rem auto 0.85rem !important;
   overflow: hidden;
   border: 1px solid var(--border-soft);
   border-radius: 20px;
@@ -637,8 +639,9 @@ pre {
 
 @media screen and (max-width: 680px) {
   .page__footer {
-    width: calc(100% - 1rem);
-    margin-top: 1.9rem;
+    width: fit-content !important;
+    max-width: calc(100% - 1rem);
+    margin-top: 1.9rem !important;
     border-radius: 17px;
   }
 

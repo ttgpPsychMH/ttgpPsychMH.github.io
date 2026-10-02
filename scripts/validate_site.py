@@ -529,6 +529,12 @@ def main() -> int:
                     f"Homepage selected project {project['id']} is missing its title",
                 )
 
+        if any(
+            heading.get_text(" ", strip=True).lower() == "academic profiles"
+            for heading in home_soup.find_all(["h1", "h2", "h3"])
+        ):
+            fail(errors, "Homepage should not duplicate the Academic profiles section")
+
     publications_file = SITE / "publications" / "index.html"
     if publications_file.exists():
         pub_soup = BeautifulSoup(
@@ -669,6 +675,17 @@ def main() -> int:
                     errors,
                     f"CV project record {project['id']} is missing its title",
                 )
+
+    for rel_path in CORE_PAGES:
+        footer_file = SITE / rel_path
+        if not footer_file.exists():
+            continue
+        footer_soup = BeautifulSoup(
+            footer_file.read_text(encoding="utf-8"),
+            "html.parser",
+        )
+        if footer_soup.select_one(".page__footer-follow"):
+            fail(errors, f"{rel_path}: footer should not duplicate academic profile links")
 
     pdf_file = SITE / "files" / "Tran_Thien_Gia_Phuoc_Academic_CV.pdf"
     if not pdf_file.exists():

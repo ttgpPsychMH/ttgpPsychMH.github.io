@@ -235,7 +235,7 @@ Test Date: April 2022
 
 <!-- CV_PROJECTS_START -->
 {% for project in site.data.projects %}
-<section class="cv-project" data-project-id="{{ project.id }}">
+<section class="cv-project" data-project-id="{{ project.id }}" markdown="1">
 
 ### {{ project.title }}
 

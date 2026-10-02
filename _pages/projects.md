@@ -8,7 +8,8 @@ author_profile: true
 This page presents the research projects listed in my academic CV dated **2 March 2026**. Project details are generated from a single structured data source used across the website and CV.
 
 {% for project in site.data.projects %}
-<section class="project-card project-card--{{ forloop.index }}" data-project-id="{{ project.id }}" markdown="1">
+{% assign project_tone = forloop.index0 | modulo: 5 | plus: 1 %}
+<section class="project-card project-card--{{ project_tone }}" data-project-id="{{ project.id }}" markdown="1">
 
 ## {{ project.title }}
 

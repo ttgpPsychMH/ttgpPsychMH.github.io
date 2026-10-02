@@ -592,7 +592,8 @@ pre {
    ========================================================================== */
 
 .page__footer {
-  width: min(760px, calc(100% - 2rem));
+  width: fit-content;
+  max-width: min(760px, calc(100% - 2rem));
   margin: 2.4rem auto 0.85rem;
   overflow: hidden;
   border: 1px solid var(--border-soft);

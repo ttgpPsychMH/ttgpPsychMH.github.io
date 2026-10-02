@@ -592,16 +592,23 @@ pre {
    ========================================================================== */
 
 .page__footer {
-  margin: 5rem 1rem 0;
+  margin: 2.75rem 1rem 0.85rem;
   overflow: hidden;
-  border-top: 1px solid var(--border-soft);
-  border-radius: 28px 28px 0 0;
+  border: 1px solid var(--border-soft);
+  border-radius: 22px;
   background: linear-gradient(135deg, var(--surface), var(--panel-5));
-  box-shadow: 0 -6px 24px rgba(40, 69, 66, 0.04);
+  box-shadow: 0 -4px 18px rgba(40, 69, 66, 0.035);
 }
 
 .page__footer footer {
+  display: flex;
   max-width: 1160px;
+  min-height: 54px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 auto;
+  padding: 0.55rem 0.85rem !important;
 }
 
 .page__footer,
@@ -611,6 +618,97 @@ pre {
 
 .page__footer a:hover {
   color: var(--accent-green-strong) !important;
+}
+
+.page__footer-follow {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+.page__footer-follow .social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.7rem;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.page__footer-follow li {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  font-size: 0.72rem;
+  line-height: 1.25;
+}
+
+.page__footer-follow li + li::before {
+  display: none;
+}
+
+.page__footer-follow a {
+  display: inline-flex;
+  gap: 0.28rem;
+  align-items: center;
+  padding: 0;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.page__footer-follow strong {
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.page__footer-copyright {
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.55rem;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: right;
+  font-size: 0.69rem;
+  line-height: 1.35;
+}
+
+.page__footer-copyright span {
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 860px) {
+  .page__footer footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.55rem;
+  }
+
+  .page__footer-copyright {
+    justify-content: flex-start;
+    text-align: left;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .page__footer {
+    margin: 2rem 0.5rem 0.65rem;
+    border-radius: 18px;
+  }
+
+  .page__footer footer {
+    min-height: 0;
+    padding: 0.65rem 0.75rem !important;
+  }
+
+  .page__footer-follow .social-icons,
+  .page__footer-copyright {
+    gap: 0.25rem 0.5rem;
+  }
+
+  .page__footer-copyright span {
+    white-space: normal;
+  }
 }
 
 /* ==========================================================================

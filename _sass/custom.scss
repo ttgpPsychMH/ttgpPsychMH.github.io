@@ -118,6 +118,7 @@ html {
 
 body {
   padding-top: 0;
+  padding-bottom: 0;
   color: var(--text-main);
   background:
     radial-gradient(circle at 8% 4%, rgba(155, 229, 220, 0.16), transparent 30rem),
@@ -171,8 +172,9 @@ button:focus-visible {
    ========================================================================== */
 
 .masthead {
-  position: relative;
-  z-index: 20;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   padding: 0.85rem 1rem 0;
   background: transparent;
   box-shadow: none;
@@ -180,6 +182,10 @@ button:focus-visible {
 
 .masthead::after {
   display: none;
+}
+
+.masthead.is-stuck .masthead__inner-wrap {
+  box-shadow: 0 14px 36px rgba(40, 69, 66, 0.14);
 }
 
 .masthead__inner-wrap {
@@ -679,6 +685,8 @@ pre {
 @media screen and (min-width: 925px) {
   .sidebar {
     width: 20%;
+    top: var(--sticky-sidebar-top, 7rem) !important;
+    max-height: calc(100vh - var(--sticky-sidebar-top, 7rem) - 1rem);
     padding-right: 1.25rem !important;
   }
 

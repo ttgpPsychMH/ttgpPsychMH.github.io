@@ -192,6 +192,19 @@
     });
   }
 
+  function syncStickyLayout() {
+    const masthead = document.querySelector(".masthead");
+    if (!masthead) return;
+
+    const mastheadHeight = Math.ceil(masthead.getBoundingClientRect().height);
+    document.documentElement.style.setProperty(
+      "--sticky-sidebar-top",
+      (mastheadHeight + 14) + "px"
+    );
+
+    masthead.classList.toggle("is-stuck", window.scrollY > 8);
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     applyTheme(getPreference(), false);
     routeClass();
@@ -200,6 +213,10 @@
     wrapPublicationEntries();
     addHeadingIcons();
     enhanceExternalLinks();
+    syncStickyLayout();
+
+    window.addEventListener("resize", syncStickyLayout, { passive: true });
+    window.addEventListener("scroll", syncStickyLayout, { passive: true });
 
     const button = document.getElementById("theme-mode-toggle");
     if (button) button.addEventListener("click", cycleTheme);

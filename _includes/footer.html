@@ -1,7 +1,7 @@
 {% include base_path %}
 
 <div class="page__footer-follow">
-  <ul class="social-icons">
+  <ul class="social-icons" aria-label="Academic profiles">
     <li><strong>Academic profiles</strong></li>
     {% if site.author.orcid %}
       <li><a href="{{ site.author.orcid }}" rel="noopener noreferrer"><i class="ai ai-orcid" aria-hidden="true"></i> ORCID</a></li>
@@ -16,7 +16,7 @@
 </div>
 
 <div class="page__footer-copyright">
-  &copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}.
-  Built with <a href="https://github.com/academicpages/academicpages.github.io" rel="nofollow noopener noreferrer">Academic Pages</a> and Jekyll.<br />
-  Last updated {{ "now" | date: '%Y-%m-%d' }} · <a href="/sitemap/">{{ site.data.ui-text[site.locale].site_map | default: "Sitemap" }}</a>
+  <span>&copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}.</span>
+  <span>Built with <a href="https://github.com/academicpages/academicpages.github.io" rel="nofollow noopener noreferrer">Academic Pages</a> and Jekyll.</span>
+  <span>Last updated {{ "now" | date: '%Y-%m-%d' }} · <a href="/sitemap/">{{ site.data.ui-text[site.locale].site_map | default: "Sitemap" }}</a></span>
 </div>

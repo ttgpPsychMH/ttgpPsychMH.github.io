@@ -1498,6 +1498,19 @@ pre {
   line-height: 1.2;
 }
 
+.research-metric-source__identity {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.research-metric-source__scope {
+  margin-top: 0.12rem;
+  color: var(--text-muted);
+  font-size: 0.61rem;
+  line-height: 1.25;
+}
+
 .research-metric-source__icon {
   display: inline-flex;
   flex: 0 0 auto;

@@ -211,7 +211,11 @@ def validate_page(
         fail(errors, f"Missing built page: {rel_path}")
         return "", ""
 
-    soup = BeautifulSoup(file_path.read_text(encoding="utf-8"), "html.parser")
+    raw_html = file_path.read_text(encoding="utf-8")
+    if "{{" in raw_html or "{%" in raw_html:
+        fail(errors, f"{rel_path}: unrendered Liquid markup remains in built HTML")
+
+    soup = BeautifulSoup(raw_html, "html.parser")
 
     html = soup.find("html")
     if not html or not html.get("lang"):
@@ -515,6 +519,16 @@ def main() -> int:
                 f"Expected {expected_project_ids}, got {actual_project_ids}",
             )
 
+        selected_project_nodes = home_soup.select(
+            ".selected-projects [data-project-id]"
+        )
+        for project, node in zip(selected_project_data, selected_project_nodes):
+            if str(project["title"]) not in node.get_text(" ", strip=True):
+                fail(
+                    errors,
+                    f"Homepage selected project {project['id']} is missing its title",
+                )
+
     publications_file = SITE / "publications" / "index.html"
     if publications_file.exists():
         pub_soup = BeautifulSoup(
@@ -593,6 +607,16 @@ def main() -> int:
                 f"Expected {expected_ids}, got {actual_ids}",
             )
 
+        project_nodes = project_soup.select(
+            "section.project-card[data-project-id]"
+        )
+        for project, node in zip(projects, project_nodes):
+            if str(project["title"]) not in node.get_text(" ", strip=True):
+                fail(
+                    errors,
+                    f"Projects page record {project['id']} is missing its title",
+                )
+
     cv_file = SITE / "cv" / "index.html"
     if cv_file.exists():
         cv_soup = BeautifulSoup(
@@ -635,6 +659,16 @@ def main() -> int:
                 f"CV project records mismatch. "
                 f"Expected {expected_project_ids}, got {cv_project_ids}",
             )
+
+        cv_project_nodes = cv_soup.select(
+            ".cv-project[data-project-id]"
+        )
+        for project, node in zip(projects, cv_project_nodes):
+            if str(project["title"]) not in node.get_text(" ", strip=True):
+                fail(
+                    errors,
+                    f"CV project record {project['id']} is missing its title",
+                )
 
     pdf_file = SITE / "files" / "Tran_Thien_Gia_Phuoc_Academic_CV.pdf"
     if not pdf_file.exists():

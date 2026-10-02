@@ -1,0 +1,34 @@
+# Research project data used across the homepage, Projects page, and CV/PDF.
+# Keep one record per project and update it here only.
+# selected: true marks projects shown on the homepage.
+
+- id: religious-belief-cognitive-stress-entrepreneurial-spirit
+  title: "The Relationship between Religious Belief, Cognitive Stress, and Entrepreneurial Spirit among University Students"
+  period: "2025–2026"
+  status: "Completed"
+  role: "Research Team Member"
+  institution: "University of Economics and Finance (UEF)"
+  project_type: "University-Level Science and Technology Project"
+  project_code: "232/QĐ-UEF"
+  principal_investigator: "Nguyen Phuoc Thien, Ph.D."
+  funding_vnd: "VND 35,000,000"
+  funding_usd: "~USD 1,350"
+  outcome: "Final project report approved; research findings contributed to subsequent publication(s)."
+  selected: true
+  selected_order: 1
+
+- id: behavioral-eye-movement-middle-school
+  title: "Evaluation of Behavioral-Related Eye Movement Indicators in Middle School Students"
+  period: "2022–2025"
+  status: "Completed"
+  role: "Research Team Member"
+  institution: "Faculty of Psychology, Ho Chi Minh City University of Education (HCMUE)"
+  project_type: "Key University-Level Science and Technology Project"
+  project_code: "CS.2022.19.24.TĐ"
+  principal_investigator: "Tran Chi Vinh Long, M.Sc."
+  funding_vnd: "VND 90,000,000"
+  funding_usd: "~USD 3,460"
+  outcome: "Final project report approved; research findings contributed to subsequent publication(s)."
+  details: "My research internship at the Interdisciplinary Research Office of Psychology and Chinese Language included participation in this project, with responsibilities involving eye-tracking and emotional Stroop task data collection, data preprocessing and organization, research documentation, and internal reporting."
+  selected: true
+  selected_order: 2

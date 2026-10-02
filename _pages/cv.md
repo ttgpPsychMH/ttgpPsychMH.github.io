@@ -184,30 +184,72 @@ Test Date: January 2023
 Score: 705/990  
 Test Date: April 2022
 
-## Peer-Reviewed Publications
+## Publications
 
-See the complete [Publications](/publications/) page for ongoing work, peer-reviewed journal articles, indexing information, and conference papers.
+<!-- CV_PUBLICATIONS_START -->
+{% assign cv_ongoing = site.data.publications | where: "status", "ongoing" %}
+{% if cv_ongoing.size > 0 %}
+### Ongoing Work
+
+{% for pub in cv_ongoing %}
+<div class="cv-reference" data-publication-id="{{ pub.id }}">
+{{ pub.citation | markdownify }}
+{% if pub.doi %}<p class="cv-reference__doi"><a href="{{ pub.doi }}" rel="noopener noreferrer">{{ pub.doi }}</a></p>{% endif %}
+<p class="cv-reference__meta">Status: Ongoing{% if pub.ssci %} · SSCI{% endif %}{% if pub.esci %} · ESCI{% endif %}{% if pub.scopus_quartile %} · SCOPUS {{ pub.scopus_quartile }}{% if pub.scopus_quartile_year %} ({{ pub.scopus_quartile_year }}){% endif %}{% endif %}</p>
+</div>
+{% endfor %}
+{% endif %}
+
+{% assign cv_published = site.data.publications | where: "status", "published" %}
+{% assign cv_journal_articles = cv_published | where_exp: "item", "item.type != 'conference_paper'" %}
+{% if cv_journal_articles.size > 0 %}
+### Peer-Reviewed Journal Articles
+
+{% assign cv_last_year = "" %}
+{% for pub in cv_journal_articles %}
+{% if pub.year != cv_last_year %}
+#### {{ pub.year }}
+{% assign cv_last_year = pub.year %}
+{% endif %}
+<div class="cv-reference" data-publication-id="{{ pub.id }}">
+{{ pub.citation | markdownify }}
+{% if pub.doi %}<p class="cv-reference__doi"><a href="{{ pub.doi }}" rel="noopener noreferrer">{{ pub.doi }}</a></p>{% endif %}
+{% if pub.ssci or pub.esci or pub.scopus_quartile %}<p class="cv-reference__meta">{% if pub.ssci %}SSCI{% endif %}{% if pub.esci %}{% if pub.ssci %} · {% endif %}ESCI{% endif %}{% if pub.scopus_quartile %}{% if pub.ssci or pub.esci %} · {% endif %}SCOPUS {{ pub.scopus_quartile }}{% if pub.scopus_quartile_year %} ({{ pub.scopus_quartile_year }}){% endif %}{% endif %}</p>{% endif %}
+</div>
+{% endfor %}
+{% endif %}
+
+{% assign cv_conference_papers = cv_published | where: "type", "conference_paper" %}
+{% if cv_conference_papers.size > 0 %}
+### Conference Papers
+
+{% for pub in cv_conference_papers %}
+<div class="cv-reference" data-publication-id="{{ pub.id }}">
+{{ pub.citation | markdownify }}
+</div>
+{% endfor %}
+{% endif %}
+<!-- CV_PUBLICATIONS_END -->
 
 ## Research Projects
 
-### The Relationship between Religious Belief, Cognitive Stress, and Entrepreneurial Spirit among University Students
+<!-- CV_PROJECTS_START -->
+{% for project in site.data.projects %}
+<section class="cv-project" data-project-id="{{ project.id }}" markdown="1">
 
-**Period:** 2025–2026 [Completed]  
-**Role:** Research Team Member  
-**Project type:** University-Level Science and Technology Project  
-**Project code:** 232/QĐ-UEF  
-**Institution:** University of Economics and Finance (UEF)  
-**Principal Investigator:** Nguyen Phuoc Thien, Ph.D.  
-**Funding:** VND 35,000,000 (~USD 1,350)  
-**Outcome:** Final project report approved; research findings contributed to subsequent publication(s).
+### {{ project.title }}
 
-### Evaluation of Behavioral-Related Eye Movement Indicators in Middle School Students
+**Period:** {{ project.period }} [{{ project.status }}]  
+**Role:** {{ project.role }}  
+**Project type:** {{ project.project_type }}  
+**Project code:** {{ project.project_code }}  
+**Institution:** {{ project.institution }}  
+**Principal Investigator:** {{ project.principal_investigator }}  
+**Funding:** {{ project.funding_vnd }} ({{ project.funding_usd }})  
+**Outcome:** {{ project.outcome }}
 
-**Period:** 2022–2025 [Completed]  
-**Role:** Research Team Member  
-**Project type:** Key University-Level Science and Technology Project  
-**Project code:** CS.2022.19.24.TĐ  
-**Institution:** Faculty of Psychology, Ho Chi Minh City University of Education (HCMUE)  
-**Principal Investigator:** Tran Chi Vinh Long, M.Sc.  
-**Funding:** VND 90,000,000 (~USD 3,460)  
-**Outcome:** Final project report approved; research findings contributed to subsequent publication(s).
+{% if project.details %}{{ project.details }}{% endif %}
+
+</section>
+{% endfor %}
+<!-- CV_PROJECTS_END -->

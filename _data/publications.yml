@@ -4,6 +4,7 @@
 # type: original_research | review | conference_paper
 # scopus_quartile: Q1 | Q2 | Q3 | Q4 | null
 # ssci / esci: true or false
+# selected: true marks publications shown on the homepage; selected_order controls their order
 
 - id: reaction-time-emotional-stroop
   year:
@@ -17,6 +18,8 @@
     Tran-Chi, V.-L., & <strong>Tran-Thien, G.-P.&#42;</strong> (n.d.). Reaction Time Differences in an Emotional Stroop Task among Secondary School Students. *International Journal of Cognitive Research in Science, Engineering and Education, X*(X), XX–XX.
 
 - id: work-motivation-organizational-justice-stress
+  selected: true
+  selected_order: 1
   year: 2025
   status: published
   type: original_research
@@ -41,6 +44,8 @@
     Nguyen, P.-T., Luu, K., To, H.-T., <strong>Tran-Thien, G.-P.</strong>, Tran-Chi, P.-L., Nguyen-Thi, N.-H., Ho, Q.-N. N., & Tran-Chi, V.-L. (2025). The Role of Religiosity and Stress in Entrepreneurial Motivation and Intention among University Students. *Educational Process: International Journal, 17*, Article e2025315.
 
 - id: hiv-quality-of-life
+  selected: true
+  selected_order: 2
   year: 2025
   status: published
   type: original_research
@@ -65,6 +70,8 @@
     Nguyen, P.-T., To, H.-T., <strong>Tran-Thien, G.-P.</strong>, Duong-Vo, T.-L., & Nguyen-Le, L.-T. (2025). How Motivation and Kaizen Skills Drive Employee Intent to Stay: A Cross-Sectional Study in the Food and Beverage Industry. *Journal of Asian Scientific Research, 15*(1), 98–110.
 
 - id: eye-tracking-vietnam-review
+  selected: true
+  selected_order: 3
   year: 2025
   status: published
   type: review
@@ -77,6 +84,8 @@
     Huynh, S. V., <strong>Tran-Thien, G.-P.</strong>, Vu, T. T.-T., & Tran-Chi, V.-L. (2025). Eye-Tracking Technology in Vietnam: A Comprehensive Review of Its Application and Acceptance Across Various Fields. *Multidisciplinary Reviews, 8*(1), Article e2025030.
 
 - id: religiosity-happiness-gratitude
+  selected: true
+  selected_order: 4
   year: 2024
   status: published
   type: review

@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - '_pages/cv.md'
+      - '_data/publications.yml'
+      - '_data/projects.yml'
       - 'scripts/generate_cv_pdf.py'
       - '.github/workflows/generate-cv-pdf.yml'
 
@@ -26,7 +28,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install PDF dependencies
-        run: pip install markdown weasyprint
+        run: pip install markdown pyyaml weasyprint
 
       - name: Generate PDF from web CV
         run: python scripts/generate_cv_pdf.py

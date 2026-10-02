@@ -5,28 +5,24 @@ description: "Research projects involving occupational, behavioral, and psycholo
 author_profile: true
 ---
 
-This page presents the research projects listed in my academic CV dated **2 March 2026**.
+This page presents the research projects listed in my academic CV dated **2 March 2026**. Project details are generated from a single structured data source used across the website and CV.
 
-## The Relationship between Religious Belief, Cognitive Stress, and Entrepreneurial Spirit among University Students
+{% for project in site.data.projects %}
+{% assign project_tone = forloop.index0 | modulo: 5 | plus: 1 %}
+<section class="project-card project-card--{{ project_tone }}" data-project-id="{{ project.id }}" markdown="1">
 
-**Period:** 2025–2026 [Completed]  
-**Role:** Research Team Member  
-**Institution:** University of Economics and Finance (UEF)  
-**Project type:** University-Level Science and Technology Project  
-**Project code:** 232/QĐ-UEF  
-**Principal Investigator:** Nguyen Phuoc Thien, Ph.D.  
-**Funding:** VND 35,000,000 (~USD 1,350)  
-**Outcome:** Final project report approved; research findings contributed to subsequent publication(s).
+## {{ project.title }}
 
-## Evaluation of Behavioral-Related Eye Movement Indicators in Middle School Students
+**Period:** {{ project.period }} [{{ project.status }}]  
+**Role:** {{ project.role }}  
+**Institution:** {{ project.institution }}  
+**Project type:** {{ project.project_type }}  
+**Project code:** {{ project.project_code }}  
+**Principal Investigator:** {{ project.principal_investigator }}  
+**Funding:** {{ project.funding_vnd }} ({{ project.funding_usd }})  
+**Outcome:** {{ project.outcome }}
 
-**Period:** 2022–2025 [Completed]  
-**Role:** Research Team Member  
-**Institution:** Faculty of Psychology, Ho Chi Minh City University of Education (HCMUE)  
-**Project type:** Key University-Level Science and Technology Project  
-**Project code:** CS.2022.19.24.TĐ  
-**Principal Investigator:** Tran Chi Vinh Long, M.Sc.  
-**Funding:** VND 90,000,000 (~USD 3,460)  
-**Outcome:** Final project report approved; research findings contributed to subsequent publication(s).
+{% if project.details %}{{ project.details }}{% endif %}
 
-My research internship at the Interdisciplinary Research Office of Psychology and Chinese Language included participation in this project, with responsibilities involving eye-tracking and emotional Stroop task data collection, data preprocessing and organization, research documentation, and internal reporting.
+</section>
+{% endfor %}

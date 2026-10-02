@@ -59,7 +59,7 @@ This page follows the publication list in my academic CV dated **2 March 2026**.
 ## Ongoing work
 
 {% for pub in ongoing %}
-<article class="publication-card">
+<article class="publication-card" data-publication-id="{{ pub.id }}">
   <div class="publication-citation">{{ pub.citation | markdownify }}</div>
   <div class="publication-meta">
     <span class="publication-badge publication-badge--ongoing">Ongoing</span>
@@ -77,7 +77,7 @@ This page follows the publication list in my academic CV dated **2 March 2026**.
     {% assign last_year = pub.year %}
   {% endif %}
 
-<article class="publication-card">
+<article class="publication-card" data-publication-id="{{ pub.id }}">
   <div class="publication-citation">{{ pub.citation | markdownify }}</div>
   {% if pub.ssci or pub.esci or pub.scopus_quartile or pub.doi %}
   <div class="publication-meta" aria-label="Indexing and publication links">
@@ -94,7 +94,7 @@ This page follows the publication list in my academic CV dated **2 March 2026**.
 ## Conference papers
 
 {% for pub in conference_papers %}
-<article class="publication-card">
+<article class="publication-card" data-publication-id="{{ pub.id }}">
   <div class="publication-citation">{{ pub.citation | markdownify }}</div>
   <div class="publication-meta">
     <span class="publication-badge publication-badge--conference">Conference Paper</span>

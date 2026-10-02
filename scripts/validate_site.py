@@ -136,7 +136,15 @@ def validate_page(rel_path: str, expected_path: str, errors: list[str]) -> tuple
     if not primary_nav:
         fail(errors, f"{rel_path}: missing dedicated primary navigation")
     else:
-        nav_hrefs = {a.get("href") for a in primary_nav.find_all("a", href=True)}
+        nav_hrefs = set()
+        for anchor in primary_nav.find_all("a", href=True):
+            href = anchor.get("href", "")
+            parsed = urlparse(href)
+            if parsed.scheme in {"http", "https"} and parsed.netloc == "ttgppsychmh.github.io":
+                nav_hrefs.add(parsed.path or "/")
+            elif not parsed.scheme and not parsed.netloc:
+                nav_hrefs.add(parsed.path or "/")
+
         expected_nav = {
             "/",
             "/research/",

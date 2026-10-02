@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from datetime import datetime
 from pathlib import Path
 from urllib.parse import urlparse, unquote
 import json
@@ -61,6 +62,24 @@ def load_yaml_list(path: Path, label: str, errors: list[str]) -> list[dict]:
     if not all(isinstance(item, dict) for item in data):
         fail(errors, f"Every {label} entry must be a mapping/object")
         return []
+
+    return data
+
+
+def load_yaml_mapping(path: Path, label: str, errors: list[str]) -> dict:
+    if not path.exists():
+        fail(errors, f"Missing {label} data file: {path.relative_to(ROOT)}")
+        return {}
+
+    try:
+        data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    except Exception as exc:
+        fail(errors, f"Invalid {label} YAML: {exc}")
+        return {}
+
+    if not isinstance(data, dict):
+        fail(errors, f"{label} data must be a YAML mapping/object")
+        return {}
 
     return data
 
@@ -165,6 +184,123 @@ def validate_project_data(projects: list[dict], errors: list[str]) -> None:
             fail(errors, f"Project {project_id}: missing required fields {missing}")
 
     selected_records(projects, "Project", errors)
+
+
+def validate_research_metrics_data(metrics: dict, errors: list[str]) -> None:
+    updated = str(metrics.get("updated", "")).strip()
+    if not updated or len(updated) != 10 or updated[4] != "-" or updated[7] != "-":
+        fail(errors, "Research metrics: updated must use YYYY-MM-DD")
+
+    sources = metrics.get("sources")
+    if not isinstance(sources, list) or not sources:
+        fail(errors, "Research metrics: sources must be a non-empty list")
+        return
+
+    expected_ids = ["google_scholar", "scopus", "web_of_science"]
+    actual_ids = [str(source.get("id", "")).strip() for source in sources]
+    if actual_ids != expected_ids:
+        fail(
+            errors,
+            f"Research metrics source order/ids mismatch. "
+            f"Expected {expected_ids}, got {actual_ids}",
+        )
+
+    for source in sources:
+        source_id = str(source.get("id", "")).strip() or "<unknown>"
+        for key in ("name", "profile_url", "icon_class", "scope", "update_mode"):
+            if not str(source.get(key, "")).strip():
+                fail(errors, f"Research metrics {source_id}: {key} is required")
+
+        profile_url = str(source.get("profile_url", ""))
+        if not profile_url.startswith("https://"):
+            fail(
+                errors,
+                f"Research metrics {source_id}: profile_url must use https://",
+            )
+
+        source_metrics = source.get("metrics", [])
+        if not isinstance(source_metrics, list):
+            fail(errors, f"Research metrics {source_id}: metrics must be a list")
+            source_metrics = []
+
+        metric_keys = []
+        for metric in source_metrics:
+            if not isinstance(metric, dict):
+                fail(
+                    errors,
+                    f"Research metrics {source_id}: each metric must be an object",
+                )
+                continue
+            metric_key = str(metric.get("key", "")).strip()
+            metric_keys.append(metric_key)
+            if not metric_key or not str(metric.get("label", "")).strip():
+                fail(
+                    errors,
+                    f"Research metrics {source_id}: metric key/label is required",
+                )
+            if not isinstance(metric.get("value"), int):
+                fail(
+                    errors,
+                    f"Research metrics {source_id}/{metric_key}: value must be an integer",
+                )
+
+        duplicate_metric_keys = sorted(
+            {value for value in metric_keys if metric_keys.count(value) > 1}
+        )
+        if duplicate_metric_keys:
+            fail(
+                errors,
+                f"Research metrics {source_id}: duplicate metric keys "
+                f"{duplicate_metric_keys}",
+            )
+
+        positions = source.get("author_positions", [])
+        if not isinstance(positions, list):
+            fail(
+                errors,
+                f"Research metrics {source_id}: author_positions must be a list",
+            )
+            positions = []
+
+        position_keys = []
+        for position in positions:
+            if not isinstance(position, dict):
+                fail(
+                    errors,
+                    f"Research metrics {source_id}: each author position must be an object",
+                )
+                continue
+            position_key = str(position.get("key", "")).strip()
+            position_keys.append(position_key)
+            value = position.get("value")
+            if not position_key or not str(position.get("label", "")).strip():
+                fail(
+                    errors,
+                    f"Research metrics {source_id}: author-position key/label is required",
+                )
+            if not isinstance(value, int) or not 0 <= value <= 100:
+                fail(
+                    errors,
+                    f"Research metrics {source_id}/{position_key}: "
+                    f"percentage must be an integer from 0 to 100",
+                )
+
+        duplicate_position_keys = sorted(
+            {value for value in position_keys if position_keys.count(value) > 1}
+        )
+        if duplicate_position_keys:
+            fail(
+                errors,
+                f"Research metrics {source_id}: duplicate author-position keys "
+                f"{duplicate_position_keys}",
+            )
+
+        annual_series = source.get("annual_series", [])
+        if not isinstance(annual_series, list):
+            fail(
+                errors,
+                f"Research metrics {source_id}: annual_series must be a list",
+            )
 
 
 def target_for_internal_href(href: str, current_file: Path) -> Path | None:
@@ -392,8 +528,14 @@ def main() -> int:
         "Project",
         errors,
     )
+    research_metrics = load_yaml_mapping(
+        ROOT / "_data" / "research_metrics.yml",
+        "Research metrics",
+        errors,
+    )
     validate_publication_data(publications, errors)
     validate_project_data(projects, errors)
+    validate_research_metrics_data(research_metrics, errors)
 
     for rel_path, expected_path in CORE_PAGES.items():
         title, description = validate_page(rel_path, expected_path, errors)
@@ -534,6 +676,120 @@ def main() -> int:
             for heading in home_soup.find_all(["h1", "h2", "h3"])
         ):
             fail(errors, "Homepage should not duplicate the Academic profiles section")
+
+
+        homepage_h2s = [
+            heading.get_text(" ", strip=True)
+            for heading in home_soup.select(".page__content h2")
+        ]
+        if "Research metrics" not in homepage_h2s:
+            fail(errors, "Homepage is missing the Research metrics section")
+        elif "Research interests" not in homepage_h2s:
+            fail(errors, "Homepage is missing the Research interests section")
+        elif homepage_h2s.index("Research metrics") > homepage_h2s.index("Research interests"):
+            fail(
+                errors,
+                "Research metrics must appear before Research interests on the homepage",
+            )
+
+        metric_source_data = research_metrics.get("sources", [])
+        expected_source_ids = [
+            str(source.get("id", "")) for source in metric_source_data
+        ]
+        actual_source_ids = rendered_ids(
+            home_soup,
+            ".research-metric-source[data-metric-source]",
+            "data-metric-source",
+        )
+        if actual_source_ids != expected_source_ids:
+            fail(
+                errors,
+                f"Homepage research-metric sources mismatch. "
+                f"Expected {expected_source_ids}, got {actual_source_ids}",
+            )
+
+        metric_sources = home_soup.select(
+            ".research-metric-source[data-metric-source]"
+        )
+        for source, source_node in zip(metric_source_data, metric_sources):
+            source_id = str(source.get("id", ""))
+            link = source_node.find("a", href=source.get("profile_url"))
+            if not link:
+                fail(
+                    errors,
+                    f"Research metrics {source_id}: source-profile link mismatch",
+                )
+
+            scope_node = source_node.select_one(".research-metric-source__scope")
+            if not scope_node or scope_node.get_text(" ", strip=True) != str(
+                source.get("scope", "")
+            ):
+                fail(
+                    errors,
+                    f"Research metrics {source_id}: rendered source scope mismatch",
+                )
+
+            expected_metrics = {
+                str(metric.get("key")): str(metric.get("value"))
+                for metric in source.get("metrics", [])
+            }
+            rendered_metrics = {
+                str(node.get("data-metric-key")): (
+                    node.select_one(".research-metric-value__number").get_text(
+                        " ", strip=True
+                    )
+                    if node.select_one(".research-metric-value__number")
+                    else ""
+                )
+                for node in source_node.select(
+                    ".research-metric-value[data-metric-key]"
+                )
+            }
+            if rendered_metrics != expected_metrics:
+                fail(
+                    errors,
+                    f"Research metrics {source_id}: rendered metric values mismatch. "
+                    f"Expected {expected_metrics}, got {rendered_metrics}",
+                )
+
+            expected_positions = {
+                str(position.get("key")): int(position.get("value"))
+                for position in source.get("author_positions", [])
+            }
+            rendered_positions = {}
+            for node in source_node.select(
+                ".research-author-position[data-position-key]"
+            ):
+                progress = node.select_one('[role="progressbar"]')
+                if progress:
+                    rendered_positions[str(node.get("data-position-key"))] = int(
+                        progress.get("aria-valuenow")
+                    )
+            if rendered_positions != expected_positions:
+                fail(
+                    errors,
+                    f"Research metrics {source_id}: author-position values mismatch. "
+                    f"Expected {expected_positions}, got {rendered_positions}",
+                )
+
+        snapshot = home_soup.select_one(".research-metrics__meta")
+        if not snapshot:
+            fail(errors, "Homepage research-metrics snapshot metadata is missing")
+        else:
+            try:
+                expected_snapshot = datetime.strptime(
+                    str(research_metrics.get("updated", "")),
+                    "%Y-%m-%d",
+                ).strftime("%-d %B %Y")
+            except ValueError:
+                expected_snapshot = str(research_metrics.get("updated", ""))
+
+            if expected_snapshot not in snapshot.get_text(" ", strip=True):
+                fail(
+                    errors,
+                    f"Homepage research-metrics snapshot date mismatch. "
+                    f"Expected {expected_snapshot!r}",
+                )
 
     publications_file = SITE / "publications" / "index.html"
     if publications_file.exists():
@@ -702,9 +958,9 @@ def main() -> int:
     print("TECHNICAL QA PASSED")
     print(f"Validated {len(CORE_PAGES)} core/utility pages.")
     print(
-        "Checked shared publication/project data, cross-page rendering, CV/PDF "
-        "generation, SEO metadata, structured data, accessibility, links, "
-        "robots.txt, sitemap.xml, manifest, and favicon."
+        "Checked shared publication/project/research-metric data, cross-page "
+        "rendering, CV/PDF generation, SEO metadata, structured data, "
+        "accessibility, links, robots.txt, sitemap.xml, manifest, and favicon."
     )
     return 0
 

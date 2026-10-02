@@ -1,0 +1,67 @@
+# Research metrics snapshot used on the homepage.
+# V1 is intentionally based only on exact values visible in the supplied source screenshots.
+# Do not estimate values from chart heights. Add annual series only when exact values are available.
+#
+# Future automation can update this file from source APIs or a controlled manual workflow.
+# Keep metrics source-specific: Google Scholar, Scopus, and Web of Science have different coverage.
+
+updated: "2026-10-02"
+
+sources:
+  - id: google_scholar
+    name: "Google Scholar"
+    profile_url: "https://scholar.google.com/citations?user=w4dB_uUAAAAJ"
+    icon_class: "ai ai-google-scholar"
+    scope: "All-time profile metrics"
+    update_mode: "manual"
+    metrics:
+      - key: citations
+        label: "Citations"
+        value: 114
+      - key: h_index
+        label: "h-index"
+        value: 6
+      - key: i10_index
+        label: "i10-index"
+        value: 5
+    annual_series: []
+
+  - id: scopus
+    name: "Scopus"
+    profile_url: "https://www.scopus.com/authid/detail.uri?authorId=58247687800"
+    icon_class: "ai ai-scopus"
+    scope: "Author position · 2016–2025"
+    update_mode: "manual"
+    metrics: []
+    author_positions:
+      - key: first_author
+        label: "First author"
+        value: 0
+      - key: last_author
+        label: "Last author"
+        value: 27
+      - key: co_author
+        label: "Co-author"
+        value: 73
+      - key: single_author
+        label: "Single author"
+        value: 0
+    annual_series: []
+
+  - id: web_of_science
+    name: "Web of Science"
+    profile_url: "https://www.webofscience.com/wos/author/record/2298566"
+    icon_class: "fa-solid fa-globe"
+    scope: "Core Collection metrics"
+    update_mode: "manual"
+    metrics:
+      - key: publications
+        label: "Publications"
+        value: 7
+      - key: citations
+        label: "Times cited"
+        value: 24
+      - key: h_index
+        label: "h-index"
+        value: 3
+    annual_series: []

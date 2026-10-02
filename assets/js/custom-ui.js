@@ -74,6 +74,7 @@
     if (/^20\d{2}$/.test(value)) return "fa-calendar-days";
     if (/education|qualification/i.test(value)) return "fa-graduation-cap";
     if (/personal information/i.test(value)) return "fa-id-card";
+    if (/research metrics|citation metrics|research impact/i.test(value)) return "fa-chart-column";
     if (/research interest|research area|research overview/i.test(value)) return "fa-flask-vial";
     if (/method|expertise/i.test(value)) return "fa-chart-line";
     if (/research laboratory|research lab/i.test(value)) return "fa-microscope";

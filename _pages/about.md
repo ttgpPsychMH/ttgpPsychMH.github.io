@@ -13,6 +13,63 @@ redirect_from:
 
 My research experience includes study design, data collection, manuscript preparation, and quantitative analysis. I am particularly interested in using psychological and organizational research to better understand mental health and well-being in educational and workplace settings.
 
+## Research metrics
+
+{% assign research_metrics = site.data.research_metrics %}
+<div class="research-metrics" aria-label="Research metrics snapshot">
+  <div class="research-metrics__meta">
+    <span><i class="fa-regular fa-clock" aria-hidden="true"></i> Snapshot: {{ research_metrics.updated | date: "%-d %B %Y" }}</span>
+    <span>Source coverage differs across databases; metrics are presented separately.</span>
+  </div>
+
+  <div class="research-metrics__sources">
+  {% for source in research_metrics.sources %}
+    <section class="research-metric-source research-metric-source--{{ source.id }}" data-metric-source="{{ source.id }}">
+      <div class="research-metric-source__header">
+        <div class="research-metric-source__title">
+          <span class="research-metric-source__icon" aria-hidden="true"><i class="{{ source.icon_class }}"></i></span>
+          <div class="research-metric-source__identity">
+            <h3>{{ source.name }}</h3>
+            <span class="research-metric-source__scope">{{ source.scope }}</span>
+          </div>
+        </div>
+        <a class="research-metric-source__link" href="{{ source.profile_url }}" rel="noopener noreferrer">View profile <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+      </div>
+
+      {% if source.metrics and source.metrics.size > 0 %}
+      <div class="research-metric-values" aria-label="{{ source.name }} metrics">
+        {% for metric in source.metrics %}
+        <div class="research-metric-value" data-metric-key="{{ metric.key }}">
+          <span class="research-metric-value__number">{{ metric.value }}</span>
+          <span class="research-metric-value__label">{{ metric.label }}</span>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {% if source.author_positions and source.author_positions.size > 0 %}
+      <div class="research-author-positions" aria-label="{{ source.name }} author positions">
+        <div class="research-author-positions__heading">Author position</div>
+        {% for position in source.author_positions %}
+        <div class="research-author-position" data-position-key="{{ position.key }}">
+          <div class="research-author-position__label">
+            <span>{{ position.label }}</span>
+            <strong>{{ position.value }}%</strong>
+          </div>
+          <div class="research-author-position__track" role="progressbar" aria-label="{{ position.label }}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ position.value }}">
+            <span class="research-author-position__fill" style="width: {{ position.value }}%;"></span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </section>
+  {% endfor %}
+  </div>
+
+  <p class="research-metrics__note"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Citation and publication counts vary by database coverage and indexing practices and should not be summed across sources.</p>
+</div>
+
 ## Research interests
 
 - Occupational mental health and employee well-being

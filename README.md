@@ -10,6 +10,7 @@ The site presents my research interests, publications, research projects, academ
 
 - `_data/publications.yml` — single source of truth for publications, selected publications, publication statistics, and CV publication records
 - `_data/projects.yml` — single source of truth for research projects, selected projects, and CV project records
+- `_data/research_metrics.yml` — research-metrics snapshot for Google Scholar, Scopus, and Web of Science
 - `_pages/` — website page structure and non-tabular academic content
 - `_config.yml` — site-wide identity, metadata, and profile configuration
 - `_sass/custom.scss` — custom pastel green–purple visual system
@@ -43,6 +44,22 @@ Add or update a research project in `_data/projects.yml`. The same record is use
 
 Use `selected_order` to control the order of selected projects on the homepage.
 
+### Research metrics
+
+Update `_data/research_metrics.yml` to maintain the Research metrics section on the homepage.
+
+V1 intentionally stores only exact values that can be verified from the source profile:
+
+- Google Scholar: citations, h-index, and i10-index
+- Scopus: author-position percentages
+- Web of Science: publications, times cited, and h-index
+
+Set `updated` to the snapshot date whenever values are refreshed. Keep Google Scholar, Scopus, and Web of Science values separate because the databases use different coverage and indexing practices.
+
+Each source already contains an empty `annual_series` field. Exact year-by-year data can be added there later when available from an official API/export or a controlled manual update. Do not estimate annual values from chart heights.
+
+The current `update_mode: manual` field is reserved so a future GitHub Actions workflow can distinguish manual snapshots from API-driven updates.
+
 ### CV
 
 General CV content such as education, appointments, training, awards, and memberships remains in `_pages/cv.md`. Publications and projects are generated from their shared YAML sources.
@@ -56,7 +73,7 @@ Before publication, GitHub Actions:
 - checks custom JavaScript syntax
 - generates the CV PDF from the current shared data
 - builds the Jekyll site
-- verifies that homepage selections, Publications, Projects, web CV, and publication statistics all match the YAML sources
+- verifies that homepage selections, Publications, Projects, web CV, publication statistics, and Research metrics all match their YAML sources
 - checks SEO, accessibility, structured data, sitemap, manifest, and internal links
 
 The site uses a system-aware light/dark theme. Visitors can also select System, Light, or Dark manually.

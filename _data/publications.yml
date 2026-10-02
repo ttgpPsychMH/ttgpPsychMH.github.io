@@ -2,15 +2,15 @@
 # Counts on /publications/ are generated from these metadata fields.
 # status: published | ongoing
 # type: original_research | review | conference_paper
-# quartile: Scopus quartile (Q1 | Q2 | Q3 | Q4 | null)
+# scopus_quartile: Q1 | Q2 | Q3 | Q4 | null
 # ssci / esci: true or false
 
 - id: reaction-time-emotional-stroop
   year:
   status: ongoing
   type: original_research
-  quartile: Q3
-  quartile_year: 2024
+  scopus_quartile: Q3
+  scopus_quartile_year: 2024
   ssci: false
   esci: false
   citation: >-
@@ -20,8 +20,8 @@
   year: 2025
   status: published
   type: original_research
-  quartile: Q3
-  quartile_year: 2024
+  scopus_quartile: Q3
+  scopus_quartile_year: 2024
   ssci: false
   esci: false
   doi: https://doi.org/10.46281/bjmsr.v11i1.2751
@@ -32,8 +32,8 @@
   year: 2025
   status: published
   type: original_research
-  quartile: Q1
-  quartile_year: 2024
+  scopus_quartile: Q1
+  scopus_quartile_year: 2024
   ssci: false
   esci: false
   doi: https://doi.org/10.22521/edupij.2025.17.315
@@ -44,8 +44,8 @@
   year: 2025
   status: published
   type: original_research
-  quartile: Q3
-  quartile_year: 2024
+  scopus_quartile: Q3
+  scopus_quartile_year: 2024
   ssci: false
   esci: true
   doi: https://doi.org/10.1007/s44192-025-00171-z
@@ -56,8 +56,8 @@
   year: 2025
   status: published
   type: original_research
-  quartile: Q3
-  quartile_year: 2024
+  scopus_quartile: Q3
+  scopus_quartile_year: 2024
   ssci: false
   esci: false
   doi: https://doi.org/10.55493/5003.v15i1.5332
@@ -68,8 +68,8 @@
   year: 2025
   status: published
   type: review
-  quartile: Q4
-  quartile_year: 2024
+  scopus_quartile: Q4
+  scopus_quartile_year: 2024
   ssci: false
   esci: false
   doi: https://doi.org/10.31893/multirev.2025030
@@ -80,8 +80,8 @@
   year: 2024
   status: published
   type: review
-  quartile: Q1
-  quartile_year: 2024
+  scopus_quartile: Q1
+  scopus_quartile_year: 2024
   ssci: true
   esci: false
   doi: https://doi.org/10.2147/PRBM.S465729
@@ -92,8 +92,8 @@
   year: 2024
   status: published
   type: original_research
-  quartile: Q1
-  quartile_year: 2024
+  scopus_quartile: Q1
+  scopus_quartile_year: 2024
   ssci: false
   esci: false
   doi: https://doi.org/10.19204/2024/THRL4
@@ -104,8 +104,8 @@
   year: 2024
   status: published
   type: original_research
-  quartile: Q2
-  quartile_year: 2024
+  scopus_quartile: Q2
+  scopus_quartile_year: 2024
   ssci: false
   esci: false
   doi: https://doi.org/10.53894/ijirss.v7i4.3299
@@ -116,8 +116,8 @@
   year: 2024
   status: published
   type: original_research
-  quartile: Q4
-  quartile_year: 2024
+  scopus_quartile: Q4
+  scopus_quartile_year: 2024
   ssci: false
   esci: false
   doi: https://doi.org/10.55489/njcm.150620243909
@@ -128,8 +128,8 @@
   year: 2024
   status: published
   type: original_research
-  quartile: Q4
-  quartile_year: 2024
+  scopus_quartile: Q4
+  scopus_quartile_year: 2024
   ssci: false
   esci: false
   doi: https://doi.org/10.31893/multiscience.2024195
@@ -140,8 +140,8 @@
   year: 2024
   status: published
   type: review
-  quartile: Q4
-  quartile_year: 2024
+  scopus_quartile: Q4
+  scopus_quartile_year: 2024
   ssci: false
   esci: false
   doi: https://doi.org/10.31893/multirev.2024129
@@ -152,8 +152,8 @@
   year: 2024
   status: published
   type: original_research
-  quartile: Q4
-  quartile_year: 2024
+  scopus_quartile: Q4
+  scopus_quartile_year: 2024
   ssci: false
   esci: false
   doi: https://doi.org/10.56338/jphp.v4i1.5046
@@ -164,8 +164,8 @@
   year: 2024
   status: published
   type: original_research
-  quartile: Q4
-  quartile_year: 2024
+  scopus_quartile: Q4
+  scopus_quartile_year: 2024
   ssci: false
   esci: false
   doi: https://doi.org/10.31893/multiscience.2024106
@@ -176,8 +176,8 @@
   year: 2023
   status: published
   type: original_research
-  quartile: Q3
-  quartile_year: 2023
+  scopus_quartile: Q3
+  scopus_quartile_year: 2023
   ssci: false
   esci: false
   doi: https://doi.org/10.18488/61.v11i2.3283
@@ -188,8 +188,8 @@
   year: 2021
   status: published
   type: original_research
-  quartile:
-  quartile_year:
+  scopus_quartile:
+  scopus_quartile_year:
   ssci: false
   esci: false
   citation: >-
@@ -199,8 +199,8 @@
   year: 2021
   status: published
   type: original_research
-  quartile:
-  quartile_year:
+  scopus_quartile:
+  scopus_quartile_year:
   ssci: false
   esci: true
   doi: https://doi.org/10.47750/jett.2021.12.03.007
@@ -211,8 +211,8 @@
   year: 2021
   status: published
   type: original_research
-  quartile:
-  quartile_year:
+  scopus_quartile:
+  scopus_quartile_year:
   ssci: false
   esci: true
   citation: >-
@@ -222,8 +222,8 @@
   year: 2020
   status: published
   type: original_research
-  quartile:
-  quartile_year:
+  scopus_quartile:
+  scopus_quartile_year:
   ssci: false
   esci: false
   citation: >-
@@ -233,8 +233,8 @@
   year: 2020
   status: published
   type: original_research
-  quartile:
-  quartile_year:
+  scopus_quartile:
+  scopus_quartile_year:
   ssci: false
   esci: true
   doi: https://doi.org/10.31901/24566322.2020/27.1-3.1112
@@ -245,8 +245,8 @@
   year: 2019
   status: published
   type: original_research
-  quartile:
-  quartile_year:
+  scopus_quartile:
+  scopus_quartile_year:
   ssci: false
   esci: true
   doi: https://doi.org/10.31901/24566322.2019/25.1-3.1082
@@ -257,8 +257,8 @@
   year: 2025
   status: published
   type: conference_paper
-  quartile:
-  quartile_year:
+  scopus_quartile:
+  scopus_quartile_year:
   ssci: false
   esci: false
   citation: >-
@@ -268,8 +268,8 @@
   year: 2025
   status: published
   type: conference_paper
-  quartile:
-  quartile_year:
+  scopus_quartile:
+  scopus_quartile_year:
   ssci: false
   esci: false
   citation: >-

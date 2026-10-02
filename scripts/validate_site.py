@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from datetime import datetime
 from pathlib import Path
 from urllib.parse import urlparse, unquote
 import json
@@ -763,13 +764,23 @@ def main() -> int:
                 )
 
         snapshot = home_soup.select_one(".research-metrics__meta")
-        if not snapshot or research_metrics.get("updated", "") not in snapshot.get_text(
-            " ", strip=True
-        ):
-            rendered_snapshot = snapshot.get_text(" ", strip=True) if snapshot else ""
-            long_date = str(research_metrics.get("updated", ""))
-            if not snapshot:
-                fail(errors, "Homepage research-metrics snapshot metadata is missing")
+        if not snapshot:
+            fail(errors, "Homepage research-metrics snapshot metadata is missing")
+        else:
+            try:
+                expected_snapshot = datetime.strptime(
+                    str(research_metrics.get("updated", "")),
+                    "%Y-%m-%d",
+                ).strftime("%-d %B %Y")
+            except ValueError:
+                expected_snapshot = str(research_metrics.get("updated", ""))
+
+            if expected_snapshot not in snapshot.get_text(" ", strip=True):
+                fail(
+                    errors,
+                    f"Homepage research-metrics snapshot date mismatch. "
+                    f"Expected {expected_snapshot!r}",
+                )
 
     publications_file = SITE / "publications" / "index.html"
     if publications_file.exists():

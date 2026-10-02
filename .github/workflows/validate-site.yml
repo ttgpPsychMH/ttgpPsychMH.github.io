@@ -39,11 +39,14 @@ jobs:
       - name: Check custom UI JavaScript syntax
         run: node --check assets/js/custom-ui.js
 
+      - name: Install QA and CV-generation dependencies
+        run: pip install beautifulsoup4 markdown pyyaml weasyprint
+
+      - name: Generate CV PDF from structured data
+        run: python scripts/generate_cv_pdf.py
+
       - name: Build Jekyll site
         run: bundle exec jekyll build --trace
 
-      - name: Install QA dependencies
-        run: pip install beautifulsoup4 pyyaml
-
-      - name: Run SEO accessibility and internal-link QA
+      - name: Run single-source, SEO, accessibility, and link QA
         run: python scripts/validate_site.py

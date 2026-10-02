@@ -1,20 +1,5 @@
 {% include base_path %}
 
-<div class="page__footer-follow">
-  <ul class="social-icons" aria-label="Academic profiles">
-    <li><strong>Academic profiles</strong></li>
-    {% if site.author.orcid %}
-      <li><a href="{{ site.author.orcid }}" rel="noopener noreferrer"><i class="ai ai-orcid" aria-hidden="true"></i> ORCID</a></li>
-    {% endif %}
-    {% if site.author.googlescholar %}
-      <li><a href="{{ site.author.googlescholar }}" rel="noopener noreferrer"><i class="ai ai-google-scholar" aria-hidden="true"></i> Google Scholar</a></li>
-    {% endif %}
-    {% if site.author.github %}
-      <li><a href="https://github.com/{{ site.author.github }}" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
-    {% endif %}
-  </ul>
-</div>
-
 <div class="page__footer-copyright">
   <span>&copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}.</span>
   <span>Built with <a href="https://github.com/academicpages/academicpages.github.io" rel="nofollow noopener noreferrer">Academic Pages</a> and Jekyll.</span>

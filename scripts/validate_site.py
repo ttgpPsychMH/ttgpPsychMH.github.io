@@ -260,10 +260,10 @@ def main() -> int:
             expected_stats = {
                 "Original Research": sum(p.get("type") == "original_research" for p in published),
                 "Conference Papers": sum(p.get("type") == "conference_paper" for p in published),
-                "Q1": sum(p.get("quartile") == "Q1" for p in published),
-                "Q2": sum(p.get("quartile") == "Q2" for p in published),
-                "Q3": sum(p.get("quartile") == "Q3" for p in published),
-                "Q4": sum(p.get("quartile") == "Q4" for p in published),
+                "SCOPUS Q1": sum(p.get("scopus_quartile") == "Q1" for p in published),
+                "SCOPUS Q2": sum(p.get("scopus_quartile") == "Q2" for p in published),
+                "SCOPUS Q3": sum(p.get("scopus_quartile") == "Q3" for p in published),
+                "SCOPUS Q4": sum(p.get("scopus_quartile") == "Q4" for p in published),
                 "SSCI": sum(bool(p.get("ssci")) for p in published),
                 "ESCI": sum(bool(p.get("esci")) for p in published),
             }

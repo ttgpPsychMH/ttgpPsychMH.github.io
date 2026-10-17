@@ -1,4 +1,5 @@
 from pathlib import Path
+from datetime import date
 from html import escape
 import re
 
@@ -134,6 +135,13 @@ def build_markdown() -> str:
     """Expand the existing public-safe include and shared records."""
     text = SOURCE.read_text(encoding="utf-8")
     text = strip_front_matter(text)
+
+    # PDF rendering does not execute Jekyll: expand the shared date token only.
+    date_token = '{{ site.data.cv_sync_state.cv_date | date: "%-d %B %Y" }}'
+    if date_token in text:
+        state = yaml.safe_load((ROOT / "_data" / "cv_sync_state.yml").read_text(encoding="utf-8"))
+        stamp = date.fromisoformat(str(state["cv_date"]))
+        text = text.replace(date_token, stamp.strftime("%-d %B %Y"))
 
     publications = load_yaml(PUBLICATIONS_DATA)
     projects = load_yaml(PROJECTS_DATA)

@@ -5,7 +5,12 @@ const path = require('node:path');
 const { chromium } = require('playwright');
 
 const base = process.env.SITE_TEST_URL || 'http://127.0.0.1:4010';
-const output = path.resolve(__dirname, '../docs/redesign/previews');
+const output = process.env.UI_OUTPUT_DIR
+  ? path.resolve(process.env.UI_OUTPUT_DIR)
+  : path.resolve(__dirname, '../docs/redesign/previews');
+const reportPath = process.env.UI_OUTPUT_DIR
+  ? path.join(output, 'browser-results.json')
+  : path.resolve(output, '../browser-results.json');
 const widths = [1440, 1024, 768, 390, 320];
 const routes = ['/', '/research/', '/publications/', '/projects/', '/cv/', '/contact/'];
 
@@ -50,6 +55,19 @@ function luminance(rgb) {
         assert.ok(!layout.fontFamily.includes("Times New Roman"), `${route}: stylesheet did not apply`);
         assert.ok(layout.font >= 16, `${route}: body text is too small`);
         assert.ok(layout.images, `${route}: profile image failed to load`);
+        const profiles = page.locator('.profile-links a');
+        assert.equal(await profiles.count(), 4, `${route}: footer profiles`);
+        for (const label of ['Email', 'ORCID', 'ResearchGate', 'GitHub']) {
+          const link = page.locator('.profile-links').getByRole('link', { name: label, exact: true });
+          assert.ok(await link.getAttribute('href'), `${label}: destination`);
+          assert.equal(await link.locator('i').getAttribute('aria-hidden'), 'true');
+          assert.ok(await link.locator('i').evaluate(async icon => {
+            const style = getComputedStyle(icon, '::before');
+            await document.fonts.load(`${style.fontWeight} 24px ${style.fontFamily}`);
+            return style.content !== 'none' && style.content !== 'normal' &&
+              document.fonts.check(`${style.fontWeight} 24px ${style.fontFamily}`);
+          }), `${label}: icon font`);
+        }
         if (route === '/cv/') {
           for (const button of await page.locator('.cv-actions .btn').all()) {
             const colors = await button.evaluate(x => ({
@@ -111,7 +129,7 @@ function luminance(rgb) {
       assert.equal(await page.locator('html').getAttribute('data-theme-preference'), mode);
       const contrast = await page.evaluate(() => {
         const text = getComputedStyle(document.body);
-        const link = getComputedStyle(document.querySelector('.home-profile-links a'));
+        const link = getComputedStyle(document.querySelector('.profile-links a'));
         return { text: text.color, background: text.backgroundColor, link: link.color };
       });
       for (const foreground of [contrast.text, contrast.link]) {
@@ -127,6 +145,13 @@ function luminance(rgb) {
     await page.waitForFunction(() => document.documentElement.getAttribute('data-theme') === 'dark');
     await page.emulateMedia({ colorScheme: 'light' });
     await page.waitForFunction(() => document.documentElement.getAttribute('data-theme') === null);
+    const firstProfile = page.locator('.profile-links a').first();
+    await firstProfile.focus();
+    await page.keyboard.press('Tab');
+    const secondProfile = page.locator('.profile-links a').nth(1);
+    assert.ok(await secondProfile.evaluate(x => document.activeElement === x &&
+      getComputedStyle(x).outlineStyle !== 'none'));
+    report.interactions.push('labelled footer icons', 'footer keyboard focus');
     await context.close();
 
     const noJS = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 320, height: 900 } });
@@ -150,7 +175,7 @@ function luminance(rgb) {
     assert.deepEqual(storageErrors, []);
     await noStorage.close();
     report.interactions.push('navigation and theme with blocked storage');
-    fs.writeFileSync(path.resolve(output, '../browser-results.json'), JSON.stringify(report, null, 2) + '\n');
+    fs.writeFileSync(reportPath, JSON.stringify(report, null, 2) + '\n');
     console.log(`BROWSER QA PASSED: ${report.routes} page/viewport checks, three themes, keyboard/menu/storage checks.`);
   } finally {
     await browser.close();

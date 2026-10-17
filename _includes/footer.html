@@ -1,5 +1,12 @@
 {% include base_path %}
 
+<nav class="profile-links" aria-label="Academic profiles and contact">
+  {% if site.author.email %}<a href="mailto:{{ site.author.email }}" aria-label="Email" title="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>{% endif %}
+  {% if site.author.orcid %}<a href="{{ site.author.orcid }}" rel="noopener noreferrer" aria-label="ORCID" title="ORCID"><i class="fa-brands fa-orcid" aria-hidden="true"></i></a>{% endif %}
+  {% if site.author.researchgate %}<a href="{{ site.author.researchgate }}" rel="noopener noreferrer" aria-label="ResearchGate" title="ResearchGate"><i class="fa-brands fa-researchgate" aria-hidden="true"></i></a>{% endif %}
+  {% if site.author.github %}<a href="https://github.com/{{ site.author.github }}" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>{% endif %}
+</nav>
+
 <div class="page__footer-copyright">
   <span>&copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}.</span>
   <span>Built with <a href="https://github.com/academicpages/academicpages.github.io" rel="nofollow noopener noreferrer">Academic Pages</a> and Jekyll.</span>

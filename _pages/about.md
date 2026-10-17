@@ -18,12 +18,6 @@ redirect_from:
 
 My research experience includes study design, data collection, manuscript preparation, and quantitative analysis. I am particularly interested in using psychological and organizational research to better understand mental health and well-being in educational and workplace settings.
 
-<p class="home-profile-links">
-  <a href="mailto:{{ site.author.email }}">Email</a>
-  <a href="{{ site.author.orcid }}" rel="noopener noreferrer">ORCID</a>
-  <a href="{{ site.author.researchgate }}" rel="noopener noreferrer">ResearchGate</a>
-  <a href="https://github.com/{{ site.author.github }}" rel="noopener noreferrer">GitHub</a>
-</p>
 </div>
 
 ## Research metrics

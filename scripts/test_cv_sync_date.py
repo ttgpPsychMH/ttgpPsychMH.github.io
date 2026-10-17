@@ -1,5 +1,6 @@
 """Exercise a future sync-state date through both public renderers, in /tmp."""
 from pathlib import Path
+import os
 import shutil
 import subprocess
 import sys
@@ -16,6 +17,15 @@ ROOT = Path(__file__).resolve().parents[1]
 
 class CVSyncDateTest(unittest.TestCase):
     def test_state_only_update_reaches_web_and_pdf(self):
+        # ruby/setup-ruby stores this path in project-local .bundle/config.
+        # Reuse only the gem path; leave other local configuration out of /tmp.
+        environment = os.environ.copy()
+        bundle_path = subprocess.check_output(
+            ["bundle", "exec", "ruby", "-rbundler", "-e", "puts Bundler.settings[:path]"],
+            cwd=ROOT, text=True,
+        ).strip()
+        if bundle_path:
+            environment["BUNDLE_PATH"] = str((ROOT / bundle_path).resolve())
         with tempfile.TemporaryDirectory(prefix="cv-date-") as temporary:
             fixture = Path(temporary) / "site"
             shutil.copytree(
@@ -38,7 +48,7 @@ class CVSyncDateTest(unittest.TestCase):
                 ["bundle", "exec", "jekyll", "build", "--trace"],
                 [sys.executable, "scripts/validate_site.py"],
             ):
-                subprocess.run(command, cwd=fixture, check=True)
+                subprocess.run(command, cwd=fixture, env=environment, check=True)
 
             soup = BeautifulSoup(
                 (fixture / "_site/cv/index.html").read_text(encoding="utf-8"),

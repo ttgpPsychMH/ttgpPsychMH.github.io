@@ -879,6 +879,42 @@ def main() -> int:
                     f"Projects page record {project['id']} is missing its title",
                 )
 
+    # Dated standalone portraits must be both publicly available and correctly
+    # linked in the sidebar and Open Graph settings. No private original or EXIF
+    # should be committed to the site.
+    portrait_state = ROOT / "_data" / "portrait_sync_state.yml"
+    if portrait_state.exists():
+        portrait = load_yaml_mapping(portrait_state, "Portrait sync", errors)
+        stamp = str(portrait.get("portrait_date", ""))
+        path = str(portrait.get("image_path", ""))
+        expected_path = f"/images/profile-{stamp}.jpg"
+        try:
+            datetime.strptime(stamp, "%Y-%m-%d")
+        except ValueError:
+            fail(errors, "Portrait sync: invalid YYYY-MM-DD date")
+        if path != expected_path:
+            fail(errors, f"Portrait sync image path mismatch: {path}")
+        if not str(portrait.get("source_sha256", "")).strip():
+            fail(errors, "Portrait sync: missing source hash")
+
+        current_config = load_yaml_mapping(ROOT / "_config.yml", "Site config", errors)
+        author = current_config.get("author") or {}
+        if not isinstance(author, dict):
+            author = {}
+        if author.get("avatar") != path:
+            fail(errors, "Portrait sync: sidebar avatar does not match portrait path")
+        if current_config.get("og_image") != path:
+            fail(errors, "Portrait sync: Open Graph image does not match portrait path")
+
+        if path.startswith("/images/") and ".." not in path:
+            image_file = SITE / path.lstrip("/")
+            if not image_file.exists():
+                fail(errors, f"Built portrait image is missing: {path}")
+            elif image_file.stat().st_size < 2000:
+                fail(errors, f"Built portrait image is unexpectedly small: {path}")
+            elif not image_file.read_bytes().startswith(b"\xff\xd8"):
+                fail(errors, f"Built portrait is not a JPEG: {path}")
+
     # DOCX synchronization must never publish original private Word documents.
     for forbidden in SITE.rglob("*.docx"):
         fail(errors, f"Private DOCX file exposed in built site: {forbidden.relative_to(SITE)}")

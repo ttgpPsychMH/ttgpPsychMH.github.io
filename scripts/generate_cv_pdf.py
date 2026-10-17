@@ -165,6 +165,18 @@ def main() -> None:
         count=1,
     )
 
+    # Shared public-safe DOCX profile: expand the Jekyll include for PDF rendering.
+    profile_include = ROOT / "_includes" / "generated_cv_profile.md"
+    include_tag = "{% include generated_cv_profile.md %}"
+    if include_tag in text:
+        if not profile_include.exists():
+            raise ValueError("Missing generated CV profile include.")
+        text = text.replace(
+            include_tag,
+            profile_include.read_text(encoding="utf-8").strip(),
+            1,
+        )
+
     # Liquid blocks on the web CV are replaced with Markdown generated from
     # the same YAML data sources before the PDF is rendered.
     text = replace_data_block(

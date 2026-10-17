@@ -1,0 +1,51 @@
+/* Original paged-CSS implementation inspired by the reviewed academic CV. */
+@font-face {
+  font-family: "CV Garamond";
+  src: url("../fonts/cv/EBGaramond.ttf") format("truetype");
+  font-weight: 400 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "CV Garamond";
+  src: url("../fonts/cv/EBGaramond-Italic.ttf") format("truetype");
+  font-weight: 400 700;
+  font-style: italic;
+}
+@page {
+  size: A4;
+  margin: 20mm 22mm 20mm;
+  @bottom-center {
+    content: counter(page);
+    font-family: "CV Garamond", "DejaVu Serif", serif;
+    font-size: 9pt;
+    color: #222;
+  }
+}
+html { color: #111; font-family: "CV Garamond", "DejaVu Serif", serif; font-size: 10.75pt; line-height: 1.17; }
+body { margin: 0; }
+.cv-header { margin-bottom: 17pt; }
+.cv-header h1 { margin: 0 0 8pt; font-size: 26pt; line-height: 1.1; font-weight: 700; }
+.cv-header-details { display: table; width: 100%; table-layout: fixed; font-size: 10pt; }
+.cv-document-label, .cv-contact { display: table-cell; vertical-align: top; }
+.cv-contact { text-align: right; width: 62%; }
+h2 { margin: 20pt 0 8pt; font-family: "DejaVu Sans", sans-serif; font-size: 9pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.45pt; line-height: 1.35; break-after: avoid; }
+h3 { margin: 12pt 0 5pt; font-family: "DejaVu Sans", sans-serif; font-size: 8.7pt; font-weight: 600; line-height: 1.35; break-after: avoid; }
+h4 { margin: 8pt 0 4pt; font-size: 10pt; break-after: avoid; }
+p { margin: 0 0 7pt; orphans: 3; widows: 3; }
+a { color: #111; text-decoration: none; overflow-wrap: anywhere; }
+strong { font-weight: 700; }
+em { font-style: italic; }
+ul, ol { margin: 3pt 0 8pt; padding-left: 16pt; }
+li { margin-bottom: 3pt; }
+.cv-dated, .cv-publication { display: table; width: 100%; table-layout: fixed; margin-bottom: 8pt; break-inside: avoid; }
+.cv-date { display: table-cell; width: 26mm; padding-right: 9pt; font-size: 10pt; vertical-align: top; }
+.cv-entry { display: table-cell; vertical-align: top; }
+.cv-entry p { margin: 0; }
+.cv-entry-title { font-weight: 600; }
+.cv-publication .cv-date { width: 13mm; }
+.cv-citation > p { margin: 0; padding-left: 10pt; text-indent: -10pt; }
+.cv-publication-meta { margin: 3pt 0 0 10pt !important; font-size: 9pt; line-height: 1.2; }
+.cv-publication-doi { margin: 2pt 0 0 10pt !important; font-size: 9pt; }
+.cv-project-title { break-after: avoid; }
+
+.cv-project { break-inside: avoid; margin-bottom: 10pt; }

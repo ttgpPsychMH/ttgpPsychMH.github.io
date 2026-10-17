@@ -70,6 +70,12 @@ General CV content such as education, appointments, training, awards, and member
 
 When `_pages/cv.md`, `_data/publications.yml`, or `_data/projects.yml` changes, GitHub Actions regenerates the public PDF automatically.
 
+## PDF typography and checks
+
+The generated public CV uses the existing Markdown/YAML/WeasyPrint pipeline with a bundled Garamond font and a separate paged stylesheet at `assets/css/cv-pdf.css`. [PDF review and page previews](docs/cv-redesign/README.md) describe the design and verification. Install the PDF/QA dependencies with `python -m pip install -r scripts/requirements-cv.txt`, then run `python scripts/generate_cv_pdf.py` and `python scripts/validate_cv_pdf.py`.
+
+The PDF workflows regenerate after changes to the public-safe profile, config, shared records, stylesheet, bundled fonts or generator. Font licensing and provenance are retained under `assets/fonts/cv/`.
+
 ## Validation
 
 Before publication, GitHub Actions:

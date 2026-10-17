@@ -2,7 +2,7 @@
 permalink: /publications/
 title: "Publications"
 description: "Peer-reviewed publications, ongoing work, conference papers, DOI links, and indexing information from the academic CV of Tran Thien Gia Phuoc."
-author_profile: true
+author_profile: false
 ---
 
 This page follows the publication list in my academic CV last synchronized on **{{ site.data.cv_sync_state.cv_date | default: "2026-10-17" | date: "%-d %B %Y" }}**. Publication counts and indexing summaries below are generated automatically from the metadata attached to each entry.
@@ -18,11 +18,11 @@ This page follows the publication list in my academic CV last synchronized on **
 {% assign esci = published | where: "esci", true %}
 
 <div class="publication-stats" aria-label="Publication statistics">
-  <div class="publication-stat publication-stat--green">
+  <div class="publication-stat">
     <span class="publication-stat__value">{{ original_research | size }}</span>
     <span class="publication-stat__label">Original Research</span>
   </div>
-  <div class="publication-stat publication-stat--purple">
+  <div class="publication-stat">
     <span class="publication-stat__value">{{ conference_papers | size }}</span>
     <span class="publication-stat__label">Conference Papers</span>
   </div>
@@ -42,17 +42,17 @@ This page follows the publication list in my academic CV last synchronized on **
     <span class="publication-stat__value">{{ q4 | size }}</span>
     <span class="publication-stat__label">SCOPUS Q4</span>
   </div>
-  <div class="publication-stat publication-stat--index">
+  <div class="publication-stat">
     <span class="publication-stat__value">{{ ssci | size }}</span>
     <span class="publication-stat__label">SSCI</span>
   </div>
-  <div class="publication-stat publication-stat--index">
+  <div class="publication-stat">
     <span class="publication-stat__value">{{ esci | size }}</span>
     <span class="publication-stat__label">ESCI</span>
   </div>
 </div>
 
-<p class="publication-stats-note"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Counts include published outputs only. Ongoing work is displayed below but excluded from the statistics. “Original Research” excludes entries classified as reviews or conference papers. Q1–Q4 counts refer specifically to Scopus quartiles recorded in the publication metadata.</p>
+<p class="publication-stats-note">Counts include published outputs only. Ongoing work is displayed below but excluded from the statistics. “Original Research” excludes entries classified as reviews or conference papers. Q1–Q4 counts refer specifically to Scopus quartiles recorded in the publication metadata.</p>
 
 {% assign ongoing = site.data.publications | where: "status", "ongoing" %}
 {% if ongoing.size > 0 %}
@@ -84,7 +84,7 @@ This page follows the publication list in my academic CV last synchronized on **
     {% if pub.ssci %}<span class="publication-badge publication-badge--index">SSCI</span>{% endif %}
     {% if pub.esci %}<span class="publication-badge publication-badge--index">ESCI</span>{% endif %}
     {% if pub.scopus_quartile %}<span class="publication-badge publication-badge--scopus">SCOPUS {{ pub.scopus_quartile }}{% if pub.scopus_quartile_year %} · {{ pub.scopus_quartile_year }}{% endif %}</span>{% endif %}
-    {% if pub.doi %}<a class="publication-badge publication-badge--doi" href="{{ pub.doi }}" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> DOI</a>{% endif %}
+    {% if pub.doi %}<a class="publication-badge publication-badge--doi" href="{{ pub.doi }}" rel="noopener noreferrer">DOI</a>{% endif %}
   </div>
   {% endif %}
 </article>

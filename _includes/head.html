@@ -15,7 +15,8 @@
 <script>
   (function () {
     var allowed = ["system", "light", "dark"];
-    var saved = localStorage.getItem("theme") || "system";
+    var saved = "system";
+    try { saved = localStorage.getItem("theme") || "system"; } catch (error) { /* Storage may be disabled. */ }
     var preference = allowed.indexOf(saved) > -1 ? saved : "system";
     var systemDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
     var useDark = preference === "dark" || (preference === "system" && systemDark);

@@ -1,0 +1,26 @@
+{
+  "routes": 30,
+  "widths": [
+    1440,
+    1024,
+    768,
+    390,
+    320
+  ],
+  "themes": [
+    "light",
+    "dark",
+    "system"
+  ],
+  "interactions": [
+    "skip link",
+    "keyboard menu",
+    "Escape returns focus",
+    "outside click",
+    "menu link",
+    "navigation without JavaScript",
+    "system theme changes",
+    "theme persistence",
+    "navigation and theme with blocked storage"
+  ]
+}

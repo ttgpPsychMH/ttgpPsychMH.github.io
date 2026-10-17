@@ -3,14 +3,15 @@ layout: archive
 title: "Curriculum Vitae"
 description: "Academic curriculum vitae of Tran Thien Gia Phuoc, including education, research experience, publications, academic service, awards, training, and research projects."
 permalink: /cv/
-author_profile: true
+author_profile: false
 redirect_from:
   - /resume
 ---
 
 <div class="cv-actions">
-  <a class="btn cv-download" href="/files/Tran_Thien_Gia_Phuoc_Academic_CV.pdf"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Download Academic CV (PDF)</a>
-  <a class="btn cv-open" href="/files/Tran_Thien_Gia_Phuoc_Academic_CV.pdf" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-up-right-from-square" aria-hidden="true"></i> Open PDF in New Tab</a>
+  <a class="btn cv-download" href="/files/Tran_Thien_Gia_Phuoc_Academic_CV.pdf">Download Academic CV (PDF)</a>
+  <a class="btn" href="#web-cv">Read Web CV</a>
+  <a class="btn cv-open" href="/files/Tran_Thien_Gia_Phuoc_Academic_CV.pdf" target="_blank" rel="noopener noreferrer">Open PDF in New Tab</a>
 </div>
 
 ## PDF Preview

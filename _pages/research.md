@@ -2,10 +2,12 @@
 permalink: /research/
 title: "Research"
 description: "Research interests, methods, laboratory experience, and academic service of Tran Thien Gia Phuoc across occupational mental health, psychological assessment, and cognitive-behavioral research."
-author_profile: true
+author_profile: false
 ---
 
 My research focuses on occupational mental health and psychological assessment within the field of industrial psychology. I am particularly interested in work engagement, burnout, psychological distress, and overall mental health among employees. In addition, I have research interests in broader mental health issues among young adults and other populations. I am also exploring topics in cognitive psychology to strengthen my theoretical and methodological foundations.
+
+<nav class="section-nav" aria-label="Research sections"><a href="#research-areas">Research areas</a><a href="#research-expertise-and-methods">Methods</a><a href="#research-experience">Experience</a><a href="#academic-service">Service</a></nav>
 
 ## Research areas
 

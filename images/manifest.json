@@ -8,8 +8,8 @@ permalink: /images/manifest.json
   "description": {{ site.description | jsonify }},
   "start_url": "{{ site.baseurl | default: '/' }}",
   "lang": {{ site.locale | default: "en" | jsonify }},
-  "theme_color": "#9be5dc",
-  "background_color": "#f8fcfb",
+  "theme_color": {{ site.theme_color | jsonify }},
+  "background_color": {{ site.theme_color | jsonify }},
   "display": "browser",
   "icons": [
     {

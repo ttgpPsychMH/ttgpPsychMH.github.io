@@ -586,7 +586,12 @@ def main() -> int:
     else:
         try:
             data = json.loads(manifest.read_text(encoding="utf-8"))
-            if data.get("theme_color") != "#9be5dc":
+            expected_color = load_yaml_mapping(
+                ROOT / "_config.yml", "Site config", errors
+            ).get("theme_color")
+            if not isinstance(expected_color, str) or not expected_color.startswith("#") or len(expected_color) != 7:
+                fail(errors, "Site config must declare a six-digit theme_color")
+            if data.get("theme_color") != expected_color:
                 fail(errors, "Manifest theme_color does not match the site palette")
             if not data.get("name"):
                 fail(errors, "Manifest missing site name")

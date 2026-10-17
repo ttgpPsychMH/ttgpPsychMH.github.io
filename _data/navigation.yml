@@ -1,8 +1,5 @@
 # Main navigation for the academic website.
 main:
-  - title: "About"
-    url: /
-
   - title: "Research"
     url: /research/
 

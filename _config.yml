@@ -8,6 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-US"
+theme_color              : "#fdfdfd"
 site_theme               : "default" # base light/dark theme; custom site identity is defined in _sass/custom.scss
 title                    : "Tran Thien Gia Phuoc"
 title_separator          : "-"
@@ -178,6 +179,8 @@ include:
   - _pages
   - files
 exclude:
+  - AGENTS.md
+  - docs
   - "*.sublime-project"
   - "*.sublime-workspace"
   - .asset-cache

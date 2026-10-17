@@ -6,6 +6,16 @@ View the website at **https://ttgppsychmh.github.io**.
 
 The site presents my research interests, publications, research projects, academic experience, curriculum vitae, and scholarly profiles. It is built with Jekyll and GitHub Pages, using Academic Pages as the underlying framework with a custom visual and content system.
 
+## Redesign review
+
+The `design/academic-editorial-homepage` branch contains the Phase 1 homepage prototype and shared design foundation inspired by Geoff Boeing's current academic site. Production merging requires the owner's visual approval. Page-specific refinements and the PDF redesign are later phases.
+
+- [Reference audit, architecture inventory, and design specification](docs/redesign/design-audit.md)
+- [Preview images, test commands, and verification report](docs/redesign/verification.md)
+- [Engineering and data-preservation rules](AGENTS.md)
+
+Academic data and both private import pipelines remain authoritative. The site title links to the homepage; the menu retains Research, Publications, Projects, CV, and Contact. A theme button cycles System, Light, and Dark.
+
 ## Structure
 
 - `_data/publications.yml` — single source of truth for publications, selected publications, publication statistics, and CV publication records
@@ -13,7 +23,7 @@ The site presents my research interests, publications, research projects, academ
 - `_data/research_metrics.yml` — research-metrics snapshot for Google Scholar, Scopus, and Web of Science
 - `_pages/` — website page structure and non-tabular academic content
 - `_config.yml` — site-wide identity, metadata, and profile configuration
-- `_sass/custom.scss` — custom pastel green–purple visual system
+- `_sass/custom.scss` — academic editorial typography, layout, and neutral light/dark themes
 - `assets/js/custom-ui.js` — theme switching and interface enhancements
 - `files/` — public downloadable files, including the generated academic CV
 - `scripts/generate_cv_pdf.py` — generates the public CV PDF from the web-CV framework plus the shared publication/project data

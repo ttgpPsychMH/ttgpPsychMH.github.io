@@ -912,7 +912,7 @@ def main() -> int:
                 fail(errors, f"Built portrait image is missing: {path}")
             elif image_file.stat().st_size < 2000:
                 fail(errors, f"Built portrait image is unexpectedly small: {path}")
-            elif not image_file.read_bytes().startswith(b"\\xff\\xd8"):
+            elif not image_file.read_bytes().startswith(b"\xff\xd8"):
                 fail(errors, f"Built portrait is not a JPEG: {path}")
 
     # DOCX synchronization must never publish original private Word documents.

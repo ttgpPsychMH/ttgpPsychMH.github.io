@@ -2,6 +2,8 @@ name: Generate public CV PDF
 
 on:
   push:
+    branches:
+      - master
     paths:
       - '_pages/cv.md'
       - '_data/publications.yml'

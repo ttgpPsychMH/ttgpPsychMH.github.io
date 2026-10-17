@@ -7,15 +7,15 @@
 # selected: true marks publications shown on the homepage; selected_order controls their order
 
 - id: reaction-time-emotional-stroop
-  year:
-  status: ongoing
+  year: 2026
+  status: published
   type: original_research
   scopus_quartile: Q3
-  scopus_quartile_year: 2024
+  scopus_quartile_year: 2025
   ssci: false
-  esci: false
+  esci: true
   citation: >-
-    Tran-Chi, V.-L., & <strong>Tran-Thien, G.-P.&#42;</strong> (n.d.). Reaction Time Differences in an Emotional Stroop Task among Secondary School Students. *International Journal of Cognitive Research in Science, Engineering and Education, X*(X), XX–XX.
+    Tran-Chi, V.-L., & <strong>Tran-Thien, G.-P.&#42;</strong> (2026). Reaction Time Differences in an Emotional Stroop Task among Secondary School Students. *International Journal of Cognitive Research in Science, Engineering and Education, 14*(2), 291–303.
 
 - id: work-motivation-organizational-justice-stress
   selected: true
@@ -23,8 +23,8 @@
   year: 2025
   status: published
   type: original_research
-  scopus_quartile: Q3
-  scopus_quartile_year: 2024
+  scopus_quartile: Q2
+  scopus_quartile_year: 2025
   ssci: false
   esci: false
   doi: https://doi.org/10.46281/bjmsr.v11i1.2751
@@ -50,7 +50,7 @@
   status: published
   type: original_research
   scopus_quartile: Q3
-  scopus_quartile_year: 2024
+  scopus_quartile_year: 2025
   ssci: false
   esci: true
   doi: https://doi.org/10.1007/s44192-025-00171-z
@@ -62,7 +62,7 @@
   status: published
   type: original_research
   scopus_quartile: Q3
-  scopus_quartile_year: 2024
+  scopus_quartile_year: 2025
   ssci: false
   esci: false
   doi: https://doi.org/10.55493/5003.v15i1.5332
@@ -75,8 +75,8 @@
   year: 2025
   status: published
   type: review
-  scopus_quartile: Q4
-  scopus_quartile_year: 2024
+  scopus_quartile: Q3
+  scopus_quartile_year: 2025
   ssci: false
   esci: false
   doi: https://doi.org/10.31893/multirev.2025030
@@ -272,6 +272,28 @@
   esci: false
   citation: >-
     Nguyen, T. H. P., Nguyen, D. B. T., Nguyen, D. K. N., Nguyen, T. H. V., Tran, T. M. X., & <strong>Tran, T. G. P.</strong> (2025). Perception of Occupational Happiness Among High School Teachers in Vietnam. In *National Scientific Conference on Developing Happy Schools: From International Experience to Practice in Vietnam* (pp. 272–281). Ho Chi Minh City University of Education, Vietnam. ISBN: 978-632-602-349-7.
+
+- id: guardians-inclusion-autism-vietnam
+  year: 2025
+  status: published
+  type: conference_paper
+  scopus_quartile:
+  scopus_quartile_year:
+  ssci: false
+  esci: false
+  citation: >-
+    Ngo, T. D., & <strong>Tran, T. G. P.</strong> (2025). The Role of Guardians in Supporting the Inclusion of Children with Autism Spectrum Disorder in Vietnam: A Literature Review. In *Advancing Multidisciplinary Collaboration in the Assessment and Intervention for Children with Neurodevelopmental Disorders* (pp. 595–604). University of Social Sciences and Humanities (USSH-VNUHCM) - HCMC National University, Vietnam. ISBN: 978-632-608-433-7.
+
+- id: ai-ml-early-screening-neurodevelopmental-disorders
+  year: 2025
+  status: published
+  type: conference_paper
+  scopus_quartile:
+  scopus_quartile_year:
+  ssci: false
+  esci: false
+  citation: >-
+    Hua, D. T., & <strong>Tran, T. G. P.&#42;</strong> (2025). Artificial Intelligence and Machine Learning in Early Screening and Detection of Neurodevelopmental Disorders in Children. In *Advancing Multidisciplinary Collaboration in the Assessment and Intervention for Children with Neurodevelopmental Disorders* (pp. 480–491). University of Social Sciences and Humanities (USSH-VNUHCM) - HCMC National University, Vietnam. ISBN: 978-632-608-433-7.
 
 - id: gratitude-stress-hospital-social-workers
   year: 2025

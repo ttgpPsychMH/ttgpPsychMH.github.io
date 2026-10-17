@@ -5,7 +5,7 @@ description: "Peer-reviewed publications, ongoing work, conference papers, DOI l
 author_profile: true
 ---
 
-This page follows the publication list in my academic CV dated **2 March 2026**. Publication counts and indexing summaries below are generated automatically from the metadata attached to each entry.
+This page follows the publication list in my academic CV last synchronized on **{{ site.data.cv_sync_state.cv_date | default: "2026-10-17" | date: "%-d %B %Y" }}**. Publication counts and indexing summaries below are generated automatically from the metadata attached to each entry.
 
 {% assign published = site.data.publications | where: "status", "published" %}
 {% assign original_research = published | where: "type", "original_research" %}

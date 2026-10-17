@@ -66,6 +66,10 @@ function luminance(rgb) {
           await page.screenshot({ path: path.join(output, `homepage-${width}.png`), fullPage: true });
           if ([1440, 390].includes(width)) await page.screenshot({ path: path.join(output, `homepage-${width}-viewport.png`) });
         }
+        if (route !== '/' && [1440, 390].includes(width)) {
+          const pageName = route.replaceAll('/', '');
+          await page.screenshot({ path: path.join(output, `${pageName}-${width}.png`) });
+        }
         report.routes++;
       }
       assert.deepEqual(errors, [], `Browser errors at ${width}`);
@@ -85,6 +89,7 @@ function luminance(rgb) {
     assert.equal(await toggle.getAttribute('aria-expanded'), 'true');
     assert.ok(await page.locator('.site-nav__link').first().isVisible());
     assert.ok(await page.locator('.site-nav__link').first().evaluate(x => x === document.activeElement));
+    await page.evaluate(() => window.scrollTo(0, 0));
     await page.screenshot({ path: path.join(output, 'mobile-menu.png') });
     await page.keyboard.press('Tab');
     await page.keyboard.press('Escape');

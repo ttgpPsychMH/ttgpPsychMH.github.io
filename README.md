@@ -8,7 +8,7 @@ The site presents my research interests, publications, research projects, academ
 
 ## Redesign review
 
-The `design/academic-editorial-homepage` branch contains the Phase 1 homepage prototype and shared design foundation inspired by Geoff Boeing's current academic site. Production merging requires the owner's visual approval. Page-specific refinements and the PDF redesign are later phases.
+The `design/academic-editorial-homepage` branch contains the approved homepage direction and the remaining page redesign inspired by Geoff Boeing's current academic site. Publications retain their shared data and academic citations; project metadata uses a simple definition list; all core pages use a readable single column. Production merging remains subject to review. PDF typography is reviewed in a separate PR.
 
 - [Reference audit, architecture inventory, and design specification](docs/redesign/design-audit.md)
 - [Preview images, test commands, and verification report](docs/redesign/verification.md)

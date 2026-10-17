@@ -2,7 +2,7 @@
 permalink: /contact/
 title: "Contact"
 description: "Academic contact information and verified scholarly profiles for Tran Thien Gia Phuoc, including ORCID, Google Scholar, ResearchGate, Scopus, Web of Science, and GitHub."
-author_profile: true
+author_profile: false
 ---
 
 I welcome academic correspondence concerning research, collaboration, scholarly exchange, peer review, and related professional activities.

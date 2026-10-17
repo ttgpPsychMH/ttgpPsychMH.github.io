@@ -73,3 +73,12 @@ The live reference website, TeX source and reference PDF were accessible after t
 - PASS: unchanged academic YAML, sync-state records, generated profile, PDF generator, tracked public files and existing workflows compared with origin/master. The private checkout remains clean.
 - Visual inspection performed on desktop/mobile homepage, mobile menu and dark homepage screenshots, plus desktop Research and mobile CV pages. Portraits and existing PDF preview load.
 - Remote status: draft PR [#21](https://github.com/ttgpPsychMH/ttgpPsychMH.github.io/pull/21) is open. Consult its checks for current GitHub Actions results. Production has not been merged or deployed.
+
+
+## Phase 2 — approved direction extended to all pages
+
+After the owner approved Phase 1, Research, Publications, Projects, CV and Contact were changed to the same readable single-column layout. Bibliography entries have hanging indents and understated indexing/DOI metadata. Publication statistics remain data-driven, displayed without cards. Projects retain every metadata field in responsive definition lists; their displayed sync date now comes from the actual sync state. Research has keyboard-accessible section links, and the CV has a link directly to its web version. No academic records, generated profile, private workflow or PDF generator was changed in this website phase.
+
+[Research desktop](previews/research-1440.png) · [Publications desktop](previews/publications-1440.png) · [Projects mobile](previews/projects-390.png) · [CV desktop](previews/cv-1440.png) · [Contact mobile](previews/contact-390.png).
+
+Local checks repeated after these changes: all 30 page/viewport browser checks, theme/keyboard/storage checks, 8 portrait regressions, and all 3 PDF/Jekyll/import scenarios passed. Website approval does not itself approve the separately redesigned PDF.

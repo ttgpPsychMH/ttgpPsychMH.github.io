@@ -879,6 +879,20 @@ def main() -> int:
                     f"Projects page record {project['id']} is missing its title",
                 )
 
+    # DOCX synchronization must never publish original private Word documents.
+    for forbidden in SITE.rglob("*.docx"):
+        fail(errors, f"Private DOCX file exposed in built site: {forbidden.relative_to(SITE)}")
+
+    profile_source = ROOT / "_includes" / "generated_cv_profile.md"
+    if not profile_source.exists():
+        fail(errors, "Missing generated public-safe CV profile.")
+    else:
+        profile_text = profile_source.read_text(encoding="utf-8").lower()
+        for sensitive in ("date of birth:", "day of birth:", "place of birth:",
+                          "residential address:", "passport number:", "phone:"):
+            if sensitive in profile_text:
+                fail(errors, f"Generated CV profile may expose sensitive field: {sensitive}")
+
     cv_file = SITE / "cv" / "index.html"
     if cv_file.exists():
         cv_soup = BeautifulSoup(

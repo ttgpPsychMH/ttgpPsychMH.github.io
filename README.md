@@ -62,6 +62,10 @@ The current `update_mode: manual` field is reserved so a future GitHub Actions w
 
 ### CV
 
+The full Word source is managed separately in the **private** `ttgpPsychMH/academic-cv-source` repository. Upload a DOCX named `Tran Thien Gia Phuoc_AcademicCV_YYYY-MM-DD.docx` there. GitHub Actions extracts safe CV sections and proposes an update to `_includes/generated_cv_profile.md`. It never publishes the original DOCX or private contact details. Changes with ambiguous/new research publications remain in a Pull Request for review.
+
+For routine changes, the website's PDF generator expands this include automatically before building `files/Tran_Thien_Gia_Phuoc_Academic_CV.pdf`.
+
 General CV content such as education, appointments, training, awards, and memberships remains in `_pages/cv.md`. Publications and projects are generated from their shared YAML sources.
 
 When `_pages/cv.md`, `_data/publications.yml`, or `_data/projects.yml` changes, GitHub Actions regenerates the public PDF automatically.

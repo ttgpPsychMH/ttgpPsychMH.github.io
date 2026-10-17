@@ -62,9 +62,9 @@ git diff origin/master --exit-code -- \
 
 This review does not approve a production merge. The PDF architecture comparison is in the design audit; the existing generator and tracked PDF are intentionally unchanged in Phase 1. No new PDF page previews are claimed.
 
-GitHub Actions and Pages deployment require separate remote evidence. Local checks do not establish either outcome. GitHub API access currently returns Forbidden in this environment; PR creation and Actions verification must be reported separately from preparing/pushing the feature branch. The required API hostname has been saved to the environment's network draft, alongside the reference website and CV PDF host. Saving a draft does not establish that those runtime destinations are reachable.
+GitHub Actions and Pages deployment require separate remote evidence. Local checks do not establish either outcome. GitHub API initially returned Forbidden; access subsequently succeeded. Draft PR [#21](https://github.com/ttgpPsychMH/ttgpPsychMH.github.io/pull/21) is open, and the existing Validate Jekyll site workflow was triggered. Its result must be checked independently; publication and deployment remain subject to owner approval.
 
-The live reference website and TeX source were inspected. The reference PDF host returned HTTP 403, so visual inspection of that PDF remains outstanding for Phase 3. Keep its source and the website source licenses separate; both were verified as MIT.
+The live reference website, TeX source and reference PDF were accessible after the network update. Reference PDF inspection is recorded in the audit. Keep the CV source and website source licenses separate; both were verified as MIT.
 
 ## Current local results
 
@@ -72,4 +72,4 @@ The live reference website and TeX source were inspected. The reference PDF host
 - PASS: browser checks for all six routes at all five widths; three theme modes and persistence; keyboard skip link, navigation focus and Escape, outside click, navigation without JavaScript, and storage denial. The final run also checks CV action-link contrast.
 - PASS: unchanged academic YAML, sync-state records, generated profile, PDF generator, tracked public files and existing workflows compared with origin/master. The private checkout remains clean.
 - Visual inspection performed on desktop/mobile homepage, mobile menu and dark homepage screenshots, plus desktop Research and mobile CV pages. Portraits and existing PDF preview load.
-- Remote status: production has not been merged or deployed. GitHub Actions outcomes are unverified until a PR can be opened and its workflow completes.
+- Remote status: draft PR [#21](https://github.com/ttgpPsychMH/ttgpPsychMH.github.io/pull/21) is open. Consult its checks for current GitHub Actions results. Production has not been merged or deployed.

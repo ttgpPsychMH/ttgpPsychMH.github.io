@@ -1,9 +1,12 @@
 from pathlib import Path
+from html import escape
 import re
 
 import markdown
 import yaml
-from weasyprint import HTML
+from bs4 import BeautifulSoup
+from weasyprint import CSS, HTML
+from weasyprint.text.fonts import FontConfiguration
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -11,6 +14,7 @@ SOURCE = ROOT / "_pages" / "cv.md"
 PUBLICATIONS_DATA = ROOT / "_data" / "publications.yml"
 PROJECTS_DATA = ROOT / "_data" / "projects.yml"
 OUTPUT = ROOT / "files" / "Tran_Thien_Gia_Phuoc_Academic_CV.pdf"
+STYLESHEET = ROOT / "assets" / "css" / "cv-pdf.css"
 
 
 def strip_front_matter(text: str) -> str:
@@ -44,51 +48,39 @@ def publication_meta(pub: dict, ongoing: bool = False) -> str:
     return " · ".join(parts)
 
 
+def render_publication(pub: dict, ongoing: bool = False) -> str:
+    """Format one shared citation without changing author order or markers."""
+    citation = markdown.markdown(str(pub.get("citation", "")).strip())
+    year = escape(str(pub.get("year", "")))
+    identifier = escape(str(pub["id"]), quote=True)
+    details = []
+    if pub.get("doi"):
+        doi = escape(str(pub["doi"]).strip(), quote=True)
+        details.append(f'<p class="cv-publication-doi"><a href="{doi}">{doi}</a></p>')
+    metadata = publication_meta(pub, ongoing=ongoing)
+    if metadata:
+        details.append(f'<p class="cv-publication-meta">{escape(metadata)}</p>')
+    return (
+        f'<div class="cv-publication" data-publication-id="{identifier}">'
+        f'<div class="cv-date">{year}</div><div class="cv-entry">'
+        f'<div class="cv-citation">{citation}</div>{"".join(details)}</div></div>'
+    )
+
+
 def render_publications_markdown(publications: list[dict]) -> str:
-    lines: list[str] = []
-
-    ongoing = [p for p in publications if p.get("status") == "ongoing"]
-    if ongoing:
-        lines.extend(["### Ongoing Work", ""])
-        for pub in ongoing:
-            lines.extend([str(pub.get("citation", "")).strip(), ""])
-            if pub.get("doi"):
-                doi = str(pub["doi"]).strip()
-                lines.extend([f"[{doi}]({doi})", ""])
-            meta = publication_meta(pub, ongoing=True)
-            if meta:
-                lines.extend([f"*{meta}*", ""])
-
-    published = [p for p in publications if p.get("status") == "published"]
-    journal_articles = [
-        p for p in published if p.get("type") != "conference_paper"
+    groups = [
+        ("Ongoing Work", [p for p in publications if p.get("status") == "ongoing"], True),
+        ("Peer-Reviewed Journal Articles", [p for p in publications
+          if p.get("status") == "published" and p.get("type") != "conference_paper"], False),
+        ("Conference Papers", [p for p in publications
+          if p.get("status") == "published" and p.get("type") == "conference_paper"], False),
     ]
-
-    if journal_articles:
-        lines.extend(["### Peer-Reviewed Journal Articles", ""])
-        last_year = None
-        for pub in journal_articles:
-            year = pub.get("year")
-            if year != last_year:
-                lines.extend([f"#### {year}", ""])
-                last_year = year
-
-            lines.extend([str(pub.get("citation", "")).strip(), ""])
-            if pub.get("doi"):
-                doi = str(pub["doi"]).strip()
-                lines.extend([f"[{doi}]({doi})", ""])
-            meta = publication_meta(pub)
-            if meta:
-                lines.extend([f"*{meta}*", ""])
-
-    conference_papers = [
-        p for p in published if p.get("type") == "conference_paper"
-    ]
-    if conference_papers:
-        lines.extend(["### Conference Papers", ""])
-        for pub in conference_papers:
-            lines.extend([str(pub.get("citation", "")).strip(), ""])
-
+    lines = []
+    for heading, records, ongoing in groups:
+        if records:
+            lines.extend([f"### {heading}", ""])
+            for record in records:
+                lines.extend([render_publication(record, ongoing=ongoing), ""])
     return "\n".join(lines).strip()
 
 
@@ -98,6 +90,8 @@ def render_projects_markdown(projects: list[dict]) -> str:
     for project in projects:
         lines.extend(
             [
+                f'<section class="cv-project" data-project-id="{escape(str(project["id"]), quote=True)}" markdown="1">',
+                "",
                 f"### {project['title']}",
                 "",
                 f"**Period:** {project['period']} [{project['status']}]  ",
@@ -113,6 +107,7 @@ def render_projects_markdown(projects: list[dict]) -> str:
         )
         if project.get("details"):
             lines.extend([str(project["details"]).strip(), ""])
+        lines.extend(["</section>", ""])
 
     return "\n".join(lines).strip()
 
@@ -135,7 +130,8 @@ def replace_data_block(text: str, name: str, replacement: str) -> str:
     return updated
 
 
-def main() -> None:
+def build_markdown() -> str:
+    """Expand the existing public-safe include and shared records."""
     text = SOURCE.read_text(encoding="utf-8")
     text = strip_front_matter(text)
 
@@ -190,77 +186,67 @@ def main() -> None:
         render_projects_markdown(projects),
     )
 
-    body = markdown.markdown(text, extensions=["extra", "sane_lists"])
+    return text
 
-    html = f"""<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<style>
-  @page {{
-    size: A4;
-    margin: 18mm 18mm 20mm 18mm;
-    @bottom-center {{
-      content: "Tran Thien Gia Phuoc · Academic CV · " counter(page);
-      font-size: 8pt;
-      color: #777;
-    }}
-  }}
-  body {{
-    font-family: "DejaVu Sans", Arial, sans-serif;
-    color: #222;
-    font-size: 10.5pt;
-    line-height: 1.46;
-  }}
-  h1 {{
-    font-size: 22pt;
-    margin: 0 0 12pt;
-    color: #347f76;
-  }}
-  h2 {{
-    font-size: 14pt;
-    margin: 18pt 0 7pt;
-    padding-bottom: 3pt;
-    border-bottom: 0.7pt solid #777;
-    color: #725c86;
-  }}
-  h3 {{
-    font-size: 11.5pt;
-    margin: 12pt 0 4pt;
-  }}
-  h4 {{
-    font-size: 10.5pt;
-    margin: 9pt 0 3pt;
-    color: #555;
-  }}
-  p {{
-    margin: 0 0 7pt;
-  }}
-  ul {{
-    margin-top: 3pt;
-    margin-bottom: 8pt;
-    padding-left: 18pt;
-  }}
-  li {{
-    margin-bottom: 3pt;
-  }}
-  a {{
-    color: #347f76;
-    text-decoration: none;
-  }}
-  strong {{
-    font-weight: 700;
-  }}
-</style>
-</head>
-<body>
-<h1>Tran Thien Gia Phuoc</h1>
-{body}
-</body>
-</html>"""
 
+def render_document(text: str) -> str:
+    body = BeautifulSoup(markdown.markdown(text, extensions=["extra", "sane_lists"]), "html.parser")
+    # Imported paragraphs retain all their original text and inline markup.
+    # Only paragraphs with an explicit leading date are laid out in two columns.
+    date_pattern = re.compile(
+        r"^(?:\d{4}(?:\s|$)|(?:January|February|March|April|May|June|July|August|September|October|November|December)\b)"
+    )
+    for paragraph in list(body.find_all("p")):
+        first_break = paragraph.find("br", recursive=False)
+        if not first_break or paragraph.find_parent(class_="cv-publication"):
+            continue
+        first_line = "".join(str(node.get_text() if hasattr(node, "get_text") else node)
+                             for node in list(paragraph.contents)[:paragraph.contents.index(first_break)]).strip()
+        if not date_pattern.match(first_line):
+            continue
+        wrapper = body.new_tag("div", attrs={"class": "cv-dated"})
+        date_cell = body.new_tag("div", attrs={"class": "cv-date"})
+        for node in list(paragraph.contents):
+            if node is first_break:
+                break
+            date_cell.append(node.extract())
+        first_break.decompose()
+        title = body.new_tag("span", attrs={"class": "cv-entry-title"})
+        for node in list(paragraph.contents):
+            if getattr(node, "name", None) == "br":
+                break
+            title.append(node.extract())
+        paragraph.insert(0, title)
+        entry = body.new_tag("div", attrs={"class": "cv-entry"})
+        paragraph.replace_with(wrapper)
+        entry.append(paragraph)
+        wrapper.extend([date_cell, entry])
+
+    config = yaml.safe_load((ROOT / "_config.yml").read_text(encoding="utf-8"))
+    name = escape(str(config["name"]))
+    email = escape(str(config["author"]["email"]), quote=True)
+    website = escape(str(config["url"]), quote=True)
+    return f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>{name}: Academic Curriculum Vitae</title>
+<meta name="author" content="{name}">
+</head><body>
+<header class="cv-header"><h1>{name}</h1>
+<div class="cv-header-details"><div class="cv-document-label">Academic Curriculum Vitae</div>
+<div class="cv-contact"><a href="mailto:{email}">{email}</a><br>
+<a href="{website}">{website.removeprefix('https://')}</a></div></div></header>
+<main>{body}</main>
+</body></html>"""
+
+
+def main() -> None:
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    HTML(string=html, base_url=str(ROOT)).write_pdf(str(OUTPUT))
+    document = render_document(build_markdown())
+    fonts = FontConfiguration()
+    HTML(string=document, base_url=str(ROOT)).write_pdf(
+        str(OUTPUT), stylesheets=[CSS(filename=str(STYLESHEET), font_config=fonts)],
+        font_config=fonts
+    )
 
 
 if __name__ == "__main__":

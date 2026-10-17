@@ -9,6 +9,12 @@ on:
       - '_data/publications.yml'
       - '_data/projects.yml'
       - 'scripts/generate_cv_pdf.py'
+      - 'scripts/validate_cv_pdf.py'
+      - 'scripts/requirements-cv.txt'
+      - '_includes/generated_cv_profile.md'
+      - '_config.yml'
+      - 'assets/css/cv-pdf.css'
+      - 'assets/fonts/cv/**'
       - '.github/workflows/generate-cv-pdf.yml'
 
 permissions:
@@ -30,10 +36,13 @@ jobs:
           python-version: '3.12'
 
       - name: Install PDF dependencies
-        run: pip install markdown pyyaml weasyprint
+        run: pip install -r scripts/requirements-cv.txt
 
       - name: Generate PDF from web CV
         run: python scripts/generate_cv_pdf.py
+
+      - name: Verify generated PDF content, fonts, links, and pages
+        run: python scripts/validate_cv_pdf.py
 
       - name: Commit generated PDF
         run: |

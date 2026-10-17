@@ -23,7 +23,7 @@ repository               : "ttgpPsychMH/ttgpPsychMH.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "https://avatars.githubusercontent.com/u/128220598?v=4"
+  avatar           : "/images/profile.jpg"
   name             : "Tran Thien Gia Phuoc"
   pronouns         : # example: "she/her"  
   bio              : "Psychology researcher working across mental health, occupational psychology, and quantitative research"
@@ -138,7 +138,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : "https://avatars.githubusercontent.com/u/128220598?v=4" # provisional social preview image until a dedicated portrait/card is supplied
+og_image                 : "/images/profile.jpg"
 og_description           : "Personal academic website and research portfolio of Tran Thien Gia Phuoc"
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles

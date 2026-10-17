@@ -3,22 +3,37 @@ name: Validate Jekyll site
 on:
   push:
     branches:
+      - master
       - stage-1-foundation
   pull_request:
     branches:
       - master
+  # GITHUB_TOKEN regeneration pushes do not trigger ordinary push workflows.
+  workflow_run:
+    workflows: ["Generate public CV PDF"]
+    types: [completed]
+    branches: [master]
   workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  group: validate-site-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
+        with:
+          # The completed generator's head_sha predates its PDF commit.
+          # Check the final master tree; preserve the event SHA for PR/push runs.
+          ref: ${{ github.event_name == 'workflow_run' && 'master' || github.sha }}
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -41,6 +56,9 @@ jobs:
 
       - name: Install QA and CV-generation dependencies
         run: pip install -r scripts/requirements-cv.txt
+
+      - name: Test automatic CV date propagation
+        run: python scripts/test_cv_sync_date.py
 
       - name: Generate CV PDF from structured data
         run: python scripts/generate_cv_pdf.py

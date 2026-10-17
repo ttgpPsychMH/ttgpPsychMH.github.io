@@ -1,0 +1,208 @@
+{
+  "checked_at_utc": "2026-10-17T09:27:52+00:00",
+  "production_commit": "250dc54483eebd27a5d1f19d76500727fdd0c487",
+  "pages_workflow": {
+    "url": "https://github.com/ttgpPsychMH/ttgpPsychMH.github.io/actions/runs/39018583736",
+    "conclusion": "success",
+    "completed_at_utc": "2026-10-17T08:46:50Z"
+  },
+  "http": {
+    "origin": "https://ttgppsychmh.github.io",
+    "checks": [
+      {
+        "url": "https://ttgppsychmh.github.io/",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "title": "Tran Thien Gia Phuoc"
+      },
+      {
+        "url": "https://ttgppsychmh.github.io/research/",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "title": "Research - Tran Thien Gia Phuoc"
+      },
+      {
+        "url": "https://ttgppsychmh.github.io/publications/",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "title": "Publications - Tran Thien Gia Phuoc"
+      },
+      {
+        "url": "https://ttgppsychmh.github.io/projects/",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "title": "Projects - Tran Thien Gia Phuoc"
+      },
+      {
+        "url": "https://ttgppsychmh.github.io/cv/",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "title": "Curriculum Vitae - Tran Thien Gia Phuoc"
+      },
+      {
+        "url": "https://ttgppsychmh.github.io/contact/",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "title": "Contact - Tran Thien Gia Phuoc"
+      },
+      {
+        "url": "https://ttgppsychmh.github.io/images/profile-2026-06-10.jpg",
+        "status": 200,
+        "content_type": "image/jpeg"
+      },
+      {
+        "url": "https://ttgppsychmh.github.io/assets/js/custom-ui.js",
+        "status": 200,
+        "content_type": "application/javascript; charset=utf-8"
+      },
+      {
+        "url": "https://ttgppsychmh.github.io/assets/css/main.css",
+        "status": 200,
+        "content_type": "text/css; charset=utf-8"
+      },
+      {
+        "url": "https://ttgppsychmh.github.io/assets/css/academicons.min.css",
+        "status": 200,
+        "content_type": "text/css; charset=utf-8"
+      },
+      {
+        "url": "https://ttgppsychmh.github.io/assets/css/fontawesome.css",
+        "status": 200,
+        "content_type": "text/css; charset=utf-8"
+      },
+      {
+        "url": "https://ttgppsychmh.github.io/images/apple-touch-icon-180x180.png",
+        "status": 200,
+        "content_type": "image/png"
+      },
+      {
+        "url": "https://ttgppsychmh.github.io/images/favicon.svg",
+        "status": 200,
+        "content_type": "image/svg+xml"
+      },
+      {
+        "url": "https://ttgppsychmh.github.io/images/favicon-32x32.png",
+        "status": 200,
+        "content_type": "image/png"
+      },
+      {
+        "url": "https://ttgppsychmh.github.io/images/favicon-192x192.png",
+        "status": 200,
+        "content_type": "image/png"
+      },
+      {
+        "url": "https://ttgppsychmh.github.io/images/manifest.json",
+        "status": 200,
+        "content_type": "application/json; charset=utf-8"
+      },
+      {
+        "url": "https://ttgppsychmh.github.io/images/favicon.ico",
+        "status": 200,
+        "content_type": "image/vnd.microsoft.icon"
+      },
+      {
+        "url": "https://ttgppsychmh.github.io/files/Tran_Thien_Gia_Phuoc_Academic_CV.pdf",
+        "status": 200,
+        "content_type": "application/pdf",
+        "sha256": "0cc005f7a3309b5c8b0d4450d717640563383ec099fb888a93113f53b7c061ec"
+      },
+      {
+        "url": "https://ttgppsychmh.github.io/assets/fonts/academicons.eot",
+        "status": 200,
+        "content_type": "application/vnd.ms-fontobject"
+      },
+      {
+        "url": "https://ttgppsychmh.github.io/assets/fonts/academicons.ttf",
+        "status": 200,
+        "content_type": "font/ttf"
+      },
+      {
+        "url": "https://ttgppsychmh.github.io/assets/fonts/academicons.woff",
+        "status": 200,
+        "content_type": "font/woff"
+      },
+      {
+        "url": "https://ttgppsychmh.github.io/assets/fonts/academicons.svg",
+        "status": 200,
+        "content_type": "image/svg+xml"
+      },
+      {
+        "url": "https://ttgppsychmh.github.io/assets/webfonts/fa-solid-900.woff2",
+        "status": 200,
+        "content_type": "font/woff2"
+      },
+      {
+        "url": "https://ttgppsychmh.github.io/assets/webfonts/fa-solid-900.ttf",
+        "status": 200,
+        "content_type": "font/ttf"
+      },
+      {
+        "url": "https://ttgppsychmh.github.io/assets/webfonts/fa-brands-400.woff2",
+        "status": 200,
+        "content_type": "font/woff2"
+      },
+      {
+        "url": "https://ttgppsychmh.github.io/assets/webfonts/fa-brands-400.ttf",
+        "status": 200,
+        "content_type": "font/ttf"
+      }
+    ],
+    "failures": []
+  },
+  "browser": {
+    "routes": 30,
+    "widths": [
+      1440,
+      1024,
+      768,
+      390,
+      320
+    ],
+    "themes": [
+      "light",
+      "dark",
+      "system"
+    ],
+    "interactions": [
+      "skip link",
+      "keyboard menu",
+      "Escape returns focus",
+      "outside click",
+      "menu link",
+      "navigation without JavaScript",
+      "system theme changes",
+      "theme persistence",
+      "navigation and theme with blocked storage"
+    ]
+  },
+  "pdf": {
+    "pages": 6,
+    "publications": 25,
+    "projects": 2,
+    "source_paragraphs_checked": 87,
+    "clickable_links": 24,
+    "fonts": [
+      "BIGOAZ+CV-Garamond-Bold",
+      "NVHPUE+CV-Garamond-Italic",
+      "UWGIWA+DejaVu-Sans-Bold",
+      "VEJONY+CV-Garamond-Semi-Bold",
+      "ZSNLDY+CV-Garamond"
+    ],
+    "errors": []
+  },
+  "navigation": {
+    "desktop_navigation_clicks": [
+      "/research/",
+      "/publications/",
+      "/projects/",
+      "/cv/",
+      "/contact/",
+      "/"
+    ],
+    "download_link_click": {
+      "url": "https://ttgppsychmh.github.io/files/Tran_Thien_Gia_Phuoc_Academic_CV.pdf",
+      "status": 200,
+      "content_type": "application/pdf"
+    }
+  }
+}

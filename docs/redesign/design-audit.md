@@ -1,5 +1,7 @@
 # Academic editorial redesign — audit and Phase 1 specification
 
+Historical specification: the approved website and PDF are now merged through PRs [#21](https://github.com/ttgpPsychMH/ttgpPsychMH.github.io/pull/21) and [#23](https://github.com/ttgpPsychMH/ttgpPsychMH.github.io/pull/23). Proposed phases and baseline descriptions below describe the original review, rather than current deployment status. See the [post-merge audit](../maintenance/post-merge-audit.md) for current production evidence and the later requested footer icons.
+
 ## Scope and evidence
 
 Baseline: `master` at `bfd31751f0858f46c64969e9864247f50a336c59`; fetched origin/master and confirmed no divergence before branching. Phase 1 branch: `design/academic-editorial-homepage`. The owner must approve the prototype before a production merge or the full page/PDF redesign.

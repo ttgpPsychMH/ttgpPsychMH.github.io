@@ -48,9 +48,9 @@ The older generator is run with its PDF writer replaced by an HTML capture; its 
 
 ## Review and automation
 
-The website changes are reviewed separately in PR #21. This PDF branch is independently based on master so either PR can be inspected without mixing unrelated edits. Combined website/PDF behavior is also tested in a temporary fixture. Private DOCX and portrait files are never copied into the public repository, and private workflows/secrets are unchanged.
+Website PR [#21](https://github.com/ttgpPsychMH/ttgpPsychMH.github.io/pull/21) and the Garamond PDF PR [#23](https://github.com/ttgpPsychMH/ttgpPsychMH.github.io/pull/23) merged on 17 October 2026. The earlier independent PDF draft #22 was superseded by #23. Combined website/PDF behavior was tested in a temporary fixture. Private DOCX and portrait files were never copied into the public repository, and private workflows/secrets remain unchanged.
 
-The new website and PDF are not a production deployment until their PRs are approved and merged. GitHub Actions results must be checked on the actual PR head; local validation does not establish remote CI or Pages deployment.
+The merged website and PDF are deployed successfully at production head `250dc54483eebd27a5d1f19d76500727fdd0c487`. See the [post-merge audit](../maintenance/post-merge-audit.md) for the actual Pages run, public PDF hash and live browser checks. The existing previews and test reports here preserve evidence from the PDF redesign. Local validation alone does not establish remote CI or deployment status.
 
 Additional local checks: the latest DOCX import and synthetic dated-portrait import both regenerated the redesigned PDF and passed PDF validation plus existing website QA. A temporary pagination fixture repeats the existing citations to exercise a 100-record list; no synthetic record is saved to the real YAML or public output. All six actual public PDF pages were visually checked after pagination adjustments.
 

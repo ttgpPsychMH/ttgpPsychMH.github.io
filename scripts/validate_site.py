@@ -941,6 +941,15 @@ def main() -> int:
             "html.parser",
         )
         cv_frame = cv_soup.select_one("iframe.cv-pdf-frame")
+        cv_state = load_yaml_mapping(ROOT / "_data" / "cv_sync_state.yml", "CV sync state", errors)
+        try:
+            expected_date = datetime.strptime(str(cv_state.get("cv_date", "")), "%Y-%m-%d").strftime("%-d %B %Y")
+            notice = cv_soup.select_one("#web-cv + p")
+            if not notice or expected_date not in notice.get_text(" ", strip=True):
+                fail(errors, "Web CV synchronization date does not match cv_sync_state.yml")
+        except ValueError:
+            fail(errors, "CV sync state must contain a valid YYYY-MM-DD cv_date")
+
         expected_pdf = "/files/Tran_Thien_Gia_Phuoc_Academic_CV.pdf"
 
         if not cv_frame:

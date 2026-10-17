@@ -27,7 +27,7 @@ redirect_from:
 
 ## Web CV
 
-This web CV is based on the academic CV supplied for this website, dated **2 March 2026**. Residential address, telephone numbers, date of birth, and place of birth are intentionally omitted from the public website.
+This web CV is based on the academic CV supplied for this website, dated **16 October 2026**. Residential address, telephone numbers, date of birth, and place of birth are intentionally omitted from the public website.
 
 ## Personal Information
 

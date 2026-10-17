@@ -8,7 +8,7 @@ The site presents my research interests, publications, research projects, academ
 
 ## Redesign review
 
-The `design/academic-editorial-homepage` branch contains the approved homepage direction and the remaining page redesign inspired by Geoff Boeing's current academic site. Publications retain their shared data and academic citations; project metadata uses a simple definition list; all core pages use a readable single column. Production merging remains subject to review. PDF typography is reviewed in a separate PR.
+The redesigned website follows a Geoff Boeing-inspired academic editorial direction. Publications retain their shared data and academic citations; project metadata uses a simple definition list; all core pages use a readable single column. PDF typography is managed separately through the shared public CV generator.
 
 - [Reference audit, architecture inventory, and design specification](docs/redesign/design-audit.md)
 - [Preview images, test commands, and verification report](docs/redesign/verification.md)
@@ -79,6 +79,12 @@ For routine changes, the website's PDF generator expands this include automatica
 General CV content such as education, appointments, training, awards, and memberships remains in `_pages/cv.md`. Publications and projects are generated from their shared YAML sources.
 
 When `_pages/cv.md`, `_data/publications.yml`, or `_data/projects.yml` changes, GitHub Actions regenerates the public PDF automatically.
+
+## PDF typography and checks
+
+The generated public CV uses the existing Markdown/YAML/WeasyPrint pipeline with a bundled Garamond font and a separate paged stylesheet at `assets/css/cv-pdf.css`. [PDF review and page previews](docs/cv-redesign/README.md) describe the design and verification. Install the PDF/QA dependencies with `python -m pip install -r scripts/requirements-cv.txt`, then run `python scripts/generate_cv_pdf.py` and `python scripts/validate_cv_pdf.py`.
+
+The PDF workflows regenerate after changes to the public-safe profile, config, shared records, stylesheet, bundled fonts or generator. Font licensing and provenance are retained under `assets/fonts/cv/`.
 
 ## Validation
 

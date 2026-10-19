@@ -52,7 +52,11 @@ jobs:
           python-version: '3.12'
 
       - name: Check custom UI JavaScript syntax
-        run: node --check assets/js/custom-ui.js
+        run: |
+          node --check assets/js/custom-ui.js
+          node --check _includes/theme-init.js
+          node --check scripts/check_ui.cjs
+          node --check scripts/check_theme.cjs
 
       - name: Install QA and CV-generation dependencies
         run: pip install -r scripts/requirements-cv.txt

@@ -1,7 +1,7 @@
 # Academic website engineering rules
 
 - Develop in the existing checkout on a feature branch. Do not merge visual redesigns into `master` without the owner's visual approval. Phase 1 covers the shared foundation and homepage; subsequent page and PDF redesigns require review.
-- Preserve all routes, redirects, SEO, accessibility and System/Light/Dark preferences. Keep readable focus indicators and a usable navigation fallback without JavaScript.
+- Preserve all routes, redirects, SEO and accessibility. Theme behavior follows the OS automatically, with a two-state Light/Dark button and a temporary tab-session override cleared by OS changes. Keep readable focus indicators and usable navigation/theme fallbacks without JavaScript.
 - `_data/publications.yml`, `_data/projects.yml`, and `_data/research_metrics.yml` remain authoritative. Never invent or alter academic facts while changing presentation. Preserve record IDs, selected ordering, author order, indexing years and database separation.
 - On the homepage, research metrics follow the introduction and precede research interests. Keep exact snapshot dates, values, source links and source scopes.
 - Read portrait configuration from `site.author.avatar`; never hard-code the current dated filename into templates. The private portrait importer must remain independent of DOCX updates.

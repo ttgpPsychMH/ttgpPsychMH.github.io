@@ -459,6 +459,19 @@ def validate_page(
     if not any("custom-ui.js" in source for source in script_sources):
         fail(errors, f"{rel_path}: custom-ui.js runtime is missing")
 
+    initializer = soup.select_one("head script#theme-init")
+    stylesheet = soup.select_one('head link[rel="stylesheet"]')
+    head_resources = soup.head.find_all(["script", "link"]) if soup.head else []
+    if not initializer or initializer.get("src") or not initializer.get_text(strip=True):
+        fail(errors, f"{rel_path}: inline early theme initializer is missing")
+    elif stylesheet and head_resources.index(initializer) > head_resources.index(stylesheet):
+        fail(errors, f"{rel_path}: theme initialization must precede the stylesheet")
+    theme_button = soup.select_one("button#theme-mode-toggle")
+    if not theme_button or theme_button.get("type") != "button" or not all(
+        theme_button.has_attr(attribute) for attribute in ("hidden", "aria-label", "title")
+    ):
+        fail(errors, f"{rel_path}: accessible theme button must stay hidden until initialized")
+
     required_meta = [
         ("property", "og:title"),
         ("property", "og:description"),

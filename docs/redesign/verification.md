@@ -19,6 +19,8 @@ Screenshots are captured with Chromium through Playwright. They are static revie
 
 ## Repeat the checks
 
+The current theme control has two states with automatic OS synchronization; the earlier three-mode results below remain historical. Current policy, expanded browser coverage and new screenshots are in [theme-switching verification](../theme-switching/README.md).
+
 Activate the environment's Ruby/Python tools, then run Jekyll, JavaScript syntax and site QA from the website checkout. The environment helper safely checks PDF/import behavior in temporary copies:
 
 ```bash
@@ -50,7 +52,7 @@ NODE_PATH="$PWD/local/browser-tools/node_modules" \
   CHROMIUM_PATH=/path/to/chromium node scripts/check_ui.cjs
 ```
 
-The test accepts `SITE_TEST_URL` for a different preview origin; match Jekyll's advertised `localhost` origin so font requests remain on the same origin. It visits six routes at 1440, 1024, 768, 390 and 320 pixels; checks stylesheet application, image loading, H1/current-link semantics, readable body size and horizontal overflow; and tests keyboard skip navigation, menu focus/Escape/outside clicks, themes, storage persistence, system preference changes and blocked localStorage. Navigation without JavaScript is also checked. Theme foreground/link contrast is measured against the canvas. Footer icon labels, glyph loading and keyboard focus are now checked too. Set `UI_OUTPUT_DIR` as above to preserve these historical screenshots and write new screenshots plus `browser-results.json` to a separate directory. These are functional browser checks, not pixel-diff baselines.
+The test accepts `SITE_TEST_URL` for a different preview origin; match Jekyll's advertised `localhost` origin so font requests remain on the same origin. It visits six routes at 1440, 1024, 768, 390 and 320 pixels in both themes (60 page/width/theme combinations); checks stylesheet application, image loading, H1/current-link semantics, readable body size and horizontal overflow; and tests keyboard skip navigation, menu focus/Escape/outside clicks, automatic system synchronization, temporary session choices and blocked storage. Navigation without JavaScript is also checked. Theme foreground/link contrast is measured against the canvas. Footer icon labels, glyph loading and keyboard focus are checked too. Set `UI_OUTPUT_DIR` as above to preserve these historical screenshots and write new screenshots plus `browser-results.json` to a separate directory. These are functional browser checks, not pixel-diff baselines.
 
 Academic data preservation check for subsequent maintenance (the original Phase 1 also compared the generator and workflows, before their later approved changes):
 

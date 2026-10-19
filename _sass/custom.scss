@@ -21,7 +21,7 @@
   --global-masthead-link-color-hover: var(--text-main);
 }
 
-html[data-theme="dark"] {
+@mixin editorial-dark-theme {
   color-scheme: dark;
   --site-bg: #191b1e;
   --text-main: #e2e2e2;
@@ -30,6 +30,11 @@ html[data-theme="dark"] {
   --link-hover: #c3e6f7;
   --rule: #414449;
   --surface: #23262b;
+}
+
+html[data-theme="dark"] { @include editorial-dark-theme; }
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) { @include editorial-dark-theme; }
 }
 
 * { box-sizing: border-box; }
@@ -126,6 +131,7 @@ img { max-width: 100%; height: auto; }
   cursor: pointer;
 }
 .theme-switch:hover { color: var(--link); }
+.theme-switch[hidden] { display: none; }
 .theme-switch__label { display: none; }
 .theme-switch__icon { font-size: 1.1rem; line-height: 1; }
 .site-nav__toggle { display: none; }

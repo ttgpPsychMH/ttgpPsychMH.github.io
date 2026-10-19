@@ -14,7 +14,7 @@ The redesigned website follows a Geoff Boeing-inspired academic editorial direct
 - [Preview images, test commands, and verification report](docs/redesign/verification.md)
 - [Engineering and data-preservation rules](AGENTS.md)
 
-Academic data and both private import pipelines remain authoritative. The site title links to the homepage; the menu retains Research, Publications, Projects, CV, and Contact. A theme button cycles System, Light, and Dark.
+Academic data and both private import pipelines remain authoritative. The site title links to the homepage; the menu retains Research, Publications, Projects, CV, and Contact. A Light/Dark button temporarily overrides the operating system's theme within the current tab session; the next OS theme change resets that choice.
 
 ## Structure
 
@@ -24,7 +24,8 @@ Academic data and both private import pipelines remain authoritative. The site t
 - `_pages/` — website page structure and non-tabular academic content
 - `_config.yml` — site-wide identity, metadata, and profile configuration
 - `_sass/custom.scss` — academic editorial typography, layout, and neutral light/dark themes
-- `assets/js/custom-ui.js` — theme switching and interface enhancements
+- `_includes/theme-init.js` — early system-theme detection, session override and Light/Dark control
+- `assets/js/custom-ui.js` — navigation and interface enhancements
 - `files/` — public downloadable files, including the generated academic CV
 - `scripts/generate_cv_pdf.py` — generates the public CV PDF from the web-CV framework plus the shared publication/project data
 - `scripts/validate_site.py` — validates shared data, cross-page rendering, SEO, accessibility, metadata, and internal links
@@ -96,7 +97,9 @@ Before publication, GitHub Actions:
 - verifies that homepage selections, Publications, Projects, web CV, publication statistics, and Research metrics all match their YAML sources
 - checks SEO, accessibility, structured data, sitemap, manifest, and internal links
 
-The site uses a system-aware light/dark theme. Visitors can also select System, Light, or Dark manually.
+The site follows the operating system's light/dark preference on a fresh session and responds to live changes. The sun/moon button offers only the opposite theme; its accessible name and tooltip describe that action. Manual selection survives navigation/reload in the same tab via `sessionStorage`, paired with the OS preference at selection time. An OS change clears the override; a changed OS snapshot on the next load also discards it. Legacy permanent preferences are ignored and removed. Storage errors leave the current-page toggle and live synchronization usable.
+
+One inline initializer runs before CSS. Without JavaScript, CSS follows `prefers-color-scheme` and the inactive button stays hidden. See [theme behavior, regression results, screenshots and compatibility](docs/theme-switching/README.md).
 
 ## Credits
 

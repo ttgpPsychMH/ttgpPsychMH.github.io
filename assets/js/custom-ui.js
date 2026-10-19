@@ -1,73 +1,6 @@
 (function () {
   "use strict";
 
-  const THEME_KEY = "theme";
-  const THEME_MODES = ["system", "light", "dark"];
-  const systemTheme = window.matchMedia
-    ? window.matchMedia("(prefers-color-scheme: dark)")
-    : null;
-
-  function getThemePreference() {
-    let saved;
-    try { saved = localStorage.getItem(THEME_KEY); } catch (error) { return "system"; }
-    return THEME_MODES.includes(saved) ? saved : "system";
-  }
-
-  function resolveTheme(preference) {
-    if (preference === "light" || preference === "dark") return preference;
-    return systemTheme && systemTheme.matches ? "dark" : "light";
-  }
-
-  function updateThemeControl(preference) {
-    const button = document.getElementById("theme-mode-toggle");
-    const icon = document.getElementById("theme-mode-icon");
-    const label = document.getElementById("theme-mode-label");
-    if (!button || !icon || !label) return;
-
-    const config = {
-      system: { symbol: "◐", label: "System" },
-      light: { symbol: "☀", label: "Light" },
-      dark: { symbol: "☾", label: "Dark" }
-    }[preference];
-
-    icon.className = "theme-switch__icon";
-    icon.textContent = config.symbol;
-    label.textContent = config.label;
-    button.setAttribute(
-      "aria-label",
-      "Theme: " + config.label + ". Click to change theme."
-    );
-    button.setAttribute(
-      "title",
-      "Theme: " + config.label + " · click to change"
-    );
-  }
-
-  function applyTheme(preference, persist) {
-    const mode = THEME_MODES.includes(preference) ? preference : "system";
-    const resolved = resolveTheme(mode);
-
-    if (persist) {
-      try { localStorage.setItem(THEME_KEY, mode); } catch (error) { /* Keep the in-memory theme usable. */ }
-    }
-    document.documentElement.setAttribute("data-theme-preference", mode);
-
-    if (resolved === "dark") {
-      document.documentElement.setAttribute("data-theme", "dark");
-    } else {
-      document.documentElement.removeAttribute("data-theme");
-    }
-
-    updateThemeControl(mode);
-  }
-
-  function cycleTheme() {
-    const current = document.documentElement.getAttribute("data-theme-preference") || getThemePreference();
-    const next = THEME_MODES[(THEME_MODES.indexOf(current) + 1) % THEME_MODES.length];
-
-    applyTheme(next, true);
-  }
-
   function enhanceExternalLinks() {
     document.querySelectorAll('a[href^="http"]').forEach(function (link) {
       link.setAttribute("rel", "noopener noreferrer");
@@ -171,25 +104,9 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    applyTheme(getThemePreference(), false);
     enhanceExternalLinks();
     initNavigation();
     initProfileMenu();
 
-
-    const themeButton = document.getElementById("theme-mode-toggle");
-    if (themeButton) themeButton.addEventListener("click", cycleTheme);
   });
-
-  if (systemTheme) {
-    const systemChange = function () {
-      if (document.documentElement.getAttribute("data-theme-preference") === "system") applyTheme("system", false);
-    };
-
-    if (systemTheme.addEventListener) {
-      systemTheme.addEventListener("change", systemChange);
-    } else if (systemTheme.addListener) {
-      systemTheme.addListener(systemChange);
-    }
-  }
 })();

@@ -12,22 +12,8 @@
   document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
 </script>
 
-<script>
-  (function () {
-    var allowed = ["system", "light", "dark"];
-    var saved = "system";
-    try { saved = localStorage.getItem("theme") || "system"; } catch (error) { /* Storage may be disabled. */ }
-    var preference = allowed.indexOf(saved) > -1 ? saved : "system";
-    var systemDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-    var useDark = preference === "dark" || (preference === "system" && systemDark);
-
-    document.documentElement.setAttribute("data-theme-preference", preference);
-    if (useDark) {
-      document.documentElement.setAttribute("data-theme", "dark");
-    } else {
-      document.documentElement.removeAttribute("data-theme");
-    }
-  })();
+<script id="theme-init">
+{% include theme-init.js %}
 </script>
 
 <!-- For all browsers -->

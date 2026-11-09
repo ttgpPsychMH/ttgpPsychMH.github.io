@@ -26,7 +26,7 @@
     var action = theme === "dark" ? "Light" : "Dark";
     document.documentElement.setAttribute("data-theme", theme);
     if (!button) return;
-    document.getElementById("theme-mode-icon").textContent = theme === "dark" ? "☀" : "☾";
+    document.getElementById("theme-mode-icon").setAttribute("data-icon", theme === "dark" ? "sun" : "moon");
     document.getElementById("theme-mode-label").textContent = action;
     button.setAttribute("aria-label", "Switch to " + action.toLowerCase() + " theme");
     button.setAttribute("title", "Switch to " + action.toLowerCase() + " theme");

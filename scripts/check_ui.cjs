@@ -4,6 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { chromium } = require('playwright');
 const checkThemes = require('./check_theme.cjs');
+const { contrastRatio } = require('./color_utils.cjs');
 
 const base = process.env.SITE_TEST_URL || 'http://127.0.0.1:4010';
 const output = process.env.UI_OUTPUT_DIR
@@ -14,14 +15,6 @@ const reportPath = process.env.UI_OUTPUT_DIR
   : path.resolve(output, '../browser-results.json');
 const widths = [1440, 1024, 768, 390, 320];
 const routes = ['/', '/research/', '/publications/', '/projects/', '/cv/', '/contact/'];
-
-function luminance(rgb) {
-  const channels = rgb.match(/[\d.]+/g).slice(0, 3).map(Number).map(n => {
-    const c = n / 255;
-    return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
-  });
-  return channels[0] * 0.2126 + channels[1] * 0.7152 + channels[2] * 0.0722;
-}
 
 (async () => {
   fs.mkdirSync(output, { recursive: true });
@@ -56,7 +49,7 @@ function luminance(rgb) {
             images: [...document.querySelectorAll('#main img')].every(image => image.complete && image.naturalWidth > 0)
           }));
           assert.ok(layout.width <= layout.viewport + 1, `${route} overflows at ${width}: ${layout.width}`);
-          assert.ok(!layout.fontFamily.includes("Times New Roman"), `${route}: stylesheet did not apply`);
+          assert.ok(layout.fontFamily.includes('Newsprint Body'), `${route}: Newsprint body face did not apply`);
           assert.ok(layout.font >= 16, `${route}: body text is too small`);
           assert.ok(layout.images, `${route}: profile image failed to load`);
           const profiles = page.locator('.profile-links a');
@@ -76,15 +69,29 @@ function luminance(rgb) {
             for (const button of await page.locator('.cv-actions .btn').all()) {
               const colors = await button.evaluate(x => ({
                 foreground: getComputedStyle(x).color,
-                background: getComputedStyle(document.body).backgroundColor
+                background: getComputedStyle(x).backgroundColor,
+                page: getComputedStyle(document.body).backgroundColor
               }));
-              const values = [luminance(colors.foreground), luminance(colors.background)].sort((a, b) => a - b);
-              assert.ok((values[1] + 0.05) / (values[0] + 0.05) >= 4.5, 'CV download/open link contrast');
+              const background = colors.background === 'rgba(0, 0, 0, 0)' ? colors.page : colors.background;
+              assert.ok(contrastRatio(colors.foreground, background) >= 4.5, 'CV download/open link contrast');
             }
           }
           if (route === '/') {
             assert.equal(await page.locator('.home-portrait img').count(), 1);
             assert.equal(await page.locator('.heading-icon, .home-section').count(), 0);
+            assert.equal(await page.locator('.home-portrait figcaption').textContent(), 'Tran Thien Gia Phuoc');
+            assert.match(await page.locator('.home-portrait img').evaluate(x => getComputedStyle(x).filter), /grayscale\(1\)/);
+            assert.match(await page.locator('h2').first().evaluate(x => getComputedStyle(x).fontFamily), /Newsprint Display/);
+            assert.match(await page.locator('.research-metric-value__number').first().evaluate(x => getComputedStyle(x).fontFamily), /Newsprint Figures/);
+            assert.equal(await page.evaluate(async () => {
+              await Promise.all([
+                document.fonts.load('16px "Newsprint Body"'),
+                document.fonts.load('700 16px "Newsprint Display"'),
+                document.fonts.load('500 16px "Newsprint Figures"')
+              ]);
+              return ['Newsprint Body', 'Newsprint Display', 'Newsprint Figures']
+                .every(face => document.fonts.check(`16px "${face}"`));
+            }), true, 'self-hosted Newsprint faces');
             await page.screenshot({ path: path.join(output, `${prefix}homepage-${width}.png`), fullPage: true });
             if ([1440, 390].includes(width)) await page.screenshot({ path: path.join(output, `${prefix}homepage-${width}-viewport.png`) });
           }

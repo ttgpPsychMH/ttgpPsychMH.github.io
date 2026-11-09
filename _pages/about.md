@@ -12,6 +12,7 @@ redirect_from:
 <div class="home-introduction" markdown="1">
 <figure class="home-portrait">
   <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" width="900" height="1125" fetchpriority="high">
+  <figcaption>{{ site.author.name }}</figcaption>
 </figure>
 
 <p class="home-intro">I am a researcher in psychology with interests in occupational mental health, psychological assessment, and quantitative research. My work has examined work engagement, burnout, psychological distress, employee well-being, and broader mental health questions across working and student populations.</p>
@@ -85,7 +86,7 @@ My research experience includes study design, data collection, manuscript prepar
 - Mental health among students, young adults, and working populations
 - Developing interests in cognitive psychology and behavioral research
 
-[Research overview →](/research/)
+[Research overview](/research/)
 
 ## Academic profile highlights
 
@@ -106,7 +107,7 @@ My research experience includes study design, data collection, manuscript prepar
 {% endfor %}
 </div>
 
-[View all publications →](/publications/)
+[View all publications](/publications/)
 
 ## Selected research projects
 
@@ -120,5 +121,5 @@ My research experience includes study design, data collection, manuscript prepar
 {% endfor %}
 </div>
 
-[View research projects →](/projects/)
+[View research projects](/projects/)
 

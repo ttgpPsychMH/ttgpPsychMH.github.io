@@ -1,0 +1,12 @@
+{
+  "scanned": "2026-11-09",
+  "findings": {
+    "fonts": "System sans website; bundled EB Garamond is PDF-only",
+    "palette": "Neutral Light/Dark custom properties in _sass/custom.scss",
+    "motion": "State-only navigation and theme JavaScript",
+    "spacing": "Existing editorial layout with responsive 800px measure",
+    "framework": "Jekyll 3 / Academic Pages on GitHub Pages"
+  },
+  "preserve": ["routes", "academic data", "CV/PDF pipeline", "portrait automation", "theme behavior", "accessibility"],
+  "introduce": ["Newsprint tokens", "self-hosted typography", "broadsheet rules", "monochrome portrait treatment"]
+}

@@ -614,12 +614,44 @@ def main() -> int:
     if not (SITE / "images" / "favicon.svg").exists():
         fail(errors, "Missing SVG favicon")
 
+    newsprint_fonts = {
+        "ZillaSlab-Bold.woff2",
+        "Spectral-Regular.woff2",
+        "Spectral-Medium.woff2",
+        "Spectral-Italic.woff2",
+        "LibreFranklin.woff2",
+    }
+    for font_name in newsprint_fonts:
+        font_path = SITE / "assets" / "fonts" / "newsprint" / font_name
+        if not font_path.exists() or font_path.stat().st_size < 10_000:
+            fail(errors, f"Missing or unexpectedly small Newsprint font: {font_name}")
+
+    main_css = SITE / "assets" / "css" / "main.css"
+    if not main_css.exists():
+        fail(errors, "Missing compiled main stylesheet")
+    else:
+        css = main_css.read_text(encoding="utf-8")
+        for marker in (
+            "Hallmark",
+            "--color-paper",
+            "oklch(94%",
+            "Newsprint Display",
+            "Newsprint Body",
+            "Newsprint Figures",
+        ):
+            if marker not in css:
+                fail(errors, f"Compiled stylesheet is missing Newsprint marker: {marker}")
+
     home_file = SITE / "index.html"
     if home_file.exists():
         home_soup = BeautifulSoup(
             home_file.read_text(encoding="utf-8"),
             "html.parser",
         )
+
+        portrait_caption = home_soup.select_one(".home-portrait figcaption")
+        if not portrait_caption or not portrait_caption.get_text(" ", strip=True):
+            fail(errors, "Homepage Newsprint portrait requires a factual caption")
 
         selected_pub_data = selected_records(publications, "Publication", errors)
         expected_pub_ids = [str(item["id"]) for item in selected_pub_data]

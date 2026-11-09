@@ -1,0 +1,38 @@
+{
+  "browser": "154.0.8037.57",
+  "routes": 60,
+  "widths": [
+    1440,
+    1024,
+    768,
+    390,
+    320
+  ],
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "interactions": [
+    "skip link",
+    "keyboard menu",
+    "Escape returns focus",
+    "outside click",
+    "menu link",
+    "labelled footer icons",
+    "footer keyboard focus"
+  ],
+  "themeChecks": [
+    "initial light (system), before CSS/DOMContentLoaded, no wrong styled frames",
+    "initial dark (system), before CSS/DOMContentLoaded, no wrong styled frames",
+    "initial dark (manual session), before CSS/DOMContentLoaded, no wrong styled frames",
+    "initial light (manual session), before CSS/DOMContentLoaded, no wrong styled frames",
+    "two-state toggle, Space/Enter, focus, same-session reload and internal navigation",
+    "live Light → Dark → Light clears manual choices in both directions; history navigation stays synchronized",
+    "system change while away; fresh session ignores prior manual choice",
+    "legacy localStorage values ignored/removed; malformed, invalid and stale session data rejected",
+    "blocked storage getters and failing writes: toggle, live sync and menu remain usable",
+    "no-JavaScript Light/Dark initial and live CSS fallback, usable navigation, hidden inert control",
+    "legacy addListener and missing matchMedia graceful fallback",
+    "Light/Dark body/link/navigation/toggle/footer contrast ≥ 4.5:1"
+  ]
+}

@@ -1,2 +1,3 @@
 # Preserve the bundled upstream font license verbatim, including whitespace.
 assets/fonts/cv/OFL.txt -whitespace
+assets/fonts/newsprint/OFL-*.txt -whitespace

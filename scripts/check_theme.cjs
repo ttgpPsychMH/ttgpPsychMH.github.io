@@ -1,8 +1,9 @@
 /* Theme-policy browser regressions, run by check_ui.cjs. */
 const assert = require('node:assert/strict');
 const path = require('node:path');
+const { contrastRatio } = require('./color_utils.cjs');
 
-const backgrounds = { light: 'rgb(253, 253, 253)', dark: 'rgb(25, 27, 30)' };
+const backgrounds = { light: 'oklch(0.94 0.011 92)', dark: 'oklch(0.15 0.012 60)' };
 
 async function expectTheme(page, mode) {
   await page.waitForFunction(({ mode, background }) => document.documentElement && document.body &&
@@ -16,15 +17,9 @@ async function expectTheme(page, mode) {
   assert.ok(await button.isVisible());
   assert.equal(await button.getAttribute('title'), `Switch to ${action} theme`);
   assert.equal(await button.getAttribute('type'), 'button');
-  assert.equal(await button.locator('#theme-mode-icon').textContent(), mode === 'dark' ? '☀' : '☾');
+  assert.equal(await button.locator('#theme-mode-icon').getAttribute('data-icon'), mode === 'dark' ? 'sun' : 'moon');
+  assert.equal(await button.locator('#theme-mode-icon svg:visible').count(), 1);
   assert.equal(await page.locator('[data-theme-preference]').count(), 0);
-}
-
-function luminance(rgb) {
-  return rgb.match(/[\d.]+/g).slice(0, 3).map(Number).map(n => {
-    const c = n / 255;
-    return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
-  }).reduce((sum, c, i) => sum + c * [0.2126, 0.7152, 0.0722][i], 0);
 }
 
 module.exports = async function checkThemes(browser, base, output) {
@@ -47,7 +42,7 @@ module.exports = async function checkThemes(browser, base, output) {
       window.themeDOMReady = false;
       document.addEventListener('DOMContentLoaded', () => { window.themeDOMReady = true; });
       function sample() {
-        if (document.body && getComputedStyle(document.body).fontSize === '17.6px') {
+        if (document.body && getComputedStyle(document.body).fontFamily.includes('Newsprint Body')) {
           window.themeFrames.push({ theme: document.documentElement.dataset.theme,
             background: getComputedStyle(document.body).backgroundColor });
         }
@@ -255,8 +250,7 @@ module.exports = async function checkThemes(browser, base, output) {
         .map(selector => getComputedStyle(document.querySelector(selector)).color)
     }));
     for (const foreground of colors.foregrounds) {
-      const values = [luminance(foreground), luminance(colors.background)].sort((a, b) => a - b);
-      assert.ok((values[1] + 0.05) / (values[0] + 0.05) >= 4.5, `${mode}: contrast ${foreground}`);
+      assert.ok(contrastRatio(foreground, colors.background) >= 4.5, `${mode}: contrast ${foreground}`);
     }
     await contrastContext.close();
   }

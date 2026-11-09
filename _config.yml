@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-theme_color              : "#fdfdfd"
+theme_color              : "#eeebe3"
 site_theme               : "default" # base light/dark theme; custom site identity is defined in _sass/custom.scss
 title                    : "Tran Thien Gia Phuoc"
 title_separator          : "-"
